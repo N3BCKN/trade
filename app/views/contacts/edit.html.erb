@@ -1,0 +1,46 @@
+<h1>Contacts#edit</h1>
+<p>Find me in app/views/contacts/edit.html.erb</p>
+
+<%= form_for(@contact) do |f| %>
+
+ <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: false, autocomplete: "city" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code, autofocus: false, autocomplete: "zip code" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, autofocus: false, autocomplete: "country" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, autofocus: false, autocomplete: "phone number" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :company_description %><br />
+    <%= f.text_field :company_description, autofocus: false, autocomplete: "your company description" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year_of_establishment %><br />
+    <%= f.text_field :year_of_establishment, autofocus: false, autocomplete: "year of establishment" %>
+  </div>
+
+   <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+
+<% end %>

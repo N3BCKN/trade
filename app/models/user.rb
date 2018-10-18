@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :user_name, presence: true, length: {minimum: 4, maximum: 25}
+
+  belongs_to :contact
 end

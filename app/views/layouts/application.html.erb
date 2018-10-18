@@ -10,6 +10,20 @@
   </head>
 
   <body>
+     <div class="container">
+      <h1 class="text-center">Trade</h1>
+      <ul class="temp-list text-center">
+        <li><%= link_to "Homepage", root_path %></li>
+        <li><%= link_to "Register", new_user_registration_path %></li>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path %></li>
+        <% if user_signed_in? && current_user.contact_id == nil %> 
+        <li><%= link_to "Update my Contact",  new_contact_path %></li>
+        <% else %>
+        <li><%= link_to "Update my Contact",  edit_contact_path(current_user) %></li>
+        <% end %>
+      </ul>
+    </div>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
     <%= yield %>
