@@ -1,22 +1,21 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :set_contact, only: [:show, :edit, :update]
+  before_action :owned_contact, only: [:edit]
+
   def show
     
   end
 
   def new
-    @contact = Contact.new
+    @contact = current_user.build_contact
   end
 
   def create
-    @contact = Contact.new(contact_params)
-    @user    = current_user
+    @contact = current_user.create_contact(contact_params)
 
     respond_to do |format|
       if @contact.save
-        @user.contact_id = @contact.id
-        @user.save  
         format.html {redirect_to root_path, notice: "Contact has been updated"}
       else
         format.html {render :new, notice: "Error"}
@@ -39,10 +38,25 @@ class ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:address, :city, :zip_code, :country, :phone_number, :company_description,:year_of_establishment)
+    params.require(:contact).permit(
+      :address, 
+      :city, 
+      :zip_code, 
+      :country, 
+      :phone_number, 
+      :company_description,
+      :home_page,
+      :year_of_establishment)
   end
 
   def set_contact
     @contact = Contact.find(params[:id])
   end 
+
+  def owned_contact
+    unless @contact.user === current_user
+      redirect_to root_path
+    end
+  end
+
 end

@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :user_name, presence: true, length: {minimum: 4, maximum: 25}
 
-  belongs_to :contact
+  has_one :contact
 end
