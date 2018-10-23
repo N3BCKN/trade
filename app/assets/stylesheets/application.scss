@@ -1,0 +1,12 @@
+@import "/*";
+@import "bootstrap";
+@import "tether";
+
+
+.temp-list{
+	list-style-type: none;
+}
+.temp-list li{
+	float: left;
+	padding-right: 8px;
+}

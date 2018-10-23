@@ -1,0 +1,46 @@
+<%= form_for(@lead) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, autocomplete: "Title" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: false, autocomplete: "description" %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_person %><br />
+    <%= f.text_field :contact_person, autofocus: false, autocomplete: "contact person" %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, value: @contact.address, autocomplete: "address" %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, value: @contact.city, autocomplete: "city" %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code, value: @contact.zip_code, autocomplete: "Zip Code" %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, value: @contact.country, autocomplete: "country" %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, value: @contact.phone_number, autocomplete: "Phone Number" %>
+  </div>
+  <div class="field">
+    <%= f.label :home_page %><br />
+    <%= f.text_field :home_page, value: @contact.home_page, autocomplete: "Home Page" %>
+  </div>
+
+  <%= hidden_field_tag :lead_status, "offer" %>
+ 
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>
