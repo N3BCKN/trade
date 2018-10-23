@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  #Custom Devise Paths
+  devise_for :users, path: "", path_names: {sign_in: "login", sign_up: "register", sign_out: "logout"}
+
+  #Custom Leads Paths
+  get "new_offer", to: "leads#new_offer"
+  get "new_product", to: "leads#new_product"
+  get "offers", to: "leads#index_offers"
+  get "products", to: "leads#index_products"
+
+  resources :leads
+  resources :contacts
+  root to: "pages#home"
 end

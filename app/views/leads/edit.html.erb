@@ -1,0 +1,9 @@
+<h2>Edit Lead</h2>
+<% if @lead.lead_status == "offer"%>
+  <%= render "shared/offerForm", :lead => @lead %>
+<% elsif  @lead.lead_status  == "product" %>
+  <%= render "shared/productForm", :lead => @lead %>
+  <br>
+<% end %>
+<br>
+<%= link_to "Delete", lead_path(@lead), method: :delete, data: { confirm: 'Are you sure?' } %> 

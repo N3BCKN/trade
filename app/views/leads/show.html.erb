@@ -1,0 +1,22 @@
+<div class="text-center">
+<h2><%= @lead.title %></h2>
+
+<small> Created: <%= time_ago_in_words(@lead.created_at) %> </small>
+
+<p><%= @lead.description %></p>
+<br>
+<p>Contact Person: <%= @lead.contact_person %></p>
+<p>Address: <%= @lead.address %></p>
+<p>City: <%= @lead.city %></p>
+<p>Zip Code: <%= @lead.zip_code %></p>
+<p>Country: <%= @lead.country %></p>
+<p>Phone Number: <%= @lead.phone_number %></p>
+<p>Home Page: <%= @lead.home_page %></p>
+
+
+
+<% if user_signed_in? && current_user == @lead.user %>
+<%= link_to "Edit", edit_lead_path(@lead) %> 
+<% end %>
+
+</div>
