@@ -1,4 +1,3 @@
-<h2>Add New Product</h2>
 <%= form_for(@lead) do |f| %>
 
   <div class="field">
@@ -15,34 +14,33 @@
   </div>
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address, value: @contact.address, autocomplete: "address" %>
+    <%= f.text_field :address, autocomplete: "address" %>
   </div>
   <div class="field">
     <%= f.label :city %><br />
-    <%= f.text_field :city, value: @contact.city, autocomplete: "city" %>
+    <%= f.text_field :city, autocomplete: "city" %>
   </div>
   <div class="field">
     <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code, value: @contact.zip_code, autocomplete: "Zip Code" %>
+    <%= f.text_field :zip_code, autocomplete: "Zip Code" %>
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country, value: @contact.country, autocomplete: "country" %>
+    <%= f.text_field :country, autocomplete: "country" %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, value: @contact.phone_number, autocomplete: "Phone Number" %>
+    <%= f.text_field :phone_number, autocomplete: "Phone Number" %>
   </div>
   <div class="field">
     <%= f.label :home_page %><br />
-    <%= f.text_field :home_page, value: @contact.home_page, autocomplete: "Home Page" %>
+    <%= f.text_field :home_page, autocomplete: "Home Page" %>
   </div>
 
-  <%= hidden_field_tag :lead_status, "product" %>
+  <%= hidden_field_tag :lead_status, "offer" %>
  
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
 
 <% end %>
-
