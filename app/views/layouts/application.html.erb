@@ -18,9 +18,13 @@
         <li><%= link_to "Register", new_user_registration_path %></li>
         <li><%= link_to "Login", new_user_session_path %></li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Add new offer", new_offer_path %></li>
+        <li><%= link_to "Add new product", new_product_path %></li>
        <% if user_signed_in?  %> 
         <li><%=  set_edit_contact(current_user) %></li>
        <% end %>
+        <li><%= link_to "Show all products", products_path %></li>
+        <li><%= link_to "Show all offers", offers_path %></li>
       </ul>
     </div>
      <p class="notice"><%= notice %></p>

@@ -6,5 +6,12 @@ class User < ApplicationRecord
 
   validates :user_name, presence: true, length: {minimum: 4, maximum: 25}
 
-  has_one :contact
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+
+
+  has_one   :contact
+  has_many  :leads
+
+
 end

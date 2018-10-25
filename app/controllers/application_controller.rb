@@ -1,3 +1,7 @@
 class ApplicationController < ActionController::Base
-	include DeviseWhitelist
+
+  include DeviseWhitelist
+
+  before_action :authenticate_user!
+
 end

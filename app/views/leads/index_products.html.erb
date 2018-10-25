@@ -1,0 +1,10 @@
+<div class="text-center">
+	<h2>All Products</h2>
+	<div class="containter">
+	<% @leads.each do |lead| %>
+		<h2><%= link_to lead.title, lead_path(lead) %></h2>
+		<p> <%= lead.description %></p>
+		<hr>
+	<% end %>
+	</div>
+</div>
