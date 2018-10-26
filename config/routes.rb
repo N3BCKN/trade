@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   #Custom Devise Paths
   devise_for :users, path: "", path_names: {sign_in: "login", sign_up: "register", sign_out: "logout"}
 
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :leads
   resources :contacts
+  resources :categories
   root to: "pages#home"
 
 end
