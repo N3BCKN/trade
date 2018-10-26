@@ -14,3 +14,17 @@ u = User.create(
   password_confirmation: password,
   user_name: Faker::Internet.username(8)
 )
+
+
+Category.create(name: "Pharmacy")
+Category.create(name: "Cosmetics")
+Category.create(name: "Fuels")
+Category.create(name: "Agligature")
+Category.create(name: "Raw materials")
+Category.create(name: "Clothers")
+Category.create(name: "Electronics")
+Category.create(name: "Toys")
+Category.create(name: "Machinery")
+
+
+
