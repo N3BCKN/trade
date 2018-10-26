@@ -69,8 +69,9 @@ class LeadsController < ApplicationController
   private
 
   def build_lead
-    @contact = current_user.contact
-    @lead = current_user.leads.build
+    @contact    = current_user.contact
+    @lead       = current_user.leads.build
+    @categories = Category.all
   end
 
 
@@ -96,7 +97,8 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page
+        :home_page,
+        :category_id
       )
     elsif params[:lead_status] == "product"
         params.require(:lead).permit(
@@ -109,7 +111,8 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page
+        :home_page,
+        :category_id
       )
 
     end     

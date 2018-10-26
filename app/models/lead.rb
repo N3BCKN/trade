@@ -1,13 +1,13 @@
 class Lead < ApplicationRecord
 
   belongs_to :user
+  belongs_to :category
 
   
   scope :products_all,-> { where(lead_status: "product") }
   scope :offers_all,  -> { where(lead_status: "offer") }
 
 
-  validates :user_id, presence: true
   validates :title, presence: true, length: {minimum: 5, maximum: 80}
   validates :description, presence: true, length: {minimum: 5, maximum: 500}
   validates :lead_status, presence: true, length: {minimum: 5, maximum: 7}
