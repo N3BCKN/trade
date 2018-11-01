@@ -8,6 +8,7 @@ class Lead < ApplicationRecord
   scope :offers_all,  -> { where(lead_status: "offer") }
 
 
+
   validates :title, presence: true, length: {minimum: 5, maximum: 80}
   validates :description, presence: true, length: {minimum: 5, maximum: 500}
   validates :lead_status, presence: true, length: {minimum: 5, maximum: 7}
@@ -19,4 +20,5 @@ class Lead < ApplicationRecord
   validates :phone_number, length: {minimum: 7, maximum: 30}
   validates :home_page, length: {minimum: 4, maximum: 120}
 
+  acts_as_paranoid
 end

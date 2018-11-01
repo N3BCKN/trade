@@ -13,5 +13,5 @@ class User < ApplicationRecord
   has_one   :contact
   has_many  :leads
 
-
+  acts_as_paranoid
 end

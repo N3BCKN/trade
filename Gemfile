@@ -41,6 +41,7 @@ gem 'bootstrap-sass', '~> 3.3'
 gem 'jquery-rails', '~> 4.3'
 gem 'popper_js', '~> 1.14'
 gem 'tether-rails', '~> 1.4'
+gem "paranoia", "~> 2.2"
 
 
 gem 'devise', '~> 4.2'
