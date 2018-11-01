@@ -36,6 +36,10 @@
     <%= f.label :home_page %><br />
     <%= f.text_field :home_page, autocomplete: "Home Page" %>
   </div>
+   <div class="field">
+    <%= f.label :categories %>
+    <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id]})  %>
+  </div>
 
   <%= hidden_field_tag :lead_status, "product" %>
  

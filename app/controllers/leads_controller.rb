@@ -83,6 +83,7 @@ class LeadsController < ApplicationController
 
   def set_lead
     @lead    = Lead.find(params[:id])
+    @categories = Category.all
   end
 
   def lead_params

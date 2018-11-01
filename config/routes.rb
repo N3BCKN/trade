@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get "offers", to: "leads#index_offers"
   get "products", to: "leads#index_products"
 
+  get "offers/categories/:category", to: "categories#index_offers", :as => 'offers_categories'
+  get "products/categories/:category", to: "categories#index_products", :as => 'products_categories'
+
   resources :leads
   resources :contacts
-  resources :categories
   root to: "pages#home"
 
 end
