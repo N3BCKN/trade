@@ -3,5 +3,7 @@
 	<% @leads.each do |lead| %>
 	<h2><%= link_to lead.title, lead_path(lead) %></h2>
 	<p><%= lead.description %></p>
+	<hr>
 	<% end %>
+	<%= paginate @leads %>
 </div>

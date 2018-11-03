@@ -35,7 +35,7 @@ Category.create!(name: "Machinery")
 5000.times do |p|
 @user   = User.find(rand(1..User.count))
 Lead.create!(
-	title:       "Lead Number #{p}",
+	title: "Lead Number #{p}",
 	description: lorem,
 	lead_status: rand(2) == 1 ? "offer" : "product",
 	contact_person: @user.user_name,

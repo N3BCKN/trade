@@ -3,11 +3,11 @@ class CategoriesController < ApplicationController
    before_action      :find_category_by_name, only: [:index_offers, :index_products]
   
   def index_offers
-  	@leads = Lead.where(lead_status: "offer", category_id: @category.ids)
+  	@leads = Lead.where(lead_status: "offer", category_id: @category.ids).page params[:page]
   end
 
   def index_products
-  	@leads = Lead.where(lead_status: "product", category_id: @category.ids)
+  	@leads = Lead.where(lead_status: "product", category_id: @category.ids).page params[:page]
   end
 
   private

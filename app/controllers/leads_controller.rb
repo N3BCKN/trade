@@ -59,11 +59,11 @@ class LeadsController < ApplicationController
   end
 
   def index_products
-    @leads = Lead.products_all
+    @leads = Lead.products_all.page params[:page]
   end
 
   def index_offers
-    @leads = Lead.offers_all
+    @leads = Lead.offers_all.page params[:page]
   end
 
   private

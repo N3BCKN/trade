@@ -20,5 +20,6 @@ class Lead < ApplicationRecord
   validates :phone_number, length: {minimum: 7, maximum: 30}
   validates :home_page, length: {minimum: 4, maximum: 120}
 
+  paginates_per 20
   acts_as_paranoid
 end
