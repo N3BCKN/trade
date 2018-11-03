@@ -10,7 +10,7 @@ class Lead < ApplicationRecord
 
 
   validates :title, presence: true, length: {minimum: 5, maximum: 80}
-  validates :description, presence: true, length: {minimum: 5, maximum: 500}
+  validates :description, presence: true, length: {minimum: 5, maximum: 1800}
   validates :lead_status, presence: true, length: {minimum: 5, maximum: 7}
   validates :contact_person, length: {minimum: 5, maximum: 120}
   validates :address, length: {minimum: 5, maximum: 120}
