@@ -2,6 +2,7 @@ class Lead < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  has_many   :messages
 
   
   scope :products_all,-> { where(lead_status: "product") }
