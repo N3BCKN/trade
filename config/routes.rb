@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   get "offers/categories/:category", to: "categories#index_offers", :as => 'offers_categories'
   get "products/categories/:category", to: "categories#index_products", :as => 'products_categories'
 
-  resources :leads
+  resources :leads do
+    member do
+      resources :messages
+    end
+  end 
   resources :contacts
   root to: "pages#home"
 

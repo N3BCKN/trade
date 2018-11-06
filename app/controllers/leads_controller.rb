@@ -51,11 +51,18 @@ class LeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Destroyed" }
+      format.html { redirect_to root_path, 
+                                notice: "Destroyed" }
     end
   end
 
   def show
+    if user_signed_in?
+      @message = Message.new
+      @message.lead = @lead
+      @message.user = current_user
+      @contact = Contact.find_by_user_id(current_user)
+    end
   end
 
   def index_products
