@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #Custom Devise Paths
   devise_for :users, path: "", path_names: {sign_in: "login", sign_up: "register", sign_out: "logout"}
 
+
   #Custom Leads Paths
   get "new_offer", to: "leads#new_offer"
   get "new_product", to: "leads#new_product"

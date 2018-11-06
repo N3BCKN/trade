@@ -16,7 +16,8 @@ u = User.create(
   email: Faker::Internet.email,
   password: password,
   password_confirmation: password,
-  user_name: Faker::Internet.username(8)
+  user_name: Faker::Internet.username(8),
+  confirmed_at: DateTime.now
 )
 end
 
@@ -36,20 +37,20 @@ Category.create!(name: "Machinery")
 @user   = User.find(rand(1..User.count))
 Lead.create!(
 	title: "Lead Number #{p}",
-	description: lorem,
-	lead_status: rand(2) == 1 ? "offer" : "product",
+	description:    lorem,
+	lead_status:    rand(2) == 1 ? "offer" : "product",
 	contact_person: @user.user_name,
-	address: "Wolska 172",
-	city: "Warsaw",
-	zip_code: "01-258",
-	country: "Poland",
-	home_page: "https://www.google.com/",
-	phone_number: "643-356-932",
-	email: @user.email,
-	created_at: DateTime.now,
-	updated_at: DateTime.now,
-	category_id: Category.find(rand(1..Category.count)).id,
-	user_id: @user.id
+	address:        "Wolska 172",
+	city:           "Warsaw",
+	zip_code:       "01-258",
+	country:        "Poland",
+	home_page:      "https://www.google.com/",
+	phone_number:   "643-356-932",
+	email:          @user.email,
+	created_at:     DateTime.now,
+	updated_at:     DateTime.now,
+	category_id:    Category.find(rand(1..Category.count)).id,
+	user_id:        @user.id
 )
 puts "Lead number #{p} created"
 end 
