@@ -20,7 +20,7 @@
 <% end %>
 
 <hr>
-<% if user_signed_in? %>
+<% if user_signed_in? && (current_user.id != @lead.user.id) %>
 <h3>Response to this lead:</h3>
  <%= form_for(@message) do |f| %>
 
@@ -55,11 +55,13 @@
 	    <%= f.submit "Submit" %>
 	  </div>
   <% end %>
-
-<% else %>
-<h3> You must be signed in to response to this lead</h3>
-<% end %>
+  <% elsif !user_signed_in? %>
+  <h3> You must be signed in to response to this lead</h3>
+  <% else %>
+  <p></p>
+  <% end %>
 
 </div>
+
 
 
