@@ -49,7 +49,8 @@ class ContactsController < ApplicationController
       :phone_number,
       :company_description,
       :home_page,
-      :year_of_establishment
+      :year_of_establishment,
+      :avatar
     )
   end
 
