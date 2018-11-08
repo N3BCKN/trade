@@ -9,7 +9,7 @@
 
 lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repudiandae obcaecati nostrum fuga, quo quas voluptatem, tempora quam officia pariatur dolores minus magni fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet laborum aliquid obcaecati officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repudiandae obcaecati nostrum fuga, quo quas voluptatem, tempora quam officia pariatur dolores minus magni fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet laborum aliquid obcaecati officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit."
 
-300.times do
+300.times do |t|
 password = Faker::Internet.password(64)
 
 u = User.create(
@@ -18,6 +18,16 @@ u = User.create(
   password_confirmation: password,
   user_name: Faker::Internet.username(8),
   confirmed_at: DateTime.now
+)
+
+Contact.create!(
+	address: Faker::Address.street_address,
+	city: Faker::Address.city,
+	zip_code: Faker::Address.zip_code,
+	country: Faker::Address.country,
+	company_description: lorem,
+	phone_number: Faker::PhoneNumber.phone_number,
+	user_id: t+1
 )
 end
 

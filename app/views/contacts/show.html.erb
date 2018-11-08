@@ -1,2 +1,15 @@
-<h1>Contacts#show</h1>
-<p>Find me in app/views/contacts/show.html.erb</p>
+<div class="text-center">
+	<div class="container">
+		
+		<%= set_user_avatar(@contact) %><br><br>
+		User Name: <%= @contact.user.user_name %><br>
+		Address:   <%= @contact.address %><br>
+		Zip Code:  <%=  @contact.zip_code %><br>
+		Phone Number <%= @contact.phone_number %><br>
+		City: <%= @contact.city %><br>
+		Country: <%= @contact.country %><br>
+		Home Page: <%= @contact.home_page %><br>
+		<b>About Us: </b><p><%= @contact.company_description %></p>
+
+	</div>
+</div>

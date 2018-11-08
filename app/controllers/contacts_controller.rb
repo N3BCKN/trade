@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
+  # skip_before_action :authenticate_user!, only: :show
   before_action :set_contact, only: [:show, :edit, :update]
   before_action :check_user_contact, only: [:edit]
 
   def show
+    @contact = Contact.find(params[:id])
   end
 
   def new
