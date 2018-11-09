@@ -7,7 +7,7 @@
 		Zip Code:  <%=  @contact.zip_code %><br>
 		Phone Number <%= @contact.phone_number %><br>
 		City: <%= @contact.city %><br>
-		Country: <%= @contact.country %><br>
+		Country: <%= country_name(@contact.country) %><br>
 		Home Page: <%= @contact.home_page %><br>
 		<b>About Us: </b><p><%= @contact.company_description %></p>
 

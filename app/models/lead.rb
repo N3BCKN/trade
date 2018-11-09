@@ -17,7 +17,7 @@ class Lead < ApplicationRecord
   validates :address, length: {minimum: 5, maximum: 120}
   validates :city, length: {minimum: 3, maximum: 80}
   validates :zip_code, length: {minimum: 5, maximum: 25}
-  validates :country, length: {minimum: 4, maximum: 80}
+  validates :country, length: {minimum: 2, maximum: 8}
   validates :phone_number, length: {minimum: 7, maximum: 30}
   validates :home_page, length: {minimum: 4, maximum: 120}
 

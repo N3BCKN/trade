@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country, value: @contact.try!(:country), autocomplete: "country" %>
+    <%= country_select("lead", "country") %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br />

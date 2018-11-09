@@ -44,6 +44,7 @@ gem 'tether-rails', '~> 1.4'
 gem "paranoia", "~> 2.2"
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 gem "paperclip", "~> 6.0.0"
+gem 'country_select', '~> 3.1'
 
 
 gem 'devise', '~> 4.2'
