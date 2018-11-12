@@ -52,7 +52,7 @@ Lead.create!(
 	contact_person: @user.user_name,
 	address:        Faker::Address.street_address,
 	city:           Faker::Address.city,
-	zip_code:       Faker::Address.country_code,
+	zip_code:       Faker::Address.zip_code,
 	country:        Faker::Address.country_code,
 	home_page:      "https://www.google.com/",
 	phone_number:   Faker::PhoneNumber.phone_number,

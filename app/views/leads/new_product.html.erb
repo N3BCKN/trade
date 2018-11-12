@@ -35,7 +35,7 @@
   </div>
   <div class="field">
     <%= f.label :home_page %><br />
-    <%= f.text_field :home_page, value: @contact.(:home_page), autocomplete: "Home Page" %>
+    <%= f.text_field :home_page, value: @contact.try!(:home_page), autocomplete: "Home Page" %>
   </div>
   <div class="field">
     <%= f.label :categories %>

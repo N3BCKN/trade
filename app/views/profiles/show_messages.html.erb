@@ -1,0 +1,10 @@
+<%= render "shared/userProfileMenu" %>
+<div class="text-center">
+<h2>Your Sent Messages:</h2>
+<% @messages.each do |message| %>
+<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
+<p>Content: <%= message.content %></p>
+<small><%= time_ago_in_words(message.created_at) %></small>
+<hr>
+<% end %>	
+</div>

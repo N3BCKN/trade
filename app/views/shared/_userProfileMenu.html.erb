@@ -1,0 +1,8 @@
+	<ul class="temp-list">
+		<li><%= link_to "show public profile", contact_path(current_user.id) %></li>
+		<li><%= link_to "edit contact info", edit_contact_path(current_user.id) %></li>
+		<li><%= link_to "my products", profile_products_path %></li>
+		<li><%= link_to "my offers", profile_offers_path %></li>
+		<li><%= link_to "my messages", profile_messages_path %></li>
+	</ul>
+	<br>

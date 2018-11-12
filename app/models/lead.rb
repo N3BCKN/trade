@@ -8,6 +8,10 @@ class Lead < ApplicationRecord
   scope :products_all,-> { where(lead_status: "product") }
   scope :offers_all,  -> { where(lead_status: "offer") }
 
+  scope :profile_lead, -> (status, current_user){
+    where(lead_status: status,user: current_user)
+  }
+
 
 
   validates :title, presence: true, length: {minimum: 5, maximum: 80}
@@ -16,7 +20,7 @@ class Lead < ApplicationRecord
   validates :contact_person, length: {minimum: 5, maximum: 120}
   validates :address, length: {minimum: 5, maximum: 120}
   validates :city, length: {minimum: 3, maximum: 80}
-  validates :zip_code, length: {minimum: 5, maximum: 25}
+  validates :zip_code, length: {minimum: 4, maximum: 25}
   validates :country, length: {minimum: 2, maximum: 8}
   validates :phone_number, length: {minimum: 7, maximum: 30}
   validates :home_page, length: {minimum: 4, maximum: 120}
