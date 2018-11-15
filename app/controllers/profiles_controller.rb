@@ -4,12 +4,12 @@ class ProfilesController < ApplicationController
   end
 
   def show_products
-  	@leads = Lead.profile_lead("product", current_user.id)
+  	@leads = Lead.profile_leads("product", current_user.id)
     .page params[:page]
   end
 
   def show_offers
-  	@leads = Lead.profile_lead("offer", current_user.id)
+  	@leads = Lead.profile_leads("offer", current_user.id)
     .page params[:page]
   end
 

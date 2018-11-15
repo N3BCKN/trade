@@ -42,6 +42,11 @@
     <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id] }) %>
   </div>
 
+  <div class="field">
+    <%= f.label :product_image %><br />
+    <%= f.file_field :product_image %>
+  </div>
+
   <%= hidden_field_tag :lead_status, "product" %>
  
   <div class="actions">

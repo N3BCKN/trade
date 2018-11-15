@@ -46,7 +46,7 @@ Category.create!(name: "Machinery")
 5000.times do |p|
 @user   = User.find(rand(1..User.count))
 Lead.create!(
-	title: "Lead Number #{p+1}",
+	title:          Faker::GreekPhilosophers.quote,
 	description:    lorem,
 	lead_status:    rand(2) == 1 ? "offer" : "product",
 	contact_person: @user.user_name,
@@ -54,7 +54,7 @@ Lead.create!(
 	city:           Faker::Address.city,
 	zip_code:       Faker::Address.zip_code,
 	country:        Faker::Address.country_code,
-	home_page:      "https://www.google.com/",
+	home_page:      Faker::Internet.url('trade.com'),
 	phone_number:   Faker::PhoneNumber.phone_number,
 	email:          @user.email,
 	created_at:     DateTime.now,

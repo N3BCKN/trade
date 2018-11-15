@@ -1,8 +1,10 @@
 <div class="text-center">
+<% if @lead.lead_status == "product" %>
+<%= set_product_image(@lead) %>
+<%  end %>
 <h2><%= @lead.title %></h2>
 
 <small> Created: <%= time_ago_in_words(@lead.created_at) %> ago </small>
-
 <p><%= @lead.description %></p>
 <br>
 <p>Contact Person: <%= @lead.contact_person %></p>

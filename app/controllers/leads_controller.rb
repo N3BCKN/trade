@@ -120,7 +120,8 @@ class LeadsController < ApplicationController
         :country,
         :phone_number,
         :home_page,
-        :category_id
+        :category_id,
+        :product_image
       )
 
     end     

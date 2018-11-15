@@ -12,7 +12,8 @@ class Contact < ApplicationRecord
   validates :company_description, length: {minimum: 5, maximum: 1600}, allow_blank: true
   validates :year_of_establishment, length: {minimum: 3, maximum: 4}, allow_blank: true
 
-  has_attached_file :avatar, styles: { default: "300x300>"}, default_url: "/images/:style/default_user_avatar.png"
+  has_attached_file :avatar, styles: { default: "300x300>"},
+  default_url: "/images/:style/default_user_avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 end
