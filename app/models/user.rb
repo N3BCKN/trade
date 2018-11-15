@@ -15,4 +15,10 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
+  private
+  def after_confirmation
+    @contact = Contact.new(user_id: self.id)
+    @contact.save!
+  end
+
 end
