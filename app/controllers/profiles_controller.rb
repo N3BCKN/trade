@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   def show_profile
-  	@contact = Contact.find(current_user.id)
+  	@contact = Contact.where(user_id: current_user.id)
   end
 
   def show_products
