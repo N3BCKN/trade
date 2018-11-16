@@ -13,5 +13,10 @@ module ApplicationHelper
     country.translations[I18n.locale.to_s] || country.name
   end
 
+   def full_title dynamic_title
+      main_title = "Trade "
+      dynamic_title.empty? ?  main_title : "#{main_title} | #{dynamic_title}"
+  end
+
 
 end

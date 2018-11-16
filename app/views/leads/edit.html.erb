@@ -1,3 +1,4 @@
+<% content_for(:title, "Edit your lead")%>
 <h2>Edit Lead</h2>
 <% if @lead.lead_status == "offer"%>
   <%= render "shared/offerEditForm", :lead => @lead %>

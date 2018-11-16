@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_page_title
+
   def show_profile
   	@contact = Contact.where(user_id: current_user.id)
   end
@@ -16,10 +16,5 @@ class ProfilesController < ApplicationController
 
   def show_messages
     @messages = Message.where(user_id: current_user.id)
-  end
-
-  private 
-  def set_page_title
-   @page_title = "#{current_user.user_name}, my profile | Trade"
   end
 end
