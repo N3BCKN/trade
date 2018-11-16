@@ -89,7 +89,8 @@ class LeadsController < ApplicationController
   end
 
   def set_lead
-    @lead    = Lead.find(params[:id])
+    @lead       = Lead.find(params[:id])
+    @page_title = "#{@lead.title} | Trade"
     @categories = Category.all
   end
 

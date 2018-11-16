@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
 
   private
   def find_category_by_name
-  	@category = Category.where(name: params[:category])
+  	@category   = Category.where(name: params[:category])
+    @page_title = "Trade | Search by #{params[:category]}"  
   end
 end
