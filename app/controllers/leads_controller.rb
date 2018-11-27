@@ -2,8 +2,9 @@ class LeadsController < ApplicationController
   before_action :build_lead, only: [:new_offer, :new_product]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
   before_action :own_contact, only: [:edit, :update]
+
   skip_before_action :authenticate_user!, only: [:show, :index_offers,
-                                  :index_products]
+                     :index_products]
 
   def new_offer
   end
@@ -66,11 +67,19 @@ class LeadsController < ApplicationController
   end
 
   def index_products
-    @leads = Lead.products_all.page params[:page]
+    if !params[:q].nil?
+      @leads = Lead.search_products(params[:q]).page params[:page]
+    else
+      @leads = []
+    end
   end
 
   def index_offers
-    @leads = Lead.offers_all.page params[:page]
+    if !params[:q].nil?
+       @leads = Lead.search_offers(params[:q]).page params[:page]
+    else
+      @leads = []
+    end
   end
 
   private
@@ -80,8 +89,7 @@ class LeadsController < ApplicationController
     @lead       = current_user.leads.build
     @categories = Category.all
   end
-
-
+  
   def own_contact
     unless current_user.id == @lead.user.id
       redirect_to root_path

@@ -1,9 +1,9 @@
 <% content_for(:title, "Offers")%>
 <div class="text-center">
-	<h2>All Offers</h2>
+	<h2>Matched Offers:</h2>
 	<% @leads.each do |lead| %>
-	<h2><%= link_to lead.title, lead_path(lead) %> </h2>
-	<h4>By <%= link_to lead.user.user_name, contact_path(lead.user.contact.id) %></h4>
+	<h2><%= link_to lead.title, lead_path(lead._id) %> </h2>
+	<h4>By <%= link_to lead.user.user_name, contact_path(lead.user.id) %></h4>
 	<p><%= lead.description %></p>
 	<hr>
 	<% end %>

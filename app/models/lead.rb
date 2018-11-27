@@ -1,12 +1,16 @@
+require 'elasticsearch/model'
+
 class Lead < ApplicationRecord
+
+  include Elasticsearch::Model::Callbacks
+  include Searchable
 
   belongs_to :user
   belongs_to :category
   has_many   :messages
-
   
-  scope :products_all,-> { where(lead_status: "product") }
-  scope :offers_all,  -> { where(lead_status: "offer") }
+  # scope :products_all,-> { where(lead_status: "product") }
+  # scope :offers_all,  -> { where(lead_status: "offer") }
 
   scope :profile_leads, -> (status, current_user){
     where(lead_status: status,user: current_user)
