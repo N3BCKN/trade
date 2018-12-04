@@ -1,11 +1,23 @@
 <% content_for(:title, "Offers")%>
 <div class="text-center">
-	<h2>Matched Offers:</h2>
-	<% @leads.each do |lead| %>
-	<h2><%= link_to lead.title, lead_path(lead._id) %> </h2>
-	<h4>By <%= link_to lead.user.user_name, contact_path(lead.user.id) %></h4>
-	<p><%= lead.description %></p>
-	<hr>
+	<%= form_tag(offers_path, method: :get) do %>
+			  Search: <%= text_field_tag :q, nil, :value => params[:q] %>
+			  <br>
+	<%= submit_tag 'Find Offers' %>
 	<% end %>
-	<%= paginate @leads %>
+</div>
+<div class="row">
+	<div class="col-lg-3">
+		<div class="container">
+		<%= form_tag(offers_path, method: :get) do %>
+			<%= render "shared/leadFilters", countries: @countries,
+			categories: @categories, query: params[:q] %>
+		<% end %>
+		</div>	
+	</div>
+	<div class="col-lg-9">
+	<h2>Machted Offers:</h2>
+	<div class="containter">
+		<%= render "shared/displayOffers", leads: @leads %>	
+	</div>
 </div>

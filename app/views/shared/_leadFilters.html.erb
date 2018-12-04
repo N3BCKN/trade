@@ -1,0 +1,25 @@
+<h3>Filter by:</h3>
+	<h4>Date:</h4>
+		<%= radio_button("date", nil, "30") %> Last 30 days <br>
+		<%= radio_button("date", nil, "90") %> Last 90 days <br>
+		<%= radio_button("date", nil, "365") %> Last Year <br>
+	<hr>
+	<h4>Category:</h4>
+	<% if !categories.nil?  %>
+		<% categories.each do |category| %>
+			<%= check_box :category, category[:key] %> <%= category[:key] %> 
+			(<%= category[:doc_count]%>)<br>
+		<% end %>
+	<% end %>	
+		
+	<hr>
+	<h4>Location:</h4>
+	<% if !countries.nil? %>
+		<% countries.each do |country| %>
+			<%= check_box :country, country[:key] %> <%= country_name(country[:key]) %> 
+			(<%= country[:doc_count]%>)<br>
+		<% end %>
+		<%= hidden_field_tag :q, query %>
+	<% end %>
+<br>
+ <%= submit_tag 'Filter', class: "btn btn-success btn-lg"  %>

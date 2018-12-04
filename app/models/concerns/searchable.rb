@@ -5,64 +5,90 @@ module Searchable
 
 	include Elasticsearch::Model
 	
-	settings index: { number_of_shards: 1 } do
-	    mappings dynamic: false do
-	      indexes :id, type: 'keyword'
-	      indexes :lead_status, type: 'keyword'
-	      indexes :country
-	      indexes :city
-	      indexes :title, analyzer: :english
-	      indexes :description, analyzer: :english
-	    end
-    end
-
-	 def self.search_offers(query)
+     #custom searching methods 
+	 def self.search_leads(query, status, filters = [])
+		
 	    self.search({
-	        query: {
+	        query:  multi_match_query(query,status, filters),
+	        aggs:   aggregations
+	      })
+	  end
+
+	  def self.aggregations
+	  	{
+	      group_by_country:{
+	        terms:
+	        	{ field: "country", 
+	        	  size:  15
+	        	}
+	       },
+	       group_by_category:{
+	       	terms:{
+	       		field: "category.name",
+	       		size: 5
+	       		}
+	       }
+	    }
+	  end
+
+	  def self.multi_match_query(query,status, filter)
+	  		{
 	          bool: {
 	            must: [
 	            {
 	              multi_match: {
 	                query: query,
-	                fields: [:title, :description, :country, :city]
+	                fields: [
+	                	"title^7", 
+	                	"country^3", 
+	                	"city^2", 
+	                	"category.name^3"]
 	              }
 	            },
 	            {
 	              match: {
-	                lead_status: "offer"
+	                lead_status: status
 	              }
-	            }]
+	            }],
+	            filter: filter
 	          }
 	        }
-	      })
+
 	  end
 
-	  def self.search_products(query)
-	    self.search({
-	      query: {
-	        bool: {
-	          must: [
-	          {
-	            multi_match: {
-	              query: query,
-	              fields: [:title, :description, :country, :city]
-	            }
-	          },
-	          {
-	            match: {
-	              lead_status: "product"
-	            }
-	          }]
+
+	 settings index: { number_of_shards: 1 } do
+	    mappings dynamic: false do
+	      indexes :id, type: 'keyword'
+	      indexes :lead_status, type: 'keyword'
+	      indexes :country, type: 'keyword'
+	      indexes :city, type: 'keyword'
+	      indexes :title, analyzer: :english
+	      indexes :description, analyzer: :english
+	      indexes :created_at, type: 'date'
+	      indexes :category do 
+	      	indexes :name, type: 'keyword'
+	      end
+	      indexes :user do
+	      	indexes :user_name, type: 'keyword'
+	      	indexes :id, type: 'keyword'
+	      end
+	    end
+     end
+  
+	  #includes relations to elasticsearch indexed model
+	  def as_indexed_json(options = {})
+	    self.as_json(
+	      options.merge(
+	        only: [:id, :lead_status, :city, :title, :description, :created_at,
+	        	:country, :product_image_file_name],
+	        include: { 
+	        	category: { only: :name },
+	        	user: { only: [:user_name, :id] }  
 	        }
-	      }
-	    })
+	      )
+	    )
 	  end
 
-	  def as_indexed_json(options={})
-	  self.as_json(
-	    include: { category: {only: :name},
-	               user:     {only: [:user_name, :id]}
-	    })
-	  end
 	end 
 end 

@@ -7,9 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repudiandae obcaecati nostrum fuga, quo quas voluptatem, tempora quam officia pariatur dolores minus magni fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet laborum aliquid obcaecati officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repudiandae obcaecati nostrum fuga, quo quas voluptatem, tempora quam officia pariatur dolores minus magni fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet laborum aliquid obcaecati officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repudiandae obcaecati nostrum fuga, 
+quo quas voluptatem, tempora quam officia pariatur dolores minus magni fugit debitis repellat praesentium 
+cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet laborum aliquid obcaecati 
+officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae ipsa nam sunt, iusto! 
+Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Porro repudiandae obcaecati nostrum fuga, quo quas voluptatem, tempora quam officia pariatur dolores minus magni 
+fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+ Amet laborum aliquid obcaecati officia, debitis minima voluptatem vitae aliquam quibusdam nulla itaque molestiae 
+ ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, 
+ consectetur adipisicing elit."
 
-300.times do |t|
+400.times do |t|
 password = Faker::Internet.password(64)
 
 u = User.create(
@@ -43,7 +53,10 @@ Category.create!(name: "Toys")
 Category.create!(name: "Machinery")
 
 
-5000.times do |p|
+8000.times do |p|
+@randomDayDist  = rand(365)
+@dateOfCreation = DateTime.now - @randomDayDist
+
 @user   = User.find(rand(1..User.count))
 Lead.create!(
 	title:          Faker::GreekPhilosophers.quote,
@@ -57,8 +70,8 @@ Lead.create!(
 	home_page:      Faker::Internet.url('trade.com'),
 	phone_number:   Faker::PhoneNumber.phone_number,
 	email:          @user.email,
-	created_at:     DateTime.now,
-	updated_at:     DateTime.now,
+	created_at:    	@dateOfCreation,
+	updated_at:    	@dateOfCreation,
 	category_id:    Category.find(rand(1..Category.count)).id,
 	user_id:        @user.id
 )

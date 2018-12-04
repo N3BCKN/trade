@@ -1,7 +1,10 @@
 class LeadsController < ApplicationController
+  include SearchFilters
+
   before_action :build_lead, only: [:new_offer, :new_product]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
   before_action :own_contact, only: [:edit, :update]
+  before_action :fetch_filter_params, only: [:index_offers, :index_products]
 
   skip_before_action :authenticate_user!, only: [:show, :index_offers,
                      :index_products]
@@ -68,7 +71,7 @@ class LeadsController < ApplicationController
 
   def index_products
     if !params[:q].nil?
-      @leads = Lead.search_products(params[:q]).page params[:page]
+     prepare_indexed_leads(params[:q],"product", @filters)
     else
       @leads = []
     end
@@ -76,13 +79,34 @@ class LeadsController < ApplicationController
 
   def index_offers
     if !params[:q].nil?
-       @leads = Lead.search_offers(params[:q]).page params[:page]
+      prepare_indexed_leads(params[:q],"offer", @filters)
     else
       @leads = []
     end
   end
 
   private
+  def prepare_indexed_leads(query,status,filters)
+    #translate filter params hash into arrays of strings
+    @translatedFilters = translateFilters(filters)  
+
+    @leads = Lead.search_leads(query,status, @translatedFilters)
+    .page params[:page]
+
+    @countries = Lead.search_leads(query,status)
+    .aggregations["group_by_country"]["buckets"]
+
+    @categories = Lead.search_leads(query,status)
+    .aggregations["group_by_category"]["buckets"]
+  end
+
+  def fetch_filter_params
+    @filters = 
+    {   :date        => params[:date],
+        :categories  => params[:category],
+        :countries   => params[:country]
+    }
+  end
 
   def build_lead
     @contact    = current_user.contact
@@ -135,5 +159,4 @@ class LeadsController < ApplicationController
     end     
   end
     
-
 end
