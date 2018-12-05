@@ -53,7 +53,6 @@ module Searchable
 	            filter: filter
 	          }
 	        }
-
 	  end
 
 

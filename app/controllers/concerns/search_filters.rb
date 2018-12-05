@@ -7,33 +7,36 @@ module SearchFilters
 
 	def translateFilters(filters)
 	@filterQueries = Array.new
+	@tempCountries = Array.new
+	@tempCategories = Array.new
 
 	if !filters[:date].nil?
 		@filterQueries.push({range: 
 			{ created_at: {
-				gte: "now-#{filters[:date].first}d/d",
+				gte: "now-#{filters[:date]}d/d",
 				lte: "now/d"
-		}}})
+		}}}) 
 	end
 
 	if !filters[:countries].nil?
-		 @tempCountries = []
-
 		filters[:countries].each do |key,value|
-		  @tempCountries.push(key) if value == "1"
+			@tempCountries.push(key) if value == "1"
 		end 
-		  @filterQueries.push({"terms": {"country": @tempCountries}})
+		if !@tempCountries.empty?
+			@filterQueries.push({terms: {"country": @tempCountries}})
+		end
 	end
 
 	if !filters[:categories].nil?
-		@tempCategories= []
-
 		filters[:categories].each do |key,value|
-		  @tempCategories.push(key) if value == "1"
+			@tempCategories.push(key) if value == "1"
 		end 
-		  @filterQueries.push({"terms": {"category.name": @tempCategories}})
+		if !@tempCategories.empty?
+		    @filterQueries.push({terms: {"category.name": @tempCategories}})
+		end
 	end
 
-		@filterQueries
+		
+	@filterQueries
 	end
 end
