@@ -19,7 +19,7 @@ fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit am
  ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, 
  consectetur adipisicing elit."
 
-400.times do |t|
+4000.times do |t|
 password = Faker::Internet.password(64)
 
 u = User.create(
@@ -39,6 +39,7 @@ Contact.create!(
 	phone_number: Faker::PhoneNumber.phone_number,
 	user_id: t+1
 )
+puts "User number #{t} created"
 end
 
 
@@ -53,27 +54,29 @@ Category.create!(name: "Toys")
 Category.create!(name: "Machinery")
 
 
-8000.times do |p|
+250000.times do |p|
 @randomDayDist  = rand(365)
 @dateOfCreation = DateTime.now - @randomDayDist
 
 @user   = User.find(rand(1..User.count))
 Lead.create!(
-	title:          Faker::GreekPhilosophers.quote,
-	description:    lorem,
-	lead_status:    rand(2) == 1 ? "offer" : "product",
-	contact_person: @user.user_name,
-	address:        Faker::Address.street_address,
-	city:           Faker::Address.city,
-	zip_code:       Faker::Address.zip_code,
-	country:        Faker::Address.country_code,
-	home_page:      Faker::Internet.url('trade.com'),
-	phone_number:   Faker::PhoneNumber.phone_number,
-	email:          @user.email,
-	created_at:    	@dateOfCreation,
-	updated_at:    	@dateOfCreation,
-	category_id:    Category.find(rand(1..Category.count)).id,
-	user_id:        @user.id
+	title:            Faker::GreekPhilosophers.quote,
+	description:      lorem,
+	description_short:lorem.slice(0..300),
+	lead_status:      rand(2) == 1 ? "offer" : "product",
+	contact_person:   @user.user_name,
+	address:          Faker::Address.street_address,
+	city:             Faker::Address.city,
+	zip_code:         Faker::Address.zip_code,
+	country:          Faker::Address.country_code,
+	home_page:        Faker::Internet.url('trade.com'),
+	phone_number:     Faker::PhoneNumber.phone_number,
+	email:            @user.email,
+	created_at:    	  @dateOfCreation,
+	updated_at:    	  @dateOfCreation,
+	category_id:      Category.find(rand(1..Category.count)).id,
+	user_id:          @user.id
 )
+puts "Date: #{@dateOfCreation}"
 puts "Lead number #{p} created"
 end 

@@ -1,5 +1,4 @@
 <% content_for(:title, "Offers")%>
-<%= params.inspect %>
 <div class="text-center">
 	<%= form_tag(offers_path, method: :get) do %>
 			  Search: <%= text_field_tag :q, nil, :value => params[:q] %>
