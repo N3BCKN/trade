@@ -7,9 +7,9 @@ module Searchable
 	
      #custom searching methods 
 	 def self.search_leads(query, status, filters = [])
-		
+	 
 	    self.search({
-	        query:  multi_match_query(query,status, filters),
+		   	query:  multi_match_query(query,status, filters),
 	        aggs:   aggregations
 	      })
 	  end
@@ -43,7 +43,7 @@ module Searchable
 	                	"country^3", 
 	                	"city^2", 
 	                	"category.name^3"]
-	              }
+	              },
 	            },
 	            {
 	              match: {
@@ -55,11 +55,9 @@ module Searchable
 	        }
 	  end
 
-
 	 settings index: { number_of_shards: 1 } do
 	    mappings dynamic: false do
 	      indexes :id, type: 'long'
-	      indexes :lead_status, type: 'keyword'
 	      indexes :country, type: 'keyword'
 	      indexes :city, type: 'keyword'
 	      indexes :title, analyzer: 'english', index_options: 'offsets'
@@ -75,12 +73,12 @@ module Searchable
 	    end
      end
   
-	  #includes relations to elasticsearch indexed model
 	  def as_indexed_json(options = {})
 	    self.as_json(
 	      options.merge(
 	        only: [:id, :lead_status, :city, :title, :description_short, :created_at,
-	        	:country, :product_image_file_name],
+	        :country, :product_image_file_name],
+	        methods: :img_url_thumb,
 	        include: { 
 	        	category: { only: :name },
 	        	user: { only: [:user_name, :id] }

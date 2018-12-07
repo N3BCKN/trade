@@ -1,4 +1,5 @@
 <% content_for(:title, "Products")%>
+
 <div class="text-center">
 	<%= form_tag(products_path, method: :get) do %>
 			  Search: <%= text_field_tag :q, nil, :value => params[:q] %>
