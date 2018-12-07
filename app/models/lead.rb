@@ -2,7 +2,8 @@ require 'elasticsearch/model'
 
 class Lead < ApplicationRecord
 
-  include Searchable  
+  include Searchable
+  include SearchingModel
   include Elasticsearch::Model::Callbacks
 
   belongs_to :user

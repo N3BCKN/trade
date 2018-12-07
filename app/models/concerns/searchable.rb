@@ -19,7 +19,7 @@ module Searchable
 	      group_by_country:{
 	        terms:
 	        	{ field: "country", 
-	        	  size:  15
+	        	  size:  10
 	        	}
 	       },
 	       group_by_category:{
