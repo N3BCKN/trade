@@ -1,10 +1,9 @@
 <% content_for(:title, @lead.title)%>
 <div class="text-center">
 <% if @lead.lead_status == "product" %>
-<%= set_product_image(@lead) %>
+<%= set_product_image_show(@lead) %>
 <%  end %>
 <h2><%= @lead.title %></h2>
-
 <small> Created: <%= time_ago_in_words(@lead.created_at) %> ago </small>
 <p><%= @lead.description %></p>
 <br>
@@ -59,7 +58,7 @@
 	  </div>
   <% end %>
   <% elsif !user_signed_in? %>
-  <h3> You must be signed in to response to this lead</h3>
+  <h3> You must be signed in order to response to this lead</h3>
   <% else %>
   <p></p>
   <% end %>

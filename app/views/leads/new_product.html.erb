@@ -2,6 +2,7 @@
 <h2>Add New Product</h2>
 <%= form_for(@lead) do |f| %>
 
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true, autocomplete: "Title" %>
@@ -42,10 +43,14 @@
     <%= f.label :categories %>
     <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id] }) %>
   </div>
+  
+
+  <img id="img_prev" src="#" alt="Upload Your image" />
 
   <div class="field">
-    <%= f.label :product_image %><br />
-    <%= f.file_field :product_image %>
+    <label class="btn btn-primary">
+    Upload Product Image <%= f.file_field :product_image, style: "display: none;", :onChange=>"readURL(this,600,450)" %>
+   </label>
   </div>
 
   <%= hidden_field_tag :lead_status, "product" %>

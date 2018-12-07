@@ -83,8 +83,8 @@ module Searchable
 	        	:country, :product_image_file_name],
 	        include: { 
 	        	category: { only: :name },
-	        	user: { only: [:user_name, :id] }  
-	        }
+	        	user: { only: [:user_name, :id] }
+	        }	
 	      )
 	    )
 	  end

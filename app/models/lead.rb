@@ -24,18 +24,19 @@ class Lead < ApplicationRecord
   validates :phone_number, length: {minimum: 7, maximum: 30}
   validates :home_page, length: {minimum: 4, maximum: 120}
 
-   has_attached_file :product_image, styles: { default: "350x350>", thumb: "150x150>" },
+  has_attached_file :product_image, styles: { default: "650x400>", thumb: "150x120>" },
   default_url: "/images/:style/default_product_image.png"
   validates_attachment_content_type :product_image, content_type: /\Aimage\/.*\z/
 
   before_save :set_short_descritption
 
+  paginates_per 20
+  acts_as_paranoid
+
+  private
   def set_short_descritption
     self.description_short = (self.description.length > 300) ? self.description.slice(0..300) : self.description
   end
-
-  paginates_per 20
-  acts_as_paranoid
 
 end
 
