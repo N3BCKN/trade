@@ -1,15 +1,11 @@
+<% content_for(:title, @category.name)%>
 <h2 class="text-center">Offers from category: <%= params[:category].capitalize %></h2>
 
-<% if @leads.count > 0 %>
-<div class="text-center">
-	<h2>All Offers</h2>
-	<% @leads.each do |lead| %>
-	<h2><%= link_to lead.title, lead_path(lead) %></h2>
-	<p><%= lead.description %></p>
-	<% end %>
-	<br>
-	<%= paginate @leads %>
+<div class="row">
+	<div class="col-lg-3">
+		
+	</div>
+	<div class="col-lg-9">
+		<%= render "shared/display_Offers", leads: @leads %>	
+	</div>
 </div>
-<% else %>
-<p class="text-center" >No offers within this category... yet</p>
-<% end %>

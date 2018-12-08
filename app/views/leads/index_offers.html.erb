@@ -10,7 +10,7 @@
 	<div class="col-lg-3">
 		<div class="container">
 		<%= form_tag(offers_path, method: :get) do %>
-			<%= render "shared/leadFilters", countries: @countries,
+			<%= render "shared/lead_Filters", countries: @countries,
 			categories: @categories, query: params[:q] %>
 		<% end %>
 		</div>	
@@ -18,6 +18,6 @@
 	<div class="col-lg-9">
 	<h2>Machted Offers:</h2>
 	<div class="containter">
-		<%= render "shared/displayOffers", leads: @leads %>	
+		<%= render "shared/display_Offers", leads: @leads %>	
 	</div>
 </div>

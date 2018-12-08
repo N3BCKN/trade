@@ -55,10 +55,10 @@ Category.create!(name: "Machinery")
 
 
 250000.times do |p|
-@dateOfCreation = DateTime.now - rand(365)
-@title = rand(2) == 1 ? Faker::Community.quotes : Faker::GreekPhilosophers.quote
+  @dateOfCreation = Time.current - rand(365)
+  @title = rand(2) == 1 ? Faker::Community.quotes : Faker::GreekPhilosophers.quote
 
-@user   = User.find(rand(1..User.count))
+  @user   = User.find(rand(1..User.count))
 Lead.create!(
 	title:            @title,
 	description:      lorem,

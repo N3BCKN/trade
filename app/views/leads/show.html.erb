@@ -22,7 +22,7 @@
 <% end %>
 
 <hr>
-<% if user_signed_in? && (current_user.id != @lead.user.id) %>
+<% if user_signed_in? && (current_user != @lead.user) %>
 <h3>Response to this lead:</h3>
  <%= form_for(@message) do |f| %>
 

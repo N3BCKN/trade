@@ -62,16 +62,16 @@ class LeadsController < ApplicationController
 
   def show
     if user_signed_in?
-      @message = Message.new
+      @message      = Message.new
       @message.lead = @lead
       @message.user = current_user
-      @contact = Contact.find_by_user_id(current_user)
+      @contact      = current_user.contact
     end
   end
 
   def index_products
     if !params[:q].nil?
-     prepare_indexed_leads(params[:q],"product", @filters)
+      prepare_indexed_leads(params[:q],"product", @filters)
     else
       @leads = []
     end
@@ -155,7 +155,6 @@ class LeadsController < ApplicationController
         :category_id,
         :product_image
       )
-
     end     
   end
     

@@ -1,5 +1,4 @@
 <% content_for(:title, "Products")%>
-
 <div class="text-center">
 	<%= form_tag(products_path, method: :get) do %>
 			  Search: <%= text_field_tag :q, nil, :value => params[:q] %>
@@ -11,7 +10,7 @@
 	<div class="col-lg-3">
 		<div class="container">
 		<%= form_tag(products_path, method: :get) do %>
-			<%= render "shared/leadFilters", countries: @countries,
+			<%= render "shared/lead_Filters", countries: @countries,
 			categories: @categories, query: params[:q] %>
 		<% end %>
 		</div>	
@@ -19,7 +18,7 @@
 	<div class="col-lg-9">
 	<h2>Machted Products:</h2>
 	<div class="containter">
-		<%= render "shared/displayProducts", leads: @leads %>	
+		<%= render "shared/display_Products", leads: @leads %>	
 	</div>
 </div>
 	

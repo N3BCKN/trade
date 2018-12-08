@@ -7,11 +7,30 @@ module Searchable
 	
      #custom searching methods 
 	 def self.search_leads(query, status, filters = [])
-	 
 	    self.search({
 		   	query:  multi_match_query(query,status, filters),
 	        aggs:   aggregations
 	      })
+	  end
+
+	  def self.search_categories(category, status)
+	  	self.search({
+	  		query: {
+	  			bool:{
+	  				must:{
+	  					match: 
+	  					{ "category.name": category }
+		              },
+		            filter:{
+		            	term:
+		            	{ lead_status: status }
+		            }
+	  			}
+	  		},
+	  		sort: [
+	  			{"created_at": {order: "desc"}}
+	  		]
+	  	})
 	  end
 
 	  def self.aggregations
@@ -46,46 +65,12 @@ module Searchable
 	              },
 	            },
 	            {
-	              match: {
-	                lead_status: status
-	              }
+	              match: 
+	              { lead_status: status }
 	            }],
 	            filter: filter
 	          }
 	        }
-	  end
-
-	 settings index: { number_of_shards: 1 } do
-	    mappings dynamic: false do
-	      indexes :id, type: 'long'
-	      indexes :lead_status, type: 'keyword'
-	      indexes :country, type: 'keyword'
-	      indexes :city, type: 'keyword'
-	      indexes :title, analyzer: 'english', index_options: 'offsets'
-	      indexes :description_short, type: 'keyword'
-	      indexes :created_at, type: 'date'
-	      indexes :category do 
-	      	indexes :name, type: 'keyword'
-	      end
-	      indexes :user do
-	      	indexes :user_name, type: 'keyword'
-	      	indexes :id, type: 'long'
-	      end
-	    end
-     end
-  
-	  def as_indexed_json(options = {})
-	    self.as_json(
-	      options.merge(
-	        only: [:id, :lead_status, :city, :title, :description_short, :created_at,
-	        :country, :product_image_file_name],
-	        methods: :img_url_thumb,
-	        include: { 
-	        	category: { only: :name },
-	        	user: { only: [:user_name, :id] }
-	        }	
-	      )
-	    )
 	  end
 
 	end 

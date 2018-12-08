@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <%= f.label :categories %>
-    <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id] }) %>
+    <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name') %>
   </div>
   
 
