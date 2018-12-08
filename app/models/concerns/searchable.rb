@@ -9,7 +9,8 @@ module Searchable
 	 def self.search_leads(query, status, filters = [])
 	    self.search({
 		   	query:  multi_match_query(query,status, filters),
-	        aggs:   aggregations
+	        aggs:   aggregations,
+	        sort:   [{"created_at": {order: "desc"}}]
 	      })
 	  end
 
@@ -20,7 +21,7 @@ module Searchable
 	  				must:{
 	  					match: 
 	  					{ "category.name": category }
-		              },
+		            },
 		            filter:{
 		            	term:
 		            	{ lead_status: status }

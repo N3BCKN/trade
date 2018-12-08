@@ -21,12 +21,24 @@
 	<hr>
 	<h4>Location:</h4>
 	<% if !countries.nil? %>
+		<%= check_box :continent,:africa,{checked: (params.try(:[],:continent).try(:[],"africa") == "1" ) ? true : false} %> 
+		Africa <br>
+		<%= check_box :continent,:asia,{checked: (params.try(:[],:continent).try(:[],"asia") == "1" ) ? true : false}%> 
+		Asia <br>
+		<%= check_box :continent,:australia,{checked: (params.try(:[],:continent).try(:[],"australia") == "1" ) ? true : false}%> 
+		Austria and Oceania <br>
+		<%= check_box :continent,:europe,{checked: (params.try(:[], :continent).try(:[],"europe") == "1" ) ? true : false}%> 
+		Europe <br>
+		<%= check_box :continent,:north_america,{checked: (params.try(:[], :continent).try(:[],"north_america") == "1" ) ? true : false}%> 
+		North America <br>
+		<%= check_box :continent,:south_america,{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %> 
+		South America <br><br>
+
+	<h5>Top 10 countries:</h5>
 		<% countries.each do |country| %>
 		<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
 			<%= check_box :country, country[:key], {checked: @checkedBox} %> 
-			<%= country_name(country[:key]) %> 
-
-			<br>
+			<%= country_name(country[:key]) %> <br>
 		<% end %>
 		<%= hidden_field_tag :q, query %>
 	<% end %>

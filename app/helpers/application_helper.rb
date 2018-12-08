@@ -17,6 +17,4 @@ module ApplicationHelper
       main_title = "Trade"
       dynamic_title.empty? ?  main_title : "#{main_title} | #{dynamic_title}"
   end
-
-
 end

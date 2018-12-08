@@ -104,7 +104,8 @@ class LeadsController < ApplicationController
     @filters = 
     {   :date        => params[:date],
         :categories  => params[:category],
-        :countries   => params[:country]
+        :countries   => params[:country],
+        :continents  => params[:continent]
     }
   end
 
@@ -115,7 +116,7 @@ class LeadsController < ApplicationController
   end
   
   def own_contact
-    unless current_user.id == @lead.user.id
+    unless current_user == @lead.user
       redirect_to root_path
     end
   end

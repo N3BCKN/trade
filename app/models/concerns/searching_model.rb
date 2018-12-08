@@ -6,11 +6,9 @@ module SearchingModel
 	settings index: { number_of_shards: 1 } do
 	    mappings dynamic: false do
 	      indexes :id, type: 'long'
-	      indexes :lead_status, type: 'keyword'
 	      indexes :country, type: 'keyword'
 	      indexes :city, type: 'keyword'
 	      indexes :title, analyzer: 'english', index_options: 'offsets'
-	      indexes :description_short, type: 'keyword'
 	      indexes :created_at, type: 'date'
 	      indexes :category do 
 	      	indexes :name, type: 'keyword'
@@ -35,6 +33,7 @@ module SearchingModel
 	      )
 	    )
 	  end
+
 	end
 
 
