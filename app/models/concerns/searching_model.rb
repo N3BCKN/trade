@@ -6,6 +6,7 @@ module SearchingModel
 	settings index: { number_of_shards: 1 } do
 	    mappings dynamic: false do
 	      indexes :id, type: 'long'
+	      indexes :lead_status, type: 'keyword'
 	      indexes :country, type: 'keyword'
 	      indexes :city, type: 'keyword'
 	      indexes :title, analyzer: 'english', index_options: 'offsets'
