@@ -36,10 +36,14 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+
 gem 'bootstrap-sass', '~> 3.3'
 gem 'jquery-rails', '~> 4.3'
 gem 'popper_js', '~> 1.14'
 gem 'tether-rails', '~> 1.4'
+gem "paranoia", "~> 2.2"
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+
 
 gem 'devise', '~> 4.2'
 
