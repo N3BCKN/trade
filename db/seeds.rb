@@ -55,7 +55,7 @@ Category.create!(name: "Machinery")
 
 
 250000.times do |p|
-  @dateOfCreation = Time.current - rand(365)
+  @dateOfCreation = Time.current - rand(365).days
   @title = rand(2) == 1 ? Faker::Community.quotes : Faker::GreekPhilosophers.quote
 
   @user   = User.find(rand(1..User.count))

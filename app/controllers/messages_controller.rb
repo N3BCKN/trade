@@ -1,11 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :check_user_restrictions, only: :create
 
-  def index
-  end
-
-  def show
-  end
 
   def create
   	@message         = Message.create(message_params)
@@ -13,7 +9,6 @@ class MessagesController < ApplicationController
   	@message.user    = current_user
   	@message.lead    = @lead
   
-  	
   	respond_to do |format|
 	  	if @message.save
 	  		 NotificationsMailer.send_lead_response(
@@ -22,10 +17,10 @@ class MessagesController < ApplicationController
 		  	   params[:absolute_url]
 		  	 ).deliver_now
 
-	  		format.html { redirect_to root_path, 
+	  		format.html { redirect_to lead_path(params[:id]), 
 	  			notice:  "Your message has been sent"}
 	  	else
-	  		format.html { render :new,
+	  		format.html { redirect_to lead_path(params[:id]),
 	  			notice: "Message couldn't be delivered"}
 	  	end
     end
@@ -41,4 +36,18 @@ class MessagesController < ApplicationController
   	 :contact_person
   	)
   end
+
+  def check_user_restrictions
+    @number_of_msgs = current_user.messages
+    .where("created_at >= ?", Time.current - 7.days)
+    .count
+
+    if @number_of_msgs >= 5
+      respond_to do |format|
+        format.html { redirect_to lead_path(params[:id]),
+          notice:   "Your account has reached messages limit. Please try again later."}
+      end
+    end
+     
+  end 
 end

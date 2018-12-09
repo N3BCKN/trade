@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_one   :contact
   has_many  :leads
+  has_many  :messages
 
   acts_as_paranoid
 

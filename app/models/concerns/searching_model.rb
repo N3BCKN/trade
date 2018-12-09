@@ -21,7 +21,7 @@ module SearchingModel
 	    end
      end
   
-	  def as_indexed_json(options = {})
+	 def as_indexed_json(options = {})
 	    self.as_json(
 	      options.merge(
 	        only: [:id, :lead_status, :city, :title, :description_short, :created_at,
