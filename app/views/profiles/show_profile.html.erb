@@ -3,5 +3,9 @@
 	<div class="container">
 	<%= render "shared/user_Profile_Menu" %>
 	<h2>Hello, <%= current_user.user_name %></h2>
+	<p>On Trade since <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
+	<p>Leads Added: <%= current_user.leads.count %></p>
+	<p>Messages Sent: <%= current_user.messages.count %></p>
+	<p><%= current_user.role %> user, [UPDATE TO PREMIUM]</p>
 	</div>
 </div>

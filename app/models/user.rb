@@ -14,12 +14,20 @@ class User < ApplicationRecord
   has_many  :leads
   has_many  :messages
 
+  enum role: [:regular, :premium, :elite, :admin]
+
+  before_create :set_default_user_role
+
   acts_as_paranoid
 
   private
   def after_confirmation
     @contact = Contact.new(user_id: self.id)
     @contact.save!
+  end
+  
+  def set_default_user_role
+    self.role ||= :regular if self.new_record?
   end
 
 end

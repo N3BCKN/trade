@@ -1,5 +1,6 @@
 class LeadsController < ApplicationController
   include SearchFilters
+  include UserLimits
 
   before_action :check_user_restrictions, only: :create
   before_action :build_lead, only: [:new_offer, :new_product]
@@ -161,11 +162,11 @@ class LeadsController < ApplicationController
   end
 
   def check_user_restrictions
-    @number_of_msgs = current_user.leads
+    @number_of_leads = current_user.leads
     .where("created_at >= ?", Time.current - 7.days)
     .count
 
-    if @number_of_msgs >= 2
+    if @number_of_leads >= user_limits(current_user.role,"leads")
       respond_to do |format|
         format.html { redirect_to root_path,
           notice:   "Your account has reached leads limit. Please try again later."}

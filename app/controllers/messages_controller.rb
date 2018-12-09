@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  include UserLimits
 
   before_action :check_user_restrictions, only: :create
 
@@ -42,7 +43,7 @@ class MessagesController < ApplicationController
     .where("created_at >= ?", Time.current - 7.days)
     .count
 
-    if @number_of_msgs >= 5
+    if @number_of_msgs >= user_limits(current_user.role,"messages")
       respond_to do |format|
         format.html { redirect_to lead_path(params[:id]),
           notice:   "Your account has reached messages limit. Please try again later."}
