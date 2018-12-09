@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
   before_action :build_lead, only: [:new_offer, :new_product]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_action :own_contact, only: [:edit, :up]
+  before_action :own_contact, only: [:edit, :update]
   skip_before_action :authenticate_user!, only: [:show, :index_offers,
                                   :index_products]
 
@@ -51,26 +51,34 @@ class LeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Destroyed" }
+      format.html { redirect_to root_path, 
+                                notice: "Destroyed" }
     end
   end
 
   def show
+    if user_signed_in?
+      @message = Message.new
+      @message.lead = @lead
+      @message.user = current_user
+      @contact = Contact.find_by_user_id(current_user)
+    end
   end
 
   def index_products
-    @leads = Lead.products_all
+    @leads = Lead.products_all.page params[:page]
   end
 
   def index_offers
-    @leads = Lead.offers_all
+    @leads = Lead.offers_all.page params[:page]
   end
 
   private
 
   def build_lead
-    @contact = current_user.contact
-    @lead = current_user.leads.build
+    @contact    = current_user.contact
+    @lead       = current_user.leads.build
+    @categories = Category.all
   end
 
 
@@ -81,7 +89,8 @@ class LeadsController < ApplicationController
   end
 
   def set_lead
-    @lead = Lead.find(params[:id])
+    @lead    = Lead.find(params[:id])
+    @categories = Category.all
   end
 
   def lead_params
@@ -96,7 +105,8 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page
+        :home_page,
+        :category_id
       )
     elsif params[:lead_status] == "product"
         params.require(:lead).permit(
@@ -109,7 +119,8 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page
+        :home_page,
+        :category_id
       )
 
     end     
