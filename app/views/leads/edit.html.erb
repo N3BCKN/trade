@@ -1,8 +1,8 @@
 <h2>Edit Lead</h2>
 <% if @lead.lead_status == "offer"%>
-  <%= render "shared/offerEditForm", :lead => @lead %>
+  <%= render "shared/offerForm", :lead => @lead %>
 <% elsif  @lead.lead_status  == "product" %>
-  <%= render "shared/productEditForm", :lead => @lead %>
+  <%= render "shared/productForm", :lead => @lead %>
   <br>
 <% end %>
 <br>

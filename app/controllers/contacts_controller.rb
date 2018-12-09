@@ -15,11 +15,9 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to root_path, 
-          notice: "Contact has been updated" }
+        format.html { redirect_to root_path, notice: "Contact has been updated" }
       else
-        format.html { render :new, 
-          notice: "Error" }
+        format.html { render :new, notice: "Error" }
       end
     end
   end
@@ -30,16 +28,15 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to root_path, 
-          notice: "Contact has been updated" }
+        format.html { redirect_to root_path, notice: "Contact has been updated" }
       else
-        format.html { render :edit, 
-          notice: "Error" }
+        format.html { render :edit, notice: "Error" }
       end
     end
   end
 
   private
+
   def contact_params
     params.require(:contact).permit(
       :address,

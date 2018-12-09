@@ -14,34 +14,30 @@
   </div>
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address, autocomplete: "address" %>
+    <%= f.text_field :address, autofocus: false, autocomplete: "address" %>
   </div>
   <div class="field">
     <%= f.label :city %><br />
-    <%= f.text_field :city, autocomplete: "city" %>
+    <%= f.text_field :city, autofocus: false, autocomplete: "city" %>
   </div>
   <div class="field">
     <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code, autocomplete: "Zip Code" %>
+    <%= f.text_field :zip_code, autofocus: false, autocomplete: "Zip Code" %>
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country, autocomplete: "country" %>
+    <%= f.text_field :country, autofocus: false, autocomplete: "country" %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autocomplete: "Phone Number" %>
+    <%= f.text_field :phone_number, autofocus: false, autocomplete: "Phone Number" %>
   </div>
   <div class="field">
     <%= f.label :home_page %><br />
-    <%= f.text_field :home_page, autocomplete: "Home Page" %>
-  </div>
-    <div class="field">
-    <%= f.label :categories %>
-    <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id]})  %>
+    <%= f.text_field :home_page, autofocus: false, autocomplete: "Home Page" %>
   </div>
 
-  <%= hidden_field_tag :lead_status, "offer" %>
+  <%= hidden_field_tag :lead_status, "product" %>
  
   <div class="actions">
     <%= f.submit "Submit" %>

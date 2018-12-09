@@ -1,7 +1,7 @@
 <div class="text-center">
 <h2><%= @lead.title %></h2>
 
-<small> Created: <%= time_ago_in_words(@lead.created_at) %> ago </small>
+<small> Created: <%= time_ago_in_words(@lead.created_at) %> </small>
 
 <p><%= @lead.description %></p>
 <br>
@@ -19,49 +19,4 @@
 <%= link_to "Edit", edit_lead_path(@lead) %> 
 <% end %>
 
-<hr>
-<% if user_signed_in? && (current_user.id != @lead.user.id) %>
-<h3>Response to this lead:</h3>
- <%= form_for(@message) do |f| %>
-
-	  <div class="field">
-	    <%= f.label :Message %><br />
-	    <%= f.text_area :content, autofocus: true, autocomplete: "Write your message..." %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :email %><br />
-	    <%= f.email_field :email, value: current_user.email %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :contact_person %><br />
-	    <%= f.text_field :contact_person %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :phone_number %><br />
-	    <%= f.text_field :phone_number, value: @contact.try!(:phone_number)  %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :country %><br />
-	    <%= f.text_field :country, value: @contact.try!(:country) %>
-	  </div>
-
-	    <%= hidden_field_tag :absolute_url, request.original_url %>
-
-	   <div class="actions">
-	    <%= f.submit "Submit" %>
-	  </div>
-  <% end %>
-  <% elsif !user_signed_in? %>
-  <h3> You must be signed in to response to this lead</h3>
-  <% else %>
-  <p></p>
-  <% end %>
-
 </div>
-
-
-
