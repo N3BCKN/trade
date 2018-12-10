@@ -22,6 +22,6 @@ module UserLimits
 			}
 		}
 
-		@limitations["#{role}"]["#{action}"]
+		@limitations[role][action]
 	end
 end

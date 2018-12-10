@@ -1,11 +1,18 @@
 <% content_for(:title, "#{current_user.user_name} - notifications sended" )%>
-<%= render "shared/user_Profile_Menu" %>
-<div class="text-center">
-<h2>Your Sent Messages:</h2>
-<% @messages.each do |message| %>
-<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
-<p>Content: <%= message.content %></p>
-<small><%= time_ago_in_words(message.created_at) %></small>
-<hr>
-<% end %>	
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<%= render "shared/user_Profile_Menu" %>
+		</div>
+		<div class="col-md-9">
+		    <h2>Your Sent Messages:</h2>
+		    <hr>
+			<% @messages.each do |message| %>
+			<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
+			<p>Message: <%= message.content %></p>
+			<small><%= message.created_at.strftime("%Y/%m/%d - %H:%m")%></small>
+			<hr>
+			<% end %>
+		</div>
+	</div>
 </div>

@@ -103,11 +103,11 @@ class LeadsController < ApplicationController
   end
 
   def fetch_filter_params
-    @filters = 
-    {   :date        => params[:date],
-        :categories  => params[:category],
-        :countries   => params[:country],
-        :continents  => params[:continent]
+    @filters = {
+      :date        => params[:date],
+      :categories  => params[:category],
+      :countries   => params[:country],
+      :continents  => params[:continent]
     }
   end
 

@@ -1,8 +1,9 @@
-	<ul class="temp-list">
-		<li><%= link_to "show public profile", contact_path(current_user.id) %></li>
-		<li><%= link_to "edit contact info", edit_contact_path(current_user.id) %></li>
-		<li><%= link_to "my products", profile_products_path %></li>
-		<li><%= link_to "my offers", profile_offers_path %></li>
-		<li><%= link_to "my messages", profile_messages_path %></li>
-	</ul>
-	<br>
+	<%= link_to "My Account =>", profile_dashboard_path %><br>
+	<%= link_to "My Products =>", profile_products_path %><br>
+	<%= link_to "My Offers =>", profile_offers_path %><br>
+	<%= link_to "Messages Sent =>", profile_messages_path %><br>
+	<%= link_to "Favorites =>", profile_favorites_path %><br>
+	<%= link_to "Membership Status =>", profile_membership_path %><br>
+	<br><br>
+	<%= link_to "Settings =>", edit_contact_path(current_user.id) %>
+	

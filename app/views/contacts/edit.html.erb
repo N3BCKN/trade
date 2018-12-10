@@ -1,4 +1,20 @@
-<h3>Update your contact info</h3>
-
-<%= render "shared/contact", :contact => @contact %>
-
+<% content_for(:title, "#{current_user.user_name} - update profile" )%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<%= render "shared/user_Profile_Menu" %>
+		</div>
+		<div class="col-md-9">
+		    <h2>Update your contact informations:</h2>
+		    <div class="row">
+		    	<div class="col-md-8">
+		    		<%= render "shared/contact", :contact => @contact %>
+		    	</div>
+		    	<div class="col-md-4">
+		    		<%= link_to "Show your public profile", contact_path(current_user), :class=>"btn btn-primary" %>	
+		    	</div>
+		    </div>
+			
+		</div>
+	</div>
+</div>

@@ -1,6 +1,10 @@
 <% @leads.each do |lead| %>
+	<% if lead.lead_status == "product" %>
+	<%= image_tag set_product_image_index(lead) %>
+	<% end %>
 	<h2><%= link_to lead.title, lead_path(lead) %> </h2>
-	<p><%= lead.description %></p>
+	<p><%= lead.description_short %></p>
+	<small><%= lead.created_at.strftime("%Y/%m/%d - %H:%m")%></small>
 	<hr>
 <% end %>
 

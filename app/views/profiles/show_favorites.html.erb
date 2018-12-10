@@ -1,14 +1,12 @@
-<% content_for(:title, "#{current_user.user_name} -  offers" )%>
+<% content_for(:title, "#{current_user.user_name} -  favorite leads" )%>
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
 			<%= render "shared/user_Profile_Menu" %>
 		</div>
 		<div class="col-md-9">
-			<h2>Your Offers:</h2>
+			<h2>Favorite Leads:</h2>
 			<hr>
-			<%= render 'shared/profile_Leads', leads: @leads %>	
 		</div>
 	</div>
 </div>
-

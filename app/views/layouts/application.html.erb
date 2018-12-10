@@ -17,7 +17,7 @@
       <ul class="temp-list text-center">
         <li><%= link_to "Homepage", root_path %></li>
         <% if user_signed_in?  %> 
-        <li><%=  link_to "My profile",  profile_mine_path %></li>
+        <li><%=  link_to "My profile",  profile_dashboard_path %></li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         <% else %>
         <li><%= link_to "Register", new_user_registration_path %></li>

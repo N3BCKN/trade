@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   #Custom Profiles Paths
-  get 'profile/mine',      to: "profiles#show_profile"
+  get 'profile/dashboard', to: "profiles#show_profile"
   get 'profile/offers',    to: "profiles#show_offers"
   get 'profile/products',  to: "profiles#show_products"
   get 'profile/messages',  to: "profiles#show_messages"
+  get 'profile/favorites', to: "profiles#show_favorites"
+  get 'profile/membership',to: "profiles#profile_membership"
 
   #Custom Devise Paths
   devise_for :users, path: "", path_names: {sign_in: "login", sign_up: "register", sign_out: "logout"}

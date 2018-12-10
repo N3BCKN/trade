@@ -2,8 +2,7 @@ class MessagesController < ApplicationController
   include UserLimits
 
   before_action :check_user_restrictions, only: :create
-
-
+  
   def create
   	@message         = Message.create(message_params)
     @lead            = Lead.find(params[:id])
@@ -12,10 +11,10 @@ class MessagesController < ApplicationController
   
   	respond_to do |format|
 	  	if @message.save
-	  		 NotificationsMailer.send_lead_response(
-		  	   @message,
-		  	   @lead, 
-		  	   params[:absolute_url]
+	  		NotificationsMailer.send_lead_response(          
+		  	  @message,
+		  	  @lead, 
+		  	  params[:absolute_url]
 		  	 ).deliver_now
 
 	  		format.html { redirect_to lead_path(params[:id]), 
@@ -30,11 +29,11 @@ class MessagesController < ApplicationController
   private
   def message_params
   	params.require(:message).permit(
-  	 :content,
-  	 :email,
-  	 :phone_number,
-  	 :country,
-  	 :contact_person
+  	  :content,
+  	  :email,
+  	  :phone_number,
+  	  :country,
+  	  :contact_person
   	)
   end
 
