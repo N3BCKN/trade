@@ -76,6 +76,5 @@ Lead.create!(
 	category_id:      Category.find(rand(1..Category.count)).id,
 	user_id:          @user.id
 )
-puts "Date: #{@dateOfCreation}"
 puts "Lead number #{p} created"
 end 
