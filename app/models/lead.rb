@@ -9,9 +9,10 @@ class Lead < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many   :messages
+  has_many   :favorite_leads
   
   scope :profile_leads, -> (status, current_user){
-    where(lead_status: status,user: current_user)
+    where(lead_status: status, user: current_user)
   }
 
   validates :title, presence: true, length: {minimum: 5, maximum: 80}

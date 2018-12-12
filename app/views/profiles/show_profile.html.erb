@@ -8,10 +8,10 @@
 			<h2>Hello, <%= current_user.user_name %></h2>
 			<hr>
 			<p>On Trade since: <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
-			<p>Offers Added: <%= current_user.leads.count %></p>
-			<p>Products Added: <%= current_user.leads.count %></p>
+			<p>Offers Added: <%= @offers %></p>
+			<p>Products Added: <%= @products %></p>
 			<p>Messages Sent: <%= current_user.messages.count %></p>
-			<p>Faworite Leads: 0</p>
+			<p>Faworite Leads: <%= current_user.favorite_leads.count %></p>
 		</div>
 	</div>
 </div>

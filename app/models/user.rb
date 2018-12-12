@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one   :contact
   has_many  :leads
   has_many  :messages
+  has_many   :favorite_leads
 
   enum role: [:regular, :premium, :elite, :admin]
 

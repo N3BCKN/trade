@@ -1,6 +1,6 @@
-<% @leads.each do |lead| %>
+<% leads.each do |lead| %>
 	<% if lead.lead_status == "product" %>
-	<%= image_tag set_product_image_index(lead) %>
+	<%= set_product_image_index_profile(lead) %>
 	<% end %>
 	<h2><%= link_to lead.title, lead_path(lead) %> </h2>
 	<p><%= lead.description_short %></p>
@@ -8,4 +8,4 @@
 	<hr>
 <% end %>
 
-<%= paginate @leads %>
+<%= paginate leads %>

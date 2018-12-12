@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :leads do
     member do
       resources :messages
+      put 'favorites/update'
     end
   end 
   resources :contacts

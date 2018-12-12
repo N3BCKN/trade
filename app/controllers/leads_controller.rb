@@ -64,10 +64,11 @@ class LeadsController < ApplicationController
 
   def show
     if user_signed_in?
-      @message      = current_user.messages.build
-      @message.lead = @lead
-      @message.user = current_user
-      @contact      = current_user.contact
+      @message         = current_user.messages.build
+      @message.lead    = @lead
+      @contact         = current_user.contact
+      @favorite_exists = FavoriteLead
+      .where(lead: @lead, user: current_user) == [] ? false : true
     end
   end
 
