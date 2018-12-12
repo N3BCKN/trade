@@ -22,7 +22,8 @@ class ProfilesController < ApplicationController
   end
 
   def show_favorites
-    @fav_leads = Kaminari.paginate_array(FavoriteLead.aggregate_leads(current_user))
+    @fav_leads = Kaminari
+    .paginate_array(FavoriteLead.aggregate_leads(current_user))
     .page(params[:page])
     .per(20)
   end
