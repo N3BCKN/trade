@@ -3,7 +3,7 @@ module SearchingModel
 
 	included do
 
-	settings index: { number_of_shards: 1 } do
+	settings index: { number_of_shards: 6 } do
 	    mappings dynamic: false do
 	      indexes :id, type: 'long'
 	      indexes :lead_status, type: 'keyword'

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "offers",      to: "leads#index_offers"
   get "products",    to: "leads#index_products"
 
+  #Custom Categories Paths
   get "offers/categories/:category",   to: "categories#index_offers", :as => 'offers_categories'
   get "products/categories/:category", to: "categories#index_products", :as => 'products_categories'
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
       put 'favorites/update'
     end
   end 
+  
   resources :contacts
   root to: "pages#home"
 

@@ -10,7 +10,7 @@ module UserLimits
 		{
 			"regular" => {
 				"leads"    => 2,
-				"messages" => 5
+				"messages" => 10
 			},
 			"premium" =>{
 				"leads"    => 20,

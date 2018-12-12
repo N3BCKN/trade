@@ -28,9 +28,7 @@ module Searchable
 		            }
 	  			}
 	  		},
-	  		sort: [
-	  			{"created_at": {order: "desc"}}
-	  		]
+	  		sort: [{"created_at": {order: "desc"}}]
 	  	})
 	  end
 

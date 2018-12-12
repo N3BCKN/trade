@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   
   	respond_to do |format|
 	  	if @message.save
-	  		NotificationsMailer.send_lead_response(          
+	  		NotificationsMailer.send_lead_response(
 		  	  @message,
 		  	  @lead, 
 		  	  params[:absolute_url]

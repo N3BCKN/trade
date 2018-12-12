@@ -19,7 +19,7 @@ fugit debitis repellat praesentium cupiditate at! Sequi.Lorem ipsum dolor sit am
  ipsa nam sunt, iusto! Natus, consequatur! Accusamus, perferendis?Lorem ipsum dolor sit amet, 
  consectetur adipisicing elit."
 
-4000.times do |t|
+400.times do |t|
 password = Faker::Internet.password(64)
 
 u = User.create(
@@ -54,13 +54,12 @@ Category.create!(name: "Toys")
 Category.create!(name: "Machinery")
 
 
-250000.times do |p|
+9500.times do |p|
   @dateOfCreation = Time.current - rand(365).days
-  @title = rand(2) == 1 ? Faker::Community.quotes : Faker::GreekPhilosophers.quote
+  @user  = User.find(rand(1..User.count))
 
-  @user   = User.find(rand(1..User.count))
 Lead.create!(
-	title:            @title,
+	title:            Faker::GreekPhilosophers.quote,
 	description:      lorem,
 	description_short:lorem.slice(0..300),
 	lead_status:      rand(2) == 1 ? "offer" : "product",
