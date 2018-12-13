@@ -47,6 +47,7 @@ gem "paperclip", "~> 6.0.0"
 gem 'country_select', '~> 3.1'
 gem 'elasticsearch-model', '~> 6.0.0'
 gem 'elasticsearch-rails', '~> 6.0.0'
+gem 'faker'
 
 
 gem 'devise', '~> 4.2'
