@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :user_name, presence: true, length: {minimum: 4, maximum: 25}
 
-  validates :email, presence: true
+  validates :email, presence: true, unique: true
   validates :encrypted_password, presence: true
 
 
@@ -26,7 +26,7 @@ class User < ApplicationRecord
     @contact = Contact.new(user_id: self.id)
     @contact.save!
   end
-  
+
   def set_default_user_role
     self.role ||= :regular if self.new_record?
   end
