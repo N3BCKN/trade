@@ -10,27 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
 //= require tether
 //= require popper
 //= require bootstrap
 //= require_tree .
-
-function readURL(input,width,height) {
-   if (input.files && input.files[0]) {
-   var reader = new FileReader();
-
-   reader.onload = function (e) {
-       $('#img_prev')
-          .attr('src', e.target.result)
-          .width(width)
-          .height(height);
-       };
-
-       reader.readAsDataURL(input.files[0]);
-   }
-}
-

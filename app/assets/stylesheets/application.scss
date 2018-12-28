@@ -2,11 +2,11 @@
 @import "bootstrap";
 @import "tether";
 
-
-.temp-list{
-	list-style-type: none;
-}
-.temp-list li{
-	float: left;
-	padding-right: 8px;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
