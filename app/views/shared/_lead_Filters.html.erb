@@ -1,5 +1,4 @@
 <% @checkedBox = false %>
-<h3>Filter by:</h3>
 	<h4>Date:</h4>
 	<%= radio_button_tag("date", "30", checked = (params.try(:[],:date) == "30"))%>
 	Last 30 days <br>
@@ -45,7 +44,7 @@
 		{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %> 
 		South America 
 		<br><br>
-	<h5>Top 10 countries:</h5>
+	<h5>Top countries:</h5>
 		<% countries.each do |country| %>
 			<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
 			<%= check_box :country, country[:key], {checked: @checkedBox} %> 
@@ -54,4 +53,4 @@
 		<%= hidden_field_tag :q, query %>
 	<% end %>
 <br>
- <%= submit_tag 'Filter', class: "btn btn-success btn-lg"  %>
+ <%= submit_tag 'Filter', class: "btn btn-info btn-lg"  %>

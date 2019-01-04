@@ -1,9 +1,23 @@
 <% leads.each do |lead| %>
-		<h2><%= link_to lead.title, lead_path(lead._id) %></h2>
-		<%= set_product_image_index(lead) %>
-		<h4>By <%= link_to lead.user.user_name, contact_path(lead.user.id) %></h4>
-		<p> <%= lead.description_short %></p>
-		<hr>
+	 <div class="card">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img src="//placehold.it/200" class="img-fluid" alt="">
+            </div>
+            <div class="col">
+                <div class="card-block px-3 py-2">
+                    <h4 class="card-title"><%= link_to lead.title, lead_path(lead._id) %></h4>
+                    <p class="card-text"><%= lead.description_short %>...</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer w-100 text-muted">
+           Seller from: <%= country_name(lead.country) %> 
+           <span class="float-right">Added <%=  time_ago_in_words(lead.created_at) %> ago </span>
+        </div>
+    </div>
 	<% end %>
 	<%= paginate leads %>
 </div>
+
+
