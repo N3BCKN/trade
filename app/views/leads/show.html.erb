@@ -11,7 +11,9 @@
 					<h7 class="float-left"><%= country_name(@lead.country) %></h7>
 					<h7 class="float-right"><%= @lead.created_at.strftime("%Y-%m-%d") %></h7>
 					<br><br>
-					<%= set_product_image_show(@lead) %>
+					<% if @lead.lead_status == "product" %>
+						<%= set_product_image_show(@lead) %>
+					<% end %>
 					<p class="lead float-right pt-5"><%= @lead.description %></p>
 					<% if user_signed_in? %>
 					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-info float-left", :id => "favorite_button", remote: true %>

@@ -1,56 +1,55 @@
 <%= form_for contact, html: { multipart: true } do |f| %>
 
- <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+<div class="form-group">
+    <label for="companyDescription">Company Description</label>
+    <%= f.text_area :company_description, :class=>"form-control rounded-1", :id=>"companyDescription", rows: "5" %>
+    <small id="descriptionHelp" class="form-text text-muted">Describe your company's activity for the Customers</small>
+</div>
+
+<div class="form-group">
+    <label for="address">Address</label>
+    <%= f.text_field :address, autocomplete: "address", :class=>"form-control", :id=>"address" %>
+</div>
+
+<div class="form-group">
+    <label for="city">City</label>
+     <%= f.text_field :city, autocomplete: "city", :class=>"form-control", :id=>"city" %>
   </div>
 
-   <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, autocomplete: "city" %>
+<div class="form-group">
+    <label for="zip_code">Zip Code</label>
+    <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control", :id=>"zip_code" %>
+</div>
+
+<div class="form-group">
+    <label for="country">Country</label>
+    <%= country_select("contact", "country", { }, { class: 'form-control' }) %>
   </div>
 
-   <div class="field">
-    <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code, autocomplete: "zip code" %>
-  </div>
+<div class="form-group">
+    <label for="phone_number">Phone Number</label>
+    <%= f.text_field :phone_number, autocomplete: "phone number", :class=>"form-control", :id=>"phone_number" %>
+</div>
 
-   <div class="field">
-    <%= f.label :country %><br />
-    <%= country_select("contact", "country") %>
-  </div>
+<div class="form-group">
+    <label for="home_page">Home Page</label>
+    <%= f.text_field :home_page, autocomplete: "Home Page", :class=>"form-control", :id=>"home_page" %>
+</div>
 
-   <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autocomplete: "phone number" %>
-  </div>
+<div class="form-group">
+    <label for="establishment">Year of Establishment</label>
+    <%= f.text_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control", :id=>"establishment" %>
+</div>
 
-   <div class="field">
-    <%= f.label :home_page %><br />
-    <%= f.text_field :home_page, autocomplete: "Home Page" %>
-  </div>
-
-   <div class="field">
-    <%= f.label :company_description %><br />
-    <%= f.text_field :company_description, autocomplete: "your company description" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :year_of_establishment %><br />
-    <%= f.text_field :year_of_establishment, autocomplete: "year of establishment" %>
-  </div>
-    
-   <img id="img_prev" src="#" alt="Upload Your Avatar" />
-   <div class="field">
-    <label class="btn btn-primary">
-    Upload Your Avatar <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)" %>
+<div class="form-group text-center">
+    <%= set_user_avatar(@contact,"img_prev") %>
+    <br>
+   <label class="btn btn-primary">
+    Upload Your Avatar <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>
    </label>
-  </div>
+</div>
 
-   <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-
+<br><br><br>
+<%= f.submit 'Update', :class=>"btn btn-info btn-lg btn-block" %>
 
 <% end %>
-

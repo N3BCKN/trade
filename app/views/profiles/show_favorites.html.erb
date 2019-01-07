@@ -1,11 +1,42 @@
 <% content_for(:title, "#{current_user.user_name} -  favorite leads" )%>
-<div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<%= render "shared/user_Profile_Menu" %>
-		</div>
-		<div class="col-md-9">
-			<%= render "shared/profile_Leads", leads: @fav_leads %>
+<section id="user_porfile" class="container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%= render "shared/user_Profile_Menu" %>
+			</div>
+			<div class="col-md-9">
+				<h2>Your Favorites:</h2>
+			    <hr>
+			    <% if @fav_leads.present? %>
+					<% @fav_leads.each do |fav| %>
+						 <div class="card">
+					        <div class="row no-gutters">
+					        	<% if fav.lead_status == "product" %>
+					            <div class="col-auto">
+					                <img src="//placehold.it/200" class="img-fluid img-thumbnail" alt="">
+					            </div>
+					            <% end %>
+					            <div class="col">
+					                <div class="card-block px-3 py-2">
+					                    <h4 class="card-title"><%= link_to fav.title, lead_path(fav.id) %></h4>
+					                    <p class="card-text py-4"><%= fav.description_short %>...</p>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="card-footer w-100">
+					           <span class="text-muted"> Seller from: </span> <%= country_name(fav.country) %>  
+					           <span class="float-right">Added <%=  time_ago_in_words(fav.created_at) %> ago </span>
+					        </div>
+					    </div>
+					    <br><br>
+					<% end %>
+					<%= paginate @fav_leads %>
+					
+				<% else %>
+					<h4 class="text-muted text-center">No favorite leads yet</h4>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
