@@ -14,7 +14,7 @@
 					<% if @lead.lead_status == "product" %>
 						<%= set_product_image_show(@lead) %>
 					<% end %>
-					<p class="lead float-right pt-5"><%= @lead.description %></p>
+					<p class="lead py-5"><%= @lead.description %></p>
 					<% if user_signed_in? %>
 					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-info float-left", :id => "favorite_button", remote: true %>
 					<button class="btn btn-md btn-danger float-right">Report Abuse</button>

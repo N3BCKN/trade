@@ -9,7 +9,7 @@
 				<h2>Your Offers:</h2>
 				<hr>
 				<%  if @leads.present? %>
-					<%= render 'shared/display_Offers', leads: @leads %>
+					<%= render 'shared/profile_Offers', leads: @leads %>
 				<% else %>
 					<h4 class="text-muted text-center">No posted offers yet</h4>
 				<% end %>	
