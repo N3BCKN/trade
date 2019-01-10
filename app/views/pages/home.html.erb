@@ -13,7 +13,7 @@
 			<hr>
 			<ul class="text-center">
 				<h3>Find Product By Category:</h3>
-				<% @categories.each do |category| %>
+				<% @categories.find_each do |category| %>
 				<li><%= link_to category.name, products_categories_path(category.name) %></li>
 				<% end %>
 			</ul>
@@ -27,10 +27,10 @@
 			<hr>
 			<ul class="text-center">
 				<h3>Find Offer By Category:</h3>
-				<% @categories.each do |category| %>
+				<% @categories.find_each do |category| %>
 				<li><%= link_to category.name, offers_categories_path(category.name) %></li>
 				<% end %>
 			</ul>
 		</div>
-	</div>	
+	</div>
 </div>

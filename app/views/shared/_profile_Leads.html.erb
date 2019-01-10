@@ -1,4 +1,4 @@
-<% leads.each do |lead| %>
+<% leads.find_each do |lead| %>
 	<% if lead.lead_status == "product" %>
 		<%= set_product_image_index_profile(lead) %>
 	<% end %>
