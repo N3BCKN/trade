@@ -4,7 +4,7 @@ class FavoriteLead < ApplicationRecord
 
   scope :aggregate_leads, -> (user){
   	@user_leads = []
-  	self.where(user: user).each do |favorite|
+  	self.where(user: user).find_each do |favorite|
   		@user_leads.push(favorite.lead)
   	end
   	@user_leads

@@ -1,4 +1,4 @@
-<% leads.each do |lead| %>
+<% leads.find_each do |lead| %>
 	 <div class="card">
         <div class="row no-gutters">
             <div class="col-auto">
@@ -18,6 +18,4 @@
     </div>
 	<% end %>
 	<%= paginate leads %>
-</div>
-
 

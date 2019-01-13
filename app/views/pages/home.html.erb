@@ -11,7 +11,7 @@
 				<hr>
 				<h3>Find Product By Category:</h3>
 				<ul class="list-group">
-					<% @categories.each do |category| %>
+					<% @categories.find_each do |category| %>
 						<li class="list-group-item"><%= link_to category.name, products_categories_path(category.name) %></li>
 					<% end %>
 				</ul>
@@ -24,7 +24,7 @@
 				<hr>
 				<h3>Find Offer By Category:</h3>
 				<ul class="list-group">
-					<% @categories.each do |category| %>
+					<% @categories.find_each do |category| %>
 						<li class="list-group-item"><%= link_to category.name, offers_categories_path(category.name) %></li>
 					<% end %>
 				</ul>
@@ -32,3 +32,4 @@
 		</div>
 	</div>
 </section>
+

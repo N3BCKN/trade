@@ -5,49 +5,49 @@
 	<%= radio_button_tag("date", "90", checked = (params.try(:[],:date) == "90"))%>
 	Last 90 days <br>
 	<%= radio_button_tag("date", "365", checked = (params.try(:[],:date) == "365"))%>
-	Last Year<br>	
+	Last Year<br>
 	<hr>
 	<h4>Category:</h4>
 	<% if categories.present?  %>
-		<% categories.each do |category| %>
+		<% categories.find_each do |category| %>
 		<% @checkedBox = (params.try(:[], :category).try(:[], category[:key]) == "1" ) ? true : false %>
-			<%= check_box :category, category[:key],{checked: @checkedBox} %> 
-			<%= category[:key] %> 
+			<%= check_box :category, category[:key],{checked: @checkedBox} %>
+			<%= category[:key] %>
 			<br>
 		<% end %>
-	<% end %>	
-		
+	<% end %>
+
 	<hr>
 	<h4>Location:</h4>
 	<% if countries.present? %>
 		<%= check_box :continent,:africa,
-		{checked: (params.try(:[],:continent).try(:[],"africa") == "1" ) ? true : false} %> 
-		Africa 
+		{checked: (params.try(:[],:continent).try(:[],"africa") == "1" ) ? true : false} %>
+		Africa
 		<br>
 		<%= check_box :continent,:asia,
-		{checked: (params.try(:[],:continent).try(:[],"asia") == "1" ) ? true : false}%> 
-		Asia 
+		{checked: (params.try(:[],:continent).try(:[],"asia") == "1" ) ? true : false}%>
+		Asia
 		<br>
 		<%= check_box :continent,:australia,
-		{checked: (params.try(:[],:continent).try(:[],"australia") == "1" ) ? true : false}%> 
-		Austria and Oceania 
+		{checked: (params.try(:[],:continent).try(:[],"australia") == "1" ) ? true : false}%>
+		Austria and Oceania
 		<br>
 		<%= check_box :continent,:europe,
-		{checked: (params.try(:[], :continent).try(:[],"europe") == "1" ) ? true : false}%> 
-		Europe 
+		{checked: (params.try(:[], :continent).try(:[],"europe") == "1" ) ? true : false}%>
+		Europe
 		<br>
 		<%= check_box :continent,:north_america,
-		{checked: (params.try(:[], :continent).try(:[],"north_america") == "1" ) ? true : false}%> 
-		North America 
+		{checked: (params.try(:[], :continent).try(:[],"north_america") == "1" ) ? true : false}%>
+		North America
 		<br>
 		<%= check_box :continent,:south_america,
-		{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %> 
-		South America 
+		{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %>
+		South America
 		<br><br>
-	<h5>Top countries:</h5>
-		<% countries.each do |country| %>
+	<h5>Top 10 countries:</h5>
+		<% countries.find_each do |country| %>
 			<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
-			<%= check_box :country, country[:key], {checked: @checkedBox} %> 
+			<%= check_box :country, country[:key], {checked: @checkedBox} %>
 			<%= country_name(country[:key]) %> <br>
 		<% end %>
 		<%= hidden_field_tag :q, query %>

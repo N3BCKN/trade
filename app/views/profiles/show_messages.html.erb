@@ -9,7 +9,7 @@
 				<h2>Your Sent Messages:</h2>
 				<hr>
 				<%  if @messages.present? %>
-					<% @messages.each do |message| %>
+					<% @messages.find_each do |message| %>
 					<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
 					<p>Message: <%= message.content %></p>
 					<small><%= message.created_at.strftime("%Y/%m/%d - %H:%m")%></small>
