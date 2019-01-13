@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :show
-  before_action :set_contact, only: [:show, :edit, :update]
+  before_action :set_contact, only: %i[show edit update]
   before_action :check_user_contact, only: [:edit]
 
   def show
@@ -16,11 +18,15 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to root_path, 
-          notice: "Contact has been updated" }
+        format.html do
+          redirect_to root_path,
+            notice: 'Contact has been updated'
+        end
       else
-        format.html { render :new, 
-          notice: "Error" }
+        format.html do
+          render :new,
+            notice: 'Error'
+        end
       end
     end
   end
@@ -31,16 +37,21 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to root_path, 
-          notice: "Contact has been updated" }
+        format.html do
+          redirect_to root_path,
+            notice: 'Contact has been updated'
+        end
       else
-        format.html { render :edit, 
-          notice: "Error" }
+        format.html do
+          render :edit,
+            notice: 'Error'
+        end
       end
     end
   end
 
   private
+
   def contact_params
     params.require(:contact).permit(
       :address,
@@ -60,8 +71,6 @@ class ContactsController < ApplicationController
   end
 
   def check_user_contact
-    unless @contact.user == current_user
-      redirect_to root_path
-    end
+    redirect_to root_path unless @contact.user == current_user
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
-	has_many :leads
+  has_many :leads
 end
