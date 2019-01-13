@@ -1,68 +1,41 @@
 <% content_for(:title, @lead.title)%>
-<div class="text-center">
-<% if @lead.lead_status == "product" %>
-<%= set_product_image_show(@lead) %>
-<%  end %>
-<h2><%= @lead.title %></h2>
-<small> Created: <%= time_ago_in_words(@lead.created_at) %> ago </small>
-<p><%= @lead.description %></p>
-<br>
-<p>Contact Person: <%= @lead.contact_person %></p>
-<p>Address: <%= @lead.address %></p>
-<p>City: <%= @lead.city %></p>
-<p>Zip Code: <%= @lead.zip_code %></p>
-<p>Country: <%= country_name(@lead.country) %></p>
-<p>Phone Number: <%= @lead.phone_number %></p>
-<p>Home Page: <%= @lead.home_page %></p>
-
-
-
-<% if user_signed_in? && current_user == @lead.user %>
-<%= link_to "Edit", edit_lead_path(@lead) %> 
-<% end %>
-
-<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-primary", :id => "favorite_button", remote: true %>
-
-<hr>
-<% if user_signed_in? && (current_user != @lead.user) %>
-<h3>Response to this lead:</h3>
- <%= form_for(@message) do |f| %>
-
-	  <div class="field">
-	    <%= f.label :Message %><br />
-	    <%= f.text_area :content, autofocus: true, autocomplete: "Write your message..." %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :email %><br />
-	    <%= f.email_field :email, value: current_user.email %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :contact_person %><br />
-	    <%= f.text_field :contact_person %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :phone_number %><br />
-	    <%= f.text_field :phone_number, value: @contact.try!(:phone_number)  %>
-	  </div>
-
-	  <div class="field">
-	    <%= f.label :country %><br />
-	    <%= f.text_field :country, value: @contact.try!(:country) %>
-	  </div>
-
-	    <%= hidden_field_tag :absolute_url, request.original_url %>
-
-	   <div class="actions">
-	    <%= f.submit "Submit" %>
-	  </div>
-  <% end %>
-  <% elsif !user_signed_in? %>
-  <h3> You must be signed in order to response to this lead</h3>
-  <% else %>
-  <p></p>
-  <% end %>
-
+<section id="lead_show" class="py-5">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="container">
+				<div id="lead_title" class="text-center py-3">
+					<h4><%= @lead.title %></h4>
+				</div>
+				<div id="lead_details">
+					<h7 class="float-left"><%= country_name(@lead.country) %></h7>
+					<h7 class="float-right"><%= @lead.created_at.strftime("%Y-%m-%d") %></h7>
+					<br><br>
+					<% if @lead.lead_status == "product" %>
+						<%= set_product_image_show(@lead) %>
+					<% end %>
+					<p class="lead py-5"><%= @lead.description %></p>
+					<% if user_signed_in? %>
+					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-info float-left", :id => "favorite_button", remote: true %>
+					<button class="btn btn-md btn-danger float-right">Report Abuse</button>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="container" id="lead-message">
+				<% if user_signed_in? %>
+					<h4 class="text-center pb-5">Response To This Lead</h4>
+					<%= render "shared/lead_Message" %>
+				<% else %>
+				<div id="lead_login" class="text-center">
+					<h3>Not a member?</h3>
+					<p class="lead">Register for free and Response to this lead</p>
+					<%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-info" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
+</section>

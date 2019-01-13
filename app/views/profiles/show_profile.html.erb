@@ -1,17 +1,19 @@
 <% content_for(:title, "#{current_user.user_name} - Profile Dashboard" )%>
-<div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<%= render "shared/user_Profile_Menu" %>
-		</div>
-		<div class="col-md-9">
-			<h2>Hello, <%= current_user.user_name %></h2>
-			<hr>
-			<p>On Trade since: <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
-			<p>Offers Added: <%= @offers %></p>
-			<p>Products Added: <%= @products %></p>
-			<p>Messages Sent: <%= current_user.messages.count %></p>
-			<p>Faworite Leads: <%= current_user.favorite_leads.count %></p>
+<section id="user_porfile" class="container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%= render "shared/user_Profile_Menu" %>
+			</div>
+			<div class="col-md-9">
+				<h2>Hello, <%= current_user.user_name %></h2>
+				<hr>
+				<p>On Trade since: <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
+				<p>Offers Added: <%= @offers %></p>
+				<p>Products Added: <%= @products %></p>
+				<p>Messages Sent: <%= current_user.messages.count %></p>
+				<p>Faworite Leads: <%= current_user.favorite_leads.count %></p>
+			</div>
 		</div>
 	</div>
-</div>
+</section>

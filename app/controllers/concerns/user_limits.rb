@@ -9,7 +9,7 @@ module UserLimits
 		@limitations = 
 		{
 			"regular" => {
-				"leads"    => 2,
+				"leads"    => 20,
 				"messages" => 10
 			},
 			"premium" =>{

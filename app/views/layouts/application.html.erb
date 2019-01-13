@@ -5,30 +5,26 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    
-     <div class="container">
-      <h1 class="text-center">Trade</h1>
-      <ul class="temp-list text-center">
-        <li><%= link_to "Homepage", root_path %></li>
-        <% if user_signed_in?  %> 
-        <li><%=  link_to "My profile",  profile_dashboard_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-        <li><%= link_to "Register", new_user_registration_path %></li>
-        <li><%= link_to "Login", new_user_session_path %></li>
-       <% end %>
-        <li><%= link_to "Add new offer", new_offer_path %></li>
-        <li><%= link_to "Add new product", new_product_path %></li>
-      </ul>
-    </div>
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <a href="#" data-dismiss="alert" class="close">×</a>
+        <ul>
+          <li>
+            <%= value %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+      <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
