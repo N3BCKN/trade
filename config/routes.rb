@@ -17,6 +17,18 @@ Rails.application.routes.draw do
   get "offers",      to: "leads#index_offers"
   get "products",    to: "leads#index_products"
 
+  #Custom Static Pages
+  get "about",              to: "pages#about"
+  get "contact",            to: "pages#contact"
+  get "terms",              to: "pages#terms"
+  get "privacy",            to: "pages#privacy_policy"
+  get "faq",                to: "pages#faq"
+  get "email_marketing",    to: "pages#email_marketing"
+  get "marketing_campaign", to: "pages#marketing_campaign"
+  get "lead_helper",        to: "pages#post_lead_helper"
+  get "membership",         to: "pages#membership_status"
+
+
   #Custom Categories Paths
   get "offers/categories/:category",   to: "categories#index_offers", :as => 'offers_categories'
   get "products/categories/:category", to: "categories#index_products", :as => 'products_categories'

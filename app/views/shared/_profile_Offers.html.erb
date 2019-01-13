@@ -1,0 +1,21 @@
+<% leads.each do |lead| %>
+	 <div class="card">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="card-block px-3 py-2">
+                    <h4 class="card-title"><%= link_to lead.title, lead_path(lead.id) %></h4>
+                    <p class="card-text py-4"><%= lead.description_short %>...</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer w-100">
+           <%= link_to "Edit Offer", edit_lead_path(lead) %> 
+           <span class="float-right">Added <%=  time_ago_in_words(lead.created_at) %> ago </span>
+        </div>
+    </div>
+    <br><br>
+	<% end %>
+	<%= paginate leads %>
+</div>
+
+

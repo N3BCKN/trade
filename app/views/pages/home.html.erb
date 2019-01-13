@@ -1,36 +1,35 @@
 <% content_for(:title, 'Home Page')%>
-<div class="text-center">
-<h3>Home Page</h3>
-</div>
-<div class="well">
-	<div class="row">
-		<div class="col-lg-3 col-lg-offset-3">
-			<%= form_tag(products_path, method: :get) do %>
-			  Search: <%= text_field_tag :q %>
-			  <br>
-			  <%= submit_tag 'Find Product' %>
-			<% end %>
-			<hr>
-			<ul class="text-center">
+<section id="home_page">
+	<div class="container text-center py-5">
+		<h1 class="py-5">Trade - Home Page</h1>
+		<div class="row">
+			<div class="col-md-4 offset-md-2">
+				<%= form_tag(products_path, method: :get) do %>
+				  Search: <%= text_field_tag :q, "", class: 'form-control' %>
+				  <%= submit_tag 'Find Products',:class=>"btn btn-info" %>
+				<% end %>
+				<hr>
 				<h3>Find Product By Category:</h3>
-				<% @categories.find_each do |category| %>
-				<li><%= link_to category.name, products_categories_path(category.name) %></li>
+				<ul class="list-group">
+					<% @categories.find_each do |category| %>
+						<li class="list-group-item"><%= link_to category.name, products_categories_path(category.name) %></li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<%= form_tag(offers_path, method: :get) do %>
+				  Search: <%= text_field_tag :q, "", class: 'form-control' %>
+				  <%= submit_tag 'Find Offers', :class=>"btn btn-info" %>
 				<% end %>
-			</ul>
-		</div>
-		<div class="col-lg-3">
-			<%= form_tag(offers_path, method: :get) do %>
-			  Search: <%= text_field_tag :q %>
-			  <br>
-			  <%= submit_tag 'Find Offers' %>
-			<% end %>
-			<hr>
-			<ul class="text-center">
+				<hr>
 				<h3>Find Offer By Category:</h3>
-				<% @categories.find_each do |category| %>
-				<li><%= link_to category.name, offers_categories_path(category.name) %></li>
-				<% end %>
-			</ul>
+				<ul class="list-group">
+					<% @categories.find_each do |category| %>
+						<li class="list-group-item"><%= link_to category.name, offers_categories_path(category.name) %></li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
+
