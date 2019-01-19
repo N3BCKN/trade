@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Lead,elasticsearch: true, type: :model do
+RSpec.describe Lead, elasticsearch: true, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  it 'should be indexed' do
-     expect(Lead.__elasticsearch__.index_exists?).to be_truthy
+  it 'is indexed' do
+    expect(Lead.__elasticsearch__).to be_index_exists
   end
 end

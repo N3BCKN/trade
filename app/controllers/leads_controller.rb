@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class LeadsController < ApplicationController
   include SearchFilters
   include UserLimits
 
   before_action :check_user_restrictions, only: :create
-  before_action :build_lead, only: [:new_offer, :new_product]
-  before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_action :own_contact, only: [:edit, :update]
-  before_action :fetch_filter_params, only: [:index_offers, :index_products]
+  before_action :build_lead, only: %i[new_offer new_product]
+  before_action :set_lead, only: %i[show edit update destroy]
+  before_action :own_contact, only: %i[edit update]
+  before_action :fetch_filter_params, only: %i[index_offers index_products]
 
-  skip_before_action :authenticate_user!, only: [:show, :index_offers,
-                     :index_products]
+  skip_before_action :authenticate_user!, only: %i[show index_offers
+                                                   index_products]
 
   def new_offer
   end
@@ -22,15 +24,15 @@ class LeadsController < ApplicationController
     @lead.lead_status = params[:lead_status]
     respond_to do |format|
       if @lead.save
-        format.html {
+        format.html do
           redirect_to lead_path(@lead),
-                      notice: "Lead Has been added"
-        }
+            notice: 'Lead Has been added'
+        end
       else
-        format.html {
+        format.html do
           redirect_to root_path,
-                      notice: "Lead couldn't be added"
-        }
+            notice: "Lead couldn't be added"
+        end
       end
     end
   end
@@ -41,15 +43,15 @@ class LeadsController < ApplicationController
   def update
     respond_to do |format|
       if @lead.update(lead_params)
-        format.html {
+        format.html do
           redirect_to lead_path,
-                      notice: "Lead has been updated"
-        }
+            notice: 'Lead has been updated'
+        end
       else
-        format.html {
+        format.html do
           render :edit,
-                 notice: "Error"
-        }
+            notice: 'Error'
+        end
       end
     end
   end
@@ -57,8 +59,10 @@ class LeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, 
-                                notice: "Destroyed" }
+      format.html do
+        redirect_to root_path,
+          notice: 'Destroyed'
+      end
     end
   end
 
@@ -68,13 +72,13 @@ class LeadsController < ApplicationController
       @message.lead    = @lead
       @contact         = current_user.contact
       @favorite_exists = FavoriteLead
-      .where(lead: @lead, user: current_user) == [] ? false : true
+                         .where(lead: @lead, user: current_user) != []
     end
   end
 
   def index_products
     if !params[:q].nil?
-      prepare_indexed_leads(params[:q],"product", @filters)
+      prepare_indexed_leads(params[:q], 'product', @filters)
     else
       @leads = []
     end
@@ -82,33 +86,34 @@ class LeadsController < ApplicationController
 
   def index_offers
     if !params[:q].nil?
-      prepare_indexed_leads(params[:q],"offer", @filters)
+      prepare_indexed_leads(params[:q], 'offer', @filters)
     else
       @leads = []
     end
   end
 
   private
-  def prepare_indexed_leads(query,status,filters)
-    #translate filter params hash into arrays of strings
-    @translatedFilters = translateFilters(filters)  
 
-    @leads = Lead.search_leads(query,status, @translatedFilters)
-    .page params[:page]
+  def prepare_indexed_leads(query, status, filters)
+    # translate filter params hash into arrays of strings
+    @translatedFilters = translateFilters(filters)
 
-    @countries = Lead.search_leads(query,status)
-    .aggregations["group_by_country"]["buckets"]
+    @leads = Lead.search_leads(query, status, @translatedFilters)
+                 .page params[:page]
 
-    @categories = Lead.search_leads(query,status)
-    .aggregations["group_by_category"]["buckets"]
+    @countries = Lead.search_leads(query, status)
+                     .aggregations['group_by_country']['buckets']
+
+    @categories = Lead.search_leads(query, status)
+                      .aggregations['group_by_category']['buckets']
   end
 
   def fetch_filter_params
     @filters = {
-      :date        => params[:date],
-      :categories  => params[:category],
-      :countries   => params[:country],
-      :continents  => params[:continent]
+      date:       params[:date],
+      categories: params[:category],
+      countries:  params[:country],
+      continents: params[:continent]
     }
   end
 
@@ -117,11 +122,9 @@ class LeadsController < ApplicationController
     @lead       = current_user.leads.build
     @categories = Category.all
   end
-  
+
   def own_contact
-    unless current_user == @lead.user
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user == @lead.user
   end
 
   def set_lead
@@ -130,7 +133,7 @@ class LeadsController < ApplicationController
   end
 
   def lead_params
-    if params[:lead_status] == "offer"
+    if params[:lead_status] == 'offer'
       params.require(:lead).permit(
         :title,
         :lead_status,
@@ -144,8 +147,8 @@ class LeadsController < ApplicationController
         :home_page,
         :category_id
       )
-    elsif params[:lead_status] == "product"
-        params.require(:lead).permit(
+    elsif params[:lead_status] == 'product'
+      params.require(:lead).permit(
         :title,
         :description,
         :lead_status,
@@ -159,20 +162,21 @@ class LeadsController < ApplicationController
         :category_id,
         :product_image
       )
-    end     
+    end
   end
 
   def check_user_restrictions
     @number_of_leads = current_user.leads
-    .where("created_at >= ?", Time.current - 7.days)
-    .count
+                                   .where('created_at >= ?', Time.current - 7.days)
+                                   .count
 
-    if @number_of_leads >= user_limits(current_user.role,"leads")
+    if @number_of_leads >= user_limits(current_user.role, 'leads')
       respond_to do |format|
-        format.html { redirect_to root_path,
-          notice:   "Your account has reached leads limit. Please try again later."}
+        format.html do
+          redirect_to root_path,
+            notice: 'Your account has reached leads limit. Please try again later.'
+        end
       end
     end
-  end 
-    
+  end
 end

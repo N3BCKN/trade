@@ -4,20 +4,20 @@
 			<div class="col-sm-6 col-md-3">
 				<h6>Terms&Conditions:</h6>
 				<ul class="list-unstyled py-2">
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Terms of Use</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-					<li><a href="#">FAQ</a></li>
+					<li><%= link_to "About Us", about_path %></li>
+					<li><%= link_to "Contact Us", contact_path %></li>
+					<li><%= link_to "Terms of Use", terms_path %></li>
+					<li><%= link_to "Privacy Policy", privacy_path %></li>
+					<li><%= link_to "FAQ", faq_path %></li>
 				</ul>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<h6>Membership:</h6>
 				<ul class="list-unstyled py-2">
-					<li><a href="#">Membership Status</a></li>
-					<li><a href="#">How To Post a Lead?</a></li>
-					<li><a href="#">Promote Your Ads</a></li>
-					<li><a href="#">Email Marketing Campaing</a></li>
+					<li><%= link_to "Membership Status", membership_path %></li>
+					<li><%= link_to "How To Post a Lead?", lead_helper_path %></li>
+					<li><%= link_to "Promote Your Ads", marketing_campaign_path %></li>
+					<li><%= link_to "Email Marketing Campaign", email_marketing_path %></li>
 					<% if user_signed_in? %>
 					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 					<% end %>

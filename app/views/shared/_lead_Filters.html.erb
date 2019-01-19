@@ -9,7 +9,7 @@
 	<hr>
 	<h4>Category:</h4>
 	<% if categories.present?  %>
-		<% categories.find_each do |category| %>
+		<% categories.each do |category| %>
 		<% @checkedBox = (params.try(:[], :category).try(:[], category[:key]) == "1" ) ? true : false %>
 			<%= check_box :category, category[:key],{checked: @checkedBox} %>
 			<%= category[:key] %>
@@ -45,7 +45,7 @@
 		South America
 		<br><br>
 	<h5>Top 10 countries:</h5>
-		<% countries.find_each do |country| %>
+		<% countries.each do |country| %>
 			<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
 			<%= check_box :country, country[:key], {checked: @checkedBox} %>
 			<%= country_name(country[:key]) %> <br>

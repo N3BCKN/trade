@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DeviseWhitelist
   extend ActiveSupport::Concern
 
@@ -10,4 +12,3 @@ module DeviseWhitelist
     devise_parameter_sanitizer.permit(:account_update, keys: [:user_name])
   end
 end
-

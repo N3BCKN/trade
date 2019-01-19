@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FavoritesController < ApplicationController
   def update
   	@favorite = FavoriteLead.where(user: current_user, lead: params[:lead])
@@ -12,6 +14,5 @@ class FavoritesController < ApplicationController
   	respond_to do |format|
   		format.js
   	end
-
   end
 end

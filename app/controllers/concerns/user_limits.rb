@@ -1,9 +1,11 @@
-module UserLimits
-	extend ActiveSupport::Concern
+# frozen_string_literal: true
 
-	included do
-		:user_limits
-	end
+module UserLimits
+  extend ActiveSupport::Concern
+
+  included do
+    :user_limits
+  end
 
 	def user_limits(role,action)
 		@limitations = 
@@ -22,6 +24,6 @@ module UserLimits
 			}
 		}
 
-		@limitations[role][action]
-	end
+    @limitations[role][action]
+  end
 end
