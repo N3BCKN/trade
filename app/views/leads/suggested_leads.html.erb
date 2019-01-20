@@ -1,21 +1,15 @@
-<h2>Suggested Leads</h2>
-<%= @lead.inspect %>
+<div class="text-center py-4 container">
+<h2 class="text-center">You've just send inquiry for <%= link_to @lead.title, lead_path(@lead) %></h2>
+<h3 class="text-center">Customer will receive your message.</h3>
+
 <br><br>
 
-<%= @suggested.inspect %>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<h2>You may also like to check:</h2>
 <% @suggested.each do |lead| %>
-	<%= lead.title %> - <%= lead._id %> - <%= lead.lead_status %> - <%= lead.category.name %>
-	<br>
+<%= link_to lead.title, lead_path(lead._id) %>
+<br>
+<%= lead.description_short %>
+<br><br><br>
+
 <% end %>
+</div>
