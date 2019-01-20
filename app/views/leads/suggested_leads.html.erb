@@ -3,3 +3,19 @@
 <br><br>
 
 <%= @suggested.inspect %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<% @suggested.each do |lead| %>
+	<%= lead.title %> - <%= lead._id %> - <%= lead.lead_status %> - <%= lead.category.name %>
+	<br>
+<% end %>

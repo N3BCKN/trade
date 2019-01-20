@@ -18,32 +18,36 @@ module Searchable
     def self.suggested_leads(lead)
       search(
               from: 0, size: 5,
-              query:{
-                range: {
-                  created_at: {
-                    gte: "now-180d/d",
-                    lte: "now/d"
-                  }
-                },
-                must: [
-                  {
-                    multi_match:{
-                      query: lead.title,
-                      fields: [
-                        "title^8",
-                        "country^3"
-                      ]
+              query: {
+                bool:{
+                  must: [
+                    {
+                      range:{
+                        created_at: {
+                          gte: "now-180d/d",
+                          lte: "now/d"
+                        }
+                      }
+                    },
+                    {
+                      match:
+                      { lead_status: lead.lead_status }
+                    },
+                    {
+                      match:
+                      { "category.name": lead.category.name }
+                    },
+                    {
+                      multi_match: {
+                        query: lead.title,
+                        fields: [
+                          "title^7",
+                          "country^3"
+                        ]
+                      }
                     }
-                  },
-                  {
-                    match: 
-                    { lead_status: lead.lead_status }
-                  },
-                  {
-                    match:
-                    { "category.name": lead.category.name }
-                  },
-                ]
+                  ]
+                }
               }
         )
     end
