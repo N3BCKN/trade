@@ -43,15 +43,20 @@ puts "User number #{t} created"
 end
 
 
-Category.create!(name: "Pharmacy")
-Category.create!(name: "Cosmetics")
 Category.create!(name: "Fuels")
-Category.create!(name: "Agligature")
-Category.create!(name: "Raw materials")
-Category.create!(name: "Clothers")
+Category.create!(name: "Raw Materials")
+Category.create!(name: "Cosmetics / Body Care")
+Category.create!(name: "Groceries / Food")
+Category.create!(name: "Mechanic Devices and Parts")
+Category.create!(name: "Basic Necessities")
 Category.create!(name: "Electronics")
-Category.create!(name: "Toys")
-Category.create!(name: "Machinery")
+Category.create!(name: "Clothers / Textiles")
+Category.create!(name: "Agriculture")
+Category.create!(name: "Industrial Goods")
+Category.create!(name: "Construction Materials")
+Category.create!(name: "Office/Packaging Products")
+
+
 
 
 9500.times do |p|
