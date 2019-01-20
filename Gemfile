@@ -38,7 +38,6 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-<<<<<<< HEAD
 
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.3'
@@ -47,9 +46,6 @@ gem 'tether-rails', '~> 1.4'
 gem "paranoia", "~> 2.2"
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 gem "paperclip", "~> 6.0.0"
-=======
-gem 'bootstrap', '~> 4.2.1'
->>>>>>> 3ff0b8fadca2f0bc63247322a323e7407467da96
 gem 'country_select', '~> 3.1'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'elasticsearch-model', '~> 6.0.0'
