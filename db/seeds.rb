@@ -59,7 +59,7 @@ Category.create!(name: "Office/Packaging Products")
 
 
 
-9500.times do |p|
+9000.times do |p|
   @dateOfCreation = Time.current - rand(365).days
   @user  = User.find(rand(1..User.count))
 
