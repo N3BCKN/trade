@@ -77,7 +77,7 @@ group :development do
   gem 'letter_opener'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
+  gem 'rubocop', '~> 0.63.1', require: false
   gem 'rufo', require: false
 end
 
