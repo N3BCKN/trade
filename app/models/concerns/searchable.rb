@@ -19,37 +19,37 @@ module Searchable
       search(
               from: 0, size: 5,
               query: {
-                bool:{
+                bool: {
                   must: [
                     {
-                      range:{
+                      range: {
                         created_at: {
-                          gte: "now-180d/d",
-                          lte: "now/d"
+                          gte: 'now-180d/d',
+                          lte: 'now/d'
                         }
                       }
                     },
                     {
                       match:
-                      { lead_status: lead.lead_status }
+                             { lead_status: lead.lead_status }
                     },
                     {
                       match:
-                      { "category.name": lead.category.name }
+                             { "category.name": lead.category.name }
                     },
                     {
                       multi_match: {
-                        query: lead.title,
+                        query:  lead.title,
                         fields: [
-                          "title^7",
-                          "country^3"
+                          'title^7',
+                          'country^3'
                         ]
                       }
                     }
                   ]
                 }
               }
-        )
+            )
     end
 
     def self.search_categories(category, status)
