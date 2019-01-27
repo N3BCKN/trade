@@ -92,6 +92,12 @@ class LeadsController < ApplicationController
     end
   end
 
+  def suggested_leads
+    # this action should be updated&changed in the futere
+    @lead = Lead.find(params[:id])
+    @suggested = Lead.suggested_leads(@lead)
+  end
+
   private
 
   def prepare_indexed_leads(query, status, filters)

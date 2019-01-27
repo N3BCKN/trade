@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'
   get 'products/categories/:category', to: 'categories#index_products', as: 'products_categories'
 
+  get 'leads/:id/sent', to: 'leads#suggested_leads'
+
   resources :leads do
     member do
       resources :messages

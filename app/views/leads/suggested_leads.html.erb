@@ -1,0 +1,15 @@
+<div class="text-center py-4 container">
+<h2 class="text-center">You've just send inquiry for <%= link_to @lead.title, lead_path(@lead) %></h2>
+<h3 class="text-center">Customer will receive your message.</h3>
+
+<br><br>
+
+<h2>You may also like to check:</h2>
+<% @suggested.each do |lead| %>
+<%= link_to lead.title, lead_path(lead._id) %>
+<br>
+<%= lead.description_short %>
+<br><br><br>
+
+<% end %>
+</div>
