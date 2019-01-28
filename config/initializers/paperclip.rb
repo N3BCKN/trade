@@ -5,6 +5,6 @@ Paperclip::Attachment.default_options[:path] = ":class/:attachment/:id/:style/:f
 Paperclip::Attachment.default_options[:gcs_permissions] = :public_read
 Paperclip::Attachment.default_options[:gcs_credentials] = {
     project: ENV["GCS_PROJECT"],
-    keyfile: ENV["GCS_CREDENTIALS"],
+    keyfile: "#{Rails.root}/config/gcs.json",
 }
 
