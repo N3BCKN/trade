@@ -1,41 +1,67 @@
-<section id="signup_panel">
- <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto py-3">
-
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h2 class="card-title text-center py-2">Create your account on Trade</h2>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
-              <div class="form-label-group">
-                <label for="loginEmail">Email:</label>
-                 <%= f.email_field :email, autofocus: true, autocomplete: "email", :id=>"loginEmail",:class=>"form-control", :placeholder=>"Email address", :required=>true %>
-              </div>
-              <div class="form-label-group">
-                <label for="companyName">Your Company Name:</label>
-                 <%= f.text_field :user_name, autofocus: true, autocomplete: "email", :id=>"companyName",:class=>"form-control", :placeholder=>"Company", :required=>true %>
-              </div>
-              <br>
-              <div class="form-label-group">
-                <label for="password">Password:</label>
-                 <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password", :class=>"form-control", :id=>"password", :placeholder=>"Password", :required=>true %>
-              </div>
-              <div class="form-label-group">
-                <label for="passwordConfirm">Confirm Password:</label>
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>"form-control", :id=>"passwordConfirm", :placeholder=>"Password Confirmation", :required=>true %>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
-              <hr class="my-4">
-
-            <%= render "devise/shared/links" %>
-            <% end %>
-          </div>
+<% content_for(:title, "Register")%>
+<div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-md-12 col-lg-10 col-xl-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item"><a href="#">Account</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Register</li>
+            </ol>
+            </nav>
+        <div class="page-header">
+        <h1>Create your account on Trade</h1>
         </div>
       </div>
     </div>
   </div>
-</section>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center align-items-center">
+      <div class="col col-md-6  col-lg-5 col-xl-4">
+        <ul class="nav nav-tabs tab-lg" role="tablist">
+          <li role="presentation" class="nav-item"> 
+            <%= link_to "Sign In", new_user_session_path, :class => "nav-link"%></li>
+          <li role="presentation" class="nav-item">
+           <%= link_to "Register", new_user_registration_path, :class => "nav-link active"%></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="login">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+               <%= devise_error_messages! %>
+              <div class="form-group">
+                <label for="loginEmail">Your Email:</label>
+                 <%= f.email_field :email, autofocus: true, autocomplete: "email", :id=>"loginEmail",:class=>"form-control form-control-lg", :placeholder=>"Email address", :required=>true %>
+              </div>
+              <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                 <%= f.text_field :user_name, autofocus: true, autocomplete: "company", :id=>"companyName",:class=>"form-control form-control-lg", :placeholder=>"Company", :required=>true %>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", :class=>"form-control form-control-lg", :id=>"password", :placeholder=>"Password", :required=>true %>
+              </div>
+              <div class="form-group">
+                <label for="passwordConfirm">Confirm Password</label>
+                 <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>"form-control form-control-lg", :id=>"passwordConfirm", :placeholder=>"Password Confirmation", :required=>true %>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="terms">
+                <label for="terms">By registering I accept our Terms of Use and Privacy.</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Register</button>
+            <% end %>
+          </div>
+        </div>
+        <div> </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-5 col-xl-4">
+        <div class="socal-login-buttons"> <a href="#" class="btn btn-social btn-block btn-facebook"><i class="icon fa fa-facebook"></i> Continue with Facebook</a> <a href="#" class="btn btn-social btn-block btn-twitter"><i class="icon fa fa-twitter"></i> Continue with Twitter</a> <a href="#" class="btn btn-social btn-block btn-google"><i class="icon fa fa-google"></i> Continue with Google</a> </div>
+      </div>
+    </div>
+  </div>
+</div>

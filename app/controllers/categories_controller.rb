@@ -6,9 +6,6 @@ class CategoriesController < ApplicationController
                                                      %i[index_offers index_products]
 
   def index_offers
-    puts "***"*700
-    puts params
-    puts "***"*700
     @leads = Lead.search_categories(params[:category], 'offer')
                  .page params[:page]
   end

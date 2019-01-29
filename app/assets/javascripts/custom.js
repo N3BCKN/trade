@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   //display current year on footer
-$('#year').text(new Date().getFullYear());
+  $('#year').text(new Date().getFullYear());
 
   // examples of products for selected categories on add lead pages
 $("#lead_category_id").on('change',function(selectObject){
