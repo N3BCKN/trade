@@ -8,11 +8,11 @@
       <li class="nav-item nav-link" id="nav-login" >
         <% if user_signed_in? %>
           <%= link_to profile_dashboard_path, class: "nav-link text-center" do %>
-             <i class="fas fa-lg fa-user"></i> <%= current_user.user_name %>
+             <i class="fa fa-lg fa-user"></i> <%= current_user.user_name %>
           <% end %>
         <% elsif !user_signed_in? %>
           <%= link_to new_user_session_path, class: "nav-link text-center" do %>
-             <i class="fas fa-lg fa-user"></i> Log In
+             <i class="fa fa-lg fa-user"></i> Log In
           <% end %>
         <% end %>
       </li>

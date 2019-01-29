@@ -3,11 +3,11 @@
 
 @font-face {
 	font-family: 'uilove-realestate';
-	src:  url('../lib/uilove/fonts/uilove-realestate.eot?gstvc');
-	src:  url('../lib/uilove/fonts/uilove-realestate.eot?gstvc#iefix') format('embedded-opentype'),
-	url('../lib/uilove/fonts/uilove-realestate.ttf?gstvc') format('truetype'),
-	url('../lib/uilove/fonts/uilove-realestate.woff?gstvc') format('woff'),
-	url('../lib/uilove/fonts/uilove-realestate.svg?gstvc#uilove-realestate') format('svg');
+	src:url('uilove-realestate.eot');
+	src:url('uilove-realestate.eot#iefix') format('embedded-opentype'),
+	url('uilove-realestate.ttf') format('truetype'),
+	url('uilove-realestate.woff') format('woff'),
+	url('uilove-realestate.svg#uilove-realestate') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
