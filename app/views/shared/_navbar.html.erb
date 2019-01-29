@@ -1,24 +1,80 @@
-<nav class="navbar p-0 navbar-info navbar-expand-md  navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" id="menu">
   <div class="container">
-    <%= link_to root_path, class: "navbar-brand" do %>
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/logo-placeholder-png-3.png"
-     width="170" height="70" alt="trade-logo" id="trade-logo">
-    <% end %>
-    <ul class="nav nav-fill nav-justified">
-      <li class="nav-item nav-link" id="nav-login" >
-        <% if user_signed_in? %>
-          <%= link_to profile_dashboard_path, class: "nav-link text-center" do %>
-             <i class="fa fa-lg fa-user"></i> <%= current_user.user_name %>
+  <%= link_to root_path, :class => "navbar-brand" do %> <img class="img-fluid" width="50" height="50" src="https://ww1.wasagabuilderscontractors.com/wp-content/uploads/2018/04/20140806_LogoSupporterPlaceholder.png" alt="">
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-content" aria-controls="menu-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="menu-content">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Our Services <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu">
+            <%= link_to "Join Trade", new_user_registration_path, :class => "dropdown-item" %>
+            <%= link_to "Membership", membership_path, :class => "dropdown-item" %>
+            <%= link_to "About Us", about_path, :class => "dropdown-item" %>
+            <%= link_to "FAQ", faq_path, :class => "dropdown-item" %>
+            <%= link_to "Contact", contact_path, :class => "dropdown-item" %>
+            <%= link_to "Adveritse On Trade", email_marketing_path, :class => "dropdown-item" %>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Products
+        </a>
+        <div class="dropdown-menu">
+          <%= link_to "Fuels",   offers_categories_path("Fuels"), :class => "dropdown-item" %>
+          <%= link_to "Raw Materials",   offers_categories_path("Raw Materials"), :class => "dropdown-item" %>
+          <%= link_to "Cosmetics / Body Care",   offers_categories_path("Cosmetics / Body Care"), :class => "dropdown-item" %>
+          <%= link_to "Groceries / Food",   offers_categories_path("Groceries / Food"), :class => "dropdown-item" %>
+          <%= link_to "Mechanic Devices and Parts",   offers_categories_path("Mechanic Devices and Parts"), :class => "dropdown-item" %>
+          <%= link_to "Basic Necessities",   offers_categories_path("Basic Necessities"), :class => "dropdown-item" %>
+          <%= link_to "Electronics",   offers_categories_path("Fuels"), :class => "dropdown-item" %>
+          <%= link_to "Clothers / Textiles",   offers_categories_path("Clothers / Textiles"), :class => "dropdown-item" %>
+          <%= link_to "Agriculture",   offers_categories_path("Agriculture"), :class => "dropdown-item" %>
+          <%= link_to "Industrial Goods",   offers_categories_path("Industrial Goods"), :class => "dropdown-item" %>
+          <%= link_to "Construction Materials",   offers_categories_path("Construction Materials"), :class => "dropdown-item" %>
+          <%= link_to "Office/Packaging Products",   offers_categories_path("Office/Packaging Products"), :class => "dropdown-item" %>
+        </div>
+      </li> 
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      
+      
+      <li class="nav-item dropdown user-account">
+          <% if user_signed_in? %>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="user-image" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUz2SJnmtfnHwcnOmWi3QbONoqGMXSL_SBAxY7A8dZeStfoAx_');"></span> Hi, 
+          <%= current_user.user_name %>
+          </a>
+          <div class="dropdown-menu">
+            <%= link_to "My Profile", profile_dashboard_path, :class => "dropdown-item" %>
+            <%= link_to "My Products", profile_products_path, :class => "dropdown-item" %>
+            <%= link_to "My Offers", profile_offers_path, :class => "dropdown-item" %>
+            <%= link_to "My Messages", profile_messages_path, :class => "dropdown-item" %>
+            <%= link_to "User Settings", edit_contact_path(current_user.contact), :class => "dropdown-item" %>
+            <%= link_to "Change Password", profile_dashboard_path, :class => "dropdown-item" %>
+            <%= link_to destroy_user_session_path, :class => "dropdown-item" do %>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+            <% end %>
+          </div>
+          <% else %>
+          <%= link_to "Login", new_user_session_path %>
           <% end %>
-        <% elsif !user_signed_in? %>
-          <%= link_to new_user_session_path, class: "nav-link text-center" do %>
-             <i class="fa fa-lg fa-user"></i> Log In
-          <% end %>
+        
+       
+      </li>
+      <li class="nav-item">
+        <%= link_to  new_product_path, :class => "nav-link nav-btn" do %>
+        <span><i class="fa fa-plus" aria-hidden="true"></i> Add listing</span
         <% end %>
       </li>
-      <li class="nav-item nav-link">
-        <%= link_to "Add a Lead!", new_product_path, :class=>"btn btn-lg btn-warning" %>
-      </li>
     </ul>
+    
+  </div>
   </div>
 </nav>

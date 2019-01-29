@@ -41,12 +41,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.2.1'
 gem 'country_select', '~> 3.1'
 gem 'dotenv-rails', groups: %i[development test]
+gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git', branch: 'master'
 gem 'elasticsearch-model', '~> 6.0.0'
 gem 'elasticsearch-rails', '~> 6.0.0'
 gem 'faker'
 gem 'fog'
 gem 'jquery-rails', '~> 4.3'
-gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git', branch: 'master'
 gem 'paperclip', '~> 6.0.0'
 gem 'paperclip-gcs'
 gem 'paranoia', '~> 2.2'
