@@ -33,7 +33,8 @@
 					            </div>
 					        </div>
 					        <div class="card-footer w-100">
-					           <span class="text-muted"> Seller from: </span> <%= country_name(fav.country) %>  
+					           <span class="text-muted"> Seller from: </span> <%= country_name(fav.country) %>
+					           <%= flag_icon(fav.country.downcase) %>   
 					           <span class="float-right"> <%= fav.created_at.strftime("%B %e, %Y") %></span>
 					        </div>
 					    </div>
