@@ -101,7 +101,7 @@ class LeadsController < ApplicationController
   private
 
   def prepare_indexed_leads(query, status, filters)
-    # translate filter params hash into arrays of strings
+    # TODO: this action should be more restricted for users in the future
     @translatedFilters = translateFilters(filters)
 
     @leads = Lead.search_leads(query, status, @translatedFilters)
