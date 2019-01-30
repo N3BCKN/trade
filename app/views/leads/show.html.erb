@@ -16,7 +16,7 @@
 					<% end %>
 					<p class="lead py-5"><%= @lead.description %></p>
 					<% if user_signed_in? %>
-					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-info float-left", :id => "favorite_button", remote: true %>
+					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-primary float-left", :id => "favorite_button", remote: true %>
 					<button class="btn btn-md btn-danger float-right">Report Abuse</button>
 					<% end %>
 				</div>
@@ -31,7 +31,7 @@
 				<div id="lead_login" class="text-center">
 					<h3>Not a member?</h3>
 					<p class="lead">Register for free and Response to this lead</p>
-					<%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-info" %>
+					<%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
 				</div>
 				<% end %>
 			</div>

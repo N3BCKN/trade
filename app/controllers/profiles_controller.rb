@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-
   before_action :count_leads
-  
+
   def show_profile
     @contact = Contact.find_by(id: current_user)
   end
@@ -32,10 +31,11 @@ class ProfilesController < ApplicationController
 
   def profile_membership
   end
-  
+
   private
+
   def count_leads
-     @offers   = Lead.profile_leads('offer', current_user).count
-     @products = Lead.profile_leads('product', current_user).count
+    @offers = Lead.profile_leads('offer', current_user).count
+    @products = Lead.profile_leads('product', current_user).count
   end
 end
