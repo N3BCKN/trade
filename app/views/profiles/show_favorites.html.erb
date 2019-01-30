@@ -34,7 +34,7 @@
 					        </div>
 					        <div class="card-footer w-100">
 					           <span class="text-muted"> Seller from: </span> <%= country_name(fav.country) %>  
-					           <span class="float-right">Added <%=  time_ago_in_words(fav.created_at) %> ago </span>
+					           <span class="float-right"> <%= fav.created_at.strftime("%B %e, %Y") %></span>
 					        </div>
 					    </div>
 					    <br><br>
