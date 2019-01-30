@@ -34,24 +34,14 @@
     	
           </div>
           <div class="col-md-8 col-lg-9">
-           <!--  <div class="sorting">
-              <div class="row justify-content-between">
-              <div class="col-sm-5 col-md-5 col-lg-4 col-xl-3">
-              <div class="form-group">
-                  <select class="form-control ui-select">
-                    <option selected="selected">Most recent</option>
-                    <option>Highest price</option>
-                    <option>Lowest price</option>
-                    <option>Most reduced</option>
-                    <option>Most popular</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
-              <div class="btn-group float-right" role="group"> <a href="property_grid.html" class="btn btn-light"><i class="fa fa-th"></i></a> <a href="property_listing.html" class="btn btn-light active"><i class="fa fa-bars"></i></a> </div>
-              </div>
-              </div>                
-            </div> -->
+           <ul class="nav nav-tabs tab-lg" role="tablist">
+             <li role="presentation" class="nav-item"> 
+                <%= link_to "Buyers", {:controller => "categories", :action => "index_offers", :q => params[:category] }, :class => "nav-link"%> 
+             </li>
+             <li role="presentation" class="nav-item">
+                <a class="nav-link active">Suppliers</a> 
+             </li>
+            </ul>
             <div class="clearfix"></div>
             <div class="item-listing list">
               <%= render "shared/display_Products", leads: @leads %>
