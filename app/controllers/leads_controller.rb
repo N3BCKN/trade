@@ -93,7 +93,7 @@ class LeadsController < ApplicationController
   end
 
   def suggested_leads
-    # this action should be updated&changed in the futere
+    # TODO: this action should be more restricted for users in the future
     @lead = Lead.find(params[:id])
     @suggested = Lead.suggested_leads(@lead)
   end
