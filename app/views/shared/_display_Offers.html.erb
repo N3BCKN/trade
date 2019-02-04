@@ -20,13 +20,7 @@
                   <div class="col-lg-12">
                   <div class="item-info">
                     <h3 class="item-title"><%= link_to lead.title, lead_path(lead._id) %></h3>
-                    <!-- <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                    <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div> -->
-                    <div class="item-details mb-2">
-                      <%= lead.description_short %>...
-                    </div>
-                 </div>
-                    <div class="row">
+                    <div class="row py-2">
                     <div class="col-md-6">
                         <div class="added-on">
                           Buyer From <%= country_name(lead.country) %> 
@@ -37,12 +31,15 @@
                         <div class="added-by"><%=  Date.parse(lead.created_at).strftime("%B %e, %Y") %></div>
                     </div>
                     </div>
+                    <!-- <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
+                    <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div> -->
+                    <div class="item-details mb-2">
+                      <%= lead.description_short %>...
+                    </div>
+                 </div>
                   </div>
                 </div>
               </div>
-              <br>
-              <hr>
-              <br><br>
     <% end %>
 <%= paginate leads %>
 

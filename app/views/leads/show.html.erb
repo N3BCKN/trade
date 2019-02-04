@@ -1,44 +1,121 @@
 <% content_for(:title, @lead.title)%>
-<section id="lead_show" class="py-5">
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8">
-			<div class="container">
-				<div id="lead_title" class="text-center py-3">
-					<h4><%= @lead.title %></h4>
-				</div>
-				<div id="lead_details">
-					<h7 class="float-left">
-						<%= country_name(@lead.country) %> 
-						<%= flag_icon(@lead.country.downcase) %> 
-				    </h7>
-					<h7 class="float-right"><%= @lead.created_at.strftime("%Y-%m-%d") %></h7>
-					<br><br>
-					<% if @lead.lead_status == "product" %>
-						<%= set_product_image_show(@lead) %>
-					<% end %>
-					<p class="lead py-5"><%= @lead.description %></p>
-					<% if user_signed_in? %>
-					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-primary float-left", :id => "favorite_button", remote: true %>
-					<button class="btn btn-md btn-danger float-right">Report Abuse</button>
-					<% end %>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4">
-			<div class="container" id="lead-message">
-				<% if user_signed_in? %>
-					<h4 class="text-center pb-5">Response To This Lead</h4>
-					<%= render "shared/lead_Message" %>
-				<% else %>
-				<div id="lead_login" class="text-center">
-					<h3>Not a member?</h3>
-					<p class="lead">Register for free and Response to this lead</p>
-					<%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+<div class="containerXXX">
+  <div class="row justify-content-md-center">
+          <div class="col col-md-12 col-lg-12 col-xl-10">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path%></li>
+          <% if @lead.lead_status == "product" %>
+          	<li class="breadcrumb-item"><a>Products for Sell</a></li>
+          	<li class="breadcrumb-item">
+            <%= link_to @lead.category.name, products_categories_path(@lead.category.name) %></li>
+          <% elsif @lead.lead_status == "offer" %>
+          	<li class="breadcrumb-item"><a>Offers from Buyers</a></li>
+          		<li class="breadcrumb-item">
+            <%= link_to @lead.category.name, offers_categories_path(@lead.category.name) %></li>
+          <% end %> 	
+          <li class="breadcrumb-item active" aria-current="page"><%= @lead.title %></li>
+        </ol>
+      <div class="page-header bordered mb0">
+        <div class="row">
+          <div class="col-md-8">
+            <h1><%= @lead.title %> 
+            	<small><i class="fa fa-map-marker"></i>
+            	<% if @lead.lead_status == "product" %>
+            		Seller From <%= country_name(@lead.country) %>
+            	<% elsif @lead.lead_status == "offer" %>
+					Buyer From <%= country_name(@lead.country) %>
+            	<% end %>
+            	<%= flag_icon(@lead.country.downcase) %> 
+                </small>
+        	</h1>
+        	<br>
+        	<%= @lead.created_at.strftime("%B %e, %Y") %>
+          </div>
+          <div class="col-md-4">
+          	<% if user_signed_in? %>
+            <%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-primary float-right", :id => "favorite_button", remote: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</section>
+<div id="content" class="item-single">
+  <div class="containerXXX">
+    <div class="row justify-content-md-center">
+          <div class="col col-md-12 col-lg-12 col-xl-10">
+        <div class="row row justify-content-md-center has-sidebar">
+          <div class="col-md-7 col-lg-8">
+            <div> 
+              <div>
+                <div class="item-description">
+                  <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
+                  <p><%= @lead.description %></p>
+                  <div class="item-attachments">
+                  <a href="#" class="btn btn-lg btn-inverse">Check Profile</a>
+              	  </div>
+                </div>
+                 <ul class="item-features">
+                  <li><span>540</span> sq m </li>
+                  <li><span>3</span> Rooms </li>
+                  <li><span>1</span> Bedrooms </li>
+                  <li><span>2</span> Bathrooms </li>
+                </ul>
+                <h3 class="headline">Property Details</h3>
+                <ul class="checked_list feature-list">
+                  <li><strong>Building Age:</strong> 2 Years</li>
+                  <li><strong>Parking:</strong> Attached Garage</li>
+                  <li><strong>Cooling:</strong> Central Cooling</li>
+                  <li><strong>Heating:</strong> Forced Air, Gas</li>
+                  <li><strong>Sewer:</strong> Public/City</li>
+                  <li><strong>Water:</strong> City</li>
+                </ul>
+                <h3 class="headline">Property Features</h3>
+                <ul class="checked_list feature-list">
+                  <li>Alarm</li>
+                  <li>Gym</li>
+                  <li>Internet</li>
+                  <li>Swimming Pool</li>
+                  <li>Window Covering</li>
+                </ul>
+                <div class="item-navigation">
+                  <ul class="nav nav-tabs v2" role="tablist">
+                    <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
+                    <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1215.7401235613713!2d1.4497354260471211!3d52.45232942952154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9f169c5a088db%3A0x75a6abde48cc5adc!2sKents+Ln%2C+Bungay+NR35+1JF%2C+UK!5e0!3m2!1sen!2sin!4v1489862715790" width="600" height="450" style="border:0;" allowfullscreen></iframe>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="streetview">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2s!4v1489861898447!6m8!1m7!1sGz9bS-GXSJE28jHD19m7KQ!2m2!1d52.45191646727986!2d1.451480542718656!3f0!4f0!5f0.8160813932612223" width="600" height="450" style="border:0" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <div id="sidebar" class="sidebar-right">
+              <div class="sidebar_inner">
+              	<% if user_signed_in? %>
+              	  <% if @lead.lead_status == "product" %>
+		          	<h3>Contact Seller</h3>
+		          <% elsif @lead.lead_status == "offer" %>
+		          	<h3>Contact Buyer</h3>
+		          <% end %> 
+               <%= render "shared/lead_Message" %>
+               <% else %>
+               <h3>Not a member?</h3>
+			   <p class="lead">Register for free and contact seller.</p>
+			   <%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
+			   <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

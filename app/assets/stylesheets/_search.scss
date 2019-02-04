@@ -10,7 +10,8 @@
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 0;
-	background-image: url(../img/demo/banner1.jpg);
+	// background-image: url("../img/demo/banner1.jpg");
+	background-image: url("https://image.shutterstock.com/z/stock-photo-large-container-ship-at-sea-top-down-aerial-image-739019644.jpg");
 	background-position: center;
 	background-size: cover;
 	position: relative;
@@ -43,7 +44,7 @@
 	border-radius: 3px;
 	border:none;
 	padding: 30px 30px 15px 30px;
-	background: rgba(0,0,0,.15);
+	background: rgba(0,0,0,.55);
 	box-shadow: none;
 }
 .search-form .heading {

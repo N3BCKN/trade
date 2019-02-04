@@ -41,7 +41,7 @@
               :class => "#{params[:action] == 'edit' ?  'active' : ''} list-group-item" do %>
            <i class="fa fa-fw fa-building-o"></i> Company Informations
            <% end %>
-           <%= link_to edit_contact_path(current_user.contact), :class => "list-group-item" do %>
+           <%= link_to edit_user_registration_path, :class => "list-group-item" do %>
            <i class="fa fa-fw fa-lock"></i> Change Password
            <% end %>
            <%= link_to profile_membership_path, 

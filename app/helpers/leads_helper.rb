@@ -12,7 +12,7 @@ module LeadsHelper
   # for Elasticseach
   def set_product_image_index(lead)
     if lead.product_image_file_name.nil?
-      image_tag 'thumb_product_image.png'
+      image_tag 'thumb_product_image.png', :class => "float-left p-3"
     else
       image_tag lead.img_url_thumb
     end
