@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function() {
 
   //display current year on footer
   $('#year').text(new Date().getFullYear());
@@ -108,7 +108,7 @@ $("#lead_category_id").on('change',function(selectObject){
       })
     }
   });
-});
+
 $(window).ready(function(e) {
   if ($('#content').length > 0) {
     function menuAdjustments() {
@@ -187,3 +187,5 @@ function readURL(input,width,height) {
       reader.readAsDataURL(input.files[0]);
      }
   }
+
+})

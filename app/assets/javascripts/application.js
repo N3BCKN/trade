@@ -18,5 +18,3 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
-
-$('#year').text(new Date().getFullYear());
