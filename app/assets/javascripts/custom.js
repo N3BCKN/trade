@@ -3,6 +3,16 @@ $( document ).on('turbolinks:load', function() {
   //display current year on footer
   $('#year').text(new Date().getFullYear());
 
+  // redirect from home_page search bar to the proper controller
+  $('#main_select').on('change',function(){
+    if ($(this).val() == 'products'){
+      $(this).closest('form').attr('action', '/products');
+    }
+    else{
+      $(this).closest('form').attr('action', '/offers');
+    }
+  });
+
   // examples of products for selected categories on add lead pages
 $("#lead_category_id").on('change',function(selectObject){
     var category = $("option:selected", this).text();

@@ -13,16 +13,17 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                 <%= text_field_tag :q, "", class: 'form-control form-control-lg', :placeholder => "I would like to find..."%>
+                 <%= text_field_tag :q, "", id: 'main_search', class: 'form-control form-control-lg', :placeholder => "I want to find..."%>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="row">
                   <div class="col-sm-7">
                     <div class="form-group">
-                      <select class="form-control form-control-lg ui-select">
-                        <option value="2">Find Buyers</option>
-                        <option value="1">Find Suppliers</option>
+                      <select class="form-control form-control-lg ui-select" id="main_select">
+                        <!-- <option value="2">Find Buyers</option>
+                        <option value="1">Find Suppliers</option> -->
+                        <%= options_for_select([['Find Buyers', "offers"], ['Find Suppliers', "products"]], 1) %>
                       </select>
                     </div>
                   </div>
