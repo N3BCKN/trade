@@ -6,7 +6,6 @@ class ContactsController < ApplicationController
   before_action :check_user_contact, only: [:edit]
 
   def show
-    @contact = Contact.find(params[:id])
   end
 
   def new

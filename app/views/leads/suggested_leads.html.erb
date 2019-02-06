@@ -1,15 +1,31 @@
-<div class="text-center py-4 container">
-<h2 class="text-center">You've just send inquiry for <%= link_to @lead.title, lead_path(@lead) %></h2>
-<h3 class="text-center">Customer will receive your message.</h3>
-
-<br><br>
-
-<h2>You may also like to check:</h2>
-<% @suggested.each do |lead| %>
-<%= link_to lead.title, lead_path(lead._id) %>
-<br>
-<%= lead.description_short %>
-<br><br><br>
-
-<% end %>
+<% content_for(:title, "Message has been sent" )%>
+<div id="content" class="property-single">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-12 col-xl-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+	            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+	            <li class="breadcrumb-item active" aria-current="page">
+	            	<%= @lead.lead_status == "product" ? "Products" : "Offers" %>
+	            </li>
+	             <li class="breadcrumb-item">Message Sent</li>
+            </ol>
+         </nav>
+        <div class="page-header v2 bordered">
+	        <h1>You replied to the: <%= link_to @lead.title, lead_path(@lead) %>
+	        <br>
+	         <small>User will receive your message.</small></h1>
+        </div>
+     	<div class="page-header bordered">
+            <h3 class="text-center">You may also like to check:</h3>
+        </div>
+        <% if @lead.lead_status == "product" %>
+        	<%= render "shared/display_Products", leads: @suggested %>
+        <% elsif @lead.lead_status == "offer"%>
+        	<%= render "shared/display_Offers", leads: @suggested %>	
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
