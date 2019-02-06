@@ -93,15 +93,15 @@ class LeadsController < ApplicationController
   end
 
   def suggested_leads
-    # this action should be updated&changed in the futere
+    # TODO: this action should be more restricted for users in the future
     @lead = Lead.find(params[:id])
     @suggested = Lead.suggested_leads(@lead)
   end
-  
+
   private
 
   def prepare_indexed_leads(query, status, filters)
-    # TODO: this action should be more restricted for users in the future
+    # translate filter params hash into arrays of strings
     @translatedFilters = translateFilters(filters)
 
     @leads = Lead.search_leads(query, status, @translatedFilters)

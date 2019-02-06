@@ -57,9 +57,6 @@ $("#lead_category_id").on('change',function(selectObject){
   });
 
 
-
-
-
   var menuHeight = $('#menu').outerHeight();
   // Fixed Sidebar
 

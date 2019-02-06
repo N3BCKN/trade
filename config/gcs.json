@@ -1,1 +1,2 @@
-ENV["GCS_CREDENTIALS"]
+// This is environmental variable stores on heroku. Which contains all credentials connecting to Google Cloud Storage
+ENV.fetch("GCS_CREDENTIALS")
