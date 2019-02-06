@@ -1,3 +1,15 @@
+  // Fixed Sidebar
+  jQuery(document).ready(function() {
+
+    var menuHeight = $('#menu').outerHeight();
+
+    $('.has-sidebar>*').theiaStickySidebar({
+      additionalMarginTop: menuHeight + 30,
+      additionalMarginBottom:30,
+      minWidth: 767,
+    });
+  });
+
 $( document ).on('turbolinks:load', function() {
 
   //display current year on footer
@@ -57,14 +69,6 @@ $("#lead_category_id").on('change',function(selectObject){
   });
 
 
-  var menuHeight = $('#menu').outerHeight();
-  // Fixed Sidebar
-
-  $('.has-sidebar>*').theiaStickySidebar({
-    additionalMarginTop: menuHeight + 30,
-    additionalMarginBottom:30,
-    minWidth: 767,
-  });
 
   
    
