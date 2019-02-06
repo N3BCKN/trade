@@ -60,7 +60,7 @@
 
         <div class="form-group">
           <h3 class="subheadline py-3">Address:</h3>
-           <%= f.text_field :address, value: @contact.try!(:address), autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
+           <%= f.text_field :address,  autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
 
         <div class="form-group">
           <h3 class="subheadline py-3">City:</h3>
@@ -88,13 +88,12 @@
         </div>
 
         
-        <div class="form-group py-5">
-                <h3 class="subheadline py-3">Upload Photos:</h3>
+        <div class="form-group pb-5">
+                <h3 class="subheadline py-3">Upload Product Image:</h3>
                 <div class="ui-dropzone">
                   <img class="img-fluid" id="img_prev">
                   <i class="fa fa-5x fa-upload"></i>
                   <div>Drag and drop product image or click to upload</div>
-                  <!-- <input type="file" class="form-control form-control-lg" id="gallery" multiple> -->
                   <%= f.file_field :product_image, :class=>"form-control form-control-lg", :onChange=>"readURL(this,'100%','100%')", :id=>"gallery" %>
                 </div>
         </div>
