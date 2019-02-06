@@ -1,14 +1,20 @@
-  // Fixed Sidebar
-  jQuery(document).ready(function() {
+//image preview placeholder
+function readURL(input,width,height) {
 
-    var menuHeight = $('#menu').outerHeight();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function (e) {
+        $('#img_prev')
+        .attr('src', e.target.result)
+        .width(width)
+        .height(height);
+      };
 
-    $('.has-sidebar>*').theiaStickySidebar({
-      additionalMarginTop: menuHeight + 30,
-      additionalMarginBottom:30,
-      minWidth: 767,
-    });
-  });
+      reader.readAsDataURL(input.files[0]);
+     }
+  }
+
 
 $( document ).on('turbolinks:load', function() {
 
@@ -69,6 +75,14 @@ $("#lead_category_id").on('change',function(selectObject){
   });
 
 
+  var menuHeight = $('#menu').outerHeight();
+  // Fixed Sidebar
+
+  $('.has-sidebar>*').theiaStickySidebar({
+    additionalMarginTop: menuHeight + 30,
+    additionalMarginBottom:30,
+    minWidth: 767,
+  });
 
   
    
@@ -182,21 +196,5 @@ $(window).ready(function(e) {
 });
 
 
-//image preview placeholder
-function readURL(input,width,height) {
-
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      
-      reader.onload = function (e) {
-        $('#img_prev')
-        .attr('src', e.target.result)
-        .width(width)
-        .height(height);
-      };
-
-      reader.readAsDataURL(input.files[0]);
-     }
-  }
 
 })

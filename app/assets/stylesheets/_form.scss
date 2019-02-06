@@ -120,7 +120,9 @@ input[type="radio"], input[type="checkbox"] {
 
 .ui-dropzone {
 	display:block;
-	width:100%;
+	width:50%;
+	margin-right: 25%;
+	margin-left: 25%;
 	position:relative;
 	padding:50px 50px;
 	text-align:center;
