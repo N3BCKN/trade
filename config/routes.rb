@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Custom Static Pages
   get 'about',              to: 'pages#about'
-  get 'contact',            to: 'pages#contact'
+  get 'contactus',            to: 'pages#contact'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'

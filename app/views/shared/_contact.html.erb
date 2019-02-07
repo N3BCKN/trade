@@ -1,44 +1,44 @@
-<%= form_for contact, html: { multipart: true } do |f| %>
+<%= form_for(@contact) do |f| %>
 
 <div class="form-group">
-    <label for="companyDescription">Company Description</label>
-    <%= f.text_area :company_description, :class=>"form-control rounded-1", :id=>"companyDescription", rows: "5" %>
-    <small id="descriptionHelp" class="form-text text-muted">Describe your company's activity for the Customers</small>
+     <h3 class="subheadline">Company Description</h3>
+    <%= f.text_area :company_description, :class=>"form-control form-control-lg rounded-1", :id=>"companyDescription", rows: "5" %>
+    <small id="descriptionHelp" class="form-text text-muted">Describe your company's activity for the customers</small>
 </div>
 
 <div class="form-group">
-    <label for="address">Address</label>
-    <%= f.text_field :address, autocomplete: "address", :class=>"form-control", :id=>"address" %>
+     <h3 class="subheadline">Address</h3>
+    <%= f.text_field :address, autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
 </div>
 
 <div class="form-group">
-    <label for="city">City</label>
-     <%= f.text_field :city, autocomplete: "city", :class=>"form-control", :id=>"city" %>
+     <h3 class="subheadline">City</h3>
+     <%= f.text_field :city, autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
   </div>
 
 <div class="form-group">
-    <label for="zip_code">Zip Code</label>
-    <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control", :id=>"zip_code" %>
+     <h3 class="subheadline">Zip Code</h3>
+    <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control form-control-lg", :id=>"zip_code" %>
 </div>
 
 <div class="form-group">
-    <label for="country">Country</label>
-    <%= country_select("contact", "country", { }, { class: 'form-control' }) %>
+     <h3 class="subheadline">Country</h3>
+    <%= country_select("contact", "country", { }, { class: 'form-control form-control-lg ui-select' }) %>
   </div>
 
 <div class="form-group">
-    <label for="phone_number">Phone Number</label>
-    <%= f.text_field :phone_number, autocomplete: "phone number", :class=>"form-control", :id=>"phone_number" %>
+     <h3 class="subheadline">Phone Number</h3>
+    <%= f.text_field :phone_number, autocomplete: "phone number", :class=>"form-control form-control-lg", :id=>"phone_number" %>
 </div>
 
 <div class="form-group">
-    <label for="home_page">Home Page</label>
-    <%= f.text_field :home_page, autocomplete: "Home Page", :class=>"form-control", :id=>"home_page" %>
+     <h3 class="subheadline">Home Page</h3>
+    <%= f.text_field :home_page, autocomplete: "Home Page", :class=>"form-control form-control-lg", :id=>"home_page" %>
 </div>
 
 <div class="form-group">
-    <label for="establishment">Year of Establishment</label>
-    <%= f.text_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control", :id=>"establishment" %>
+     <h3 class="subheadline">Year of Establishment</h3>
+    <%= f.text_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control form-control-lg", :id=>"establishment" %>
 </div>
 
 <div class="form-group text-center">
