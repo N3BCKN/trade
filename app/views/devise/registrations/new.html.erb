@@ -49,8 +49,8 @@
                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>"form-control form-control-lg", :id=>"passwordConfirm", :placeholder=>"Password Confirmation", :required=>true %>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="terms">
-                <label for="terms">By registering I accept our Terms of Use and Privacy.</label>
+                <%= f.check_box :terms_of_use, :id=>"terms", :required=>true %>
+                <label for="terms">By registering I accept <%= link_to "Terms of Use", terms_path %> and Privacy.</label>
               </div>
               <button type="submit" class="btn btn-primary btn-lg">Register</button>
             <% end %>
