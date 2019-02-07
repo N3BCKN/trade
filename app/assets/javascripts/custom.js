@@ -25,7 +25,7 @@ $( document ).on('turbolinks:load', function() {
 
   // redirect from home_page search bar to the proper controller
   $('#main_select').closest('form').attr('action', '/offers');
-  
+
   $('#main_select').on('change',function(){
     if ($(this).val() == 'products'){
       $(this).closest('form').attr('action', '/products');
@@ -35,9 +35,6 @@ $( document ).on('turbolinks:load', function() {
     }
   });
 
-  // $('#search_bar_btn').on('click', function(){
-  //   $(this).closest('form').attr('action', '/offers');
-  // });
 
   // examples of products for selected categories on add lead pages
 $("#lead_category_id").on('change',function(selectObject){
