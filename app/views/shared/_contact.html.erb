@@ -7,24 +7,24 @@
 </div>
 
 <div class="form-group">
-     <h3 class="subheadline">Address</h3>
-    <%= f.text_field :address, autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
+     <h3 class="subheadline">Country</h3>
+    <%= country_select("contact", "country", { }, { class: 'form-control form-control-lg ui-select' }) %>
 </div>
 
 <div class="form-group">
      <h3 class="subheadline">City</h3>
      <%= f.text_field :city, autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
-  </div>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Address</h3>
+    <%= f.text_field :address, autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
+</div>
 
 <div class="form-group">
      <h3 class="subheadline">Zip Code</h3>
     <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control form-control-lg", :id=>"zip_code" %>
 </div>
-
-<div class="form-group">
-     <h3 class="subheadline">Country</h3>
-    <%= country_select("contact", "country", { }, { class: 'form-control form-control-lg ui-select' }) %>
-  </div>
 
 <div class="form-group">
      <h3 class="subheadline">Phone Number</h3>

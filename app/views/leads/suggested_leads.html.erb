@@ -1,4 +1,9 @@
 <% content_for(:title, "Message has been sent" )%>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".pagination").css('display','none');
+  });
+</script>
 <div id="content" class="property-single">
   <div class="container">
     <div class="row justify-content-md-center">
@@ -11,8 +16,9 @@
 	            </li>
 	             <li class="breadcrumb-item">Message Sent</li>
             </ol>
-         </nav>
+         </nav>   
         <div class="page-header v2 bordered">
+          <div class="error-template text-center"> <i class="fa fa-check fa-5x text-success mb50 animated zoomIn"></i>
 	        <h1>You replied to the: <%= link_to @lead.title, lead_path(@lead) %>
 	        <br>
 	         <small>User will receive your message.</small></h1>
