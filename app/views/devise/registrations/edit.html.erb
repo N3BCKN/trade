@@ -26,11 +26,11 @@
 
              <div class="form-group">
               <label>New Password <i>(leave blank if you don't want to change it)</i></label>
-              <%= f.text_field :password, autocomplete: "new-password", :class=>"form-control form-control-lg" %>
               <% if @minimum_password_length %>
                 <br />
                 <em><%= @minimum_password_length %> characters minimum</em>
               <% end %>
+              <%= f.text_field :password, autocomplete: "new-password", :class=>"form-control form-control-lg" %>
               </div>
 
               <div class="form-group">
