@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
-  validates :terms_of_use, presence: true
 
   has_one   :contact
   has_many  :leads

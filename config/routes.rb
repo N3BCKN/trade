@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'profile/membership', to: 'profiles#profile_membership'
 
   # Custom Devise Paths
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout' }
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout', edit: 'profile/editpassword' }
 
   # Custom Leads Paths
   get 'new_offer',   to: 'leads#new_offer'
@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   get 'products',    to: 'leads#index_products'
 
   # Custom Static Pages
-  get 'about',              to: 'pages#about'
-  get 'contactus',            to: 'pages#contact'
+  get 'about', to: 'pages#about'
+  get 'contactus', to: 'pages#contact'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'
