@@ -7,4 +7,3 @@ Paperclip::Attachment.default_options[:gcs_credentials] = {
     project: ENV.fetch("GCS_PROJECT"),
     keyfile: "#{Rails.root}/config/gcs.json",
 }
-
