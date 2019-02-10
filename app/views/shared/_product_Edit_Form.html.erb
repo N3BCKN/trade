@@ -24,20 +24,7 @@
 
         <div class="form-group">
           <h3 class="subheadline py-3">Select Category:</h3>
-          <select name="lead[category_id]" id="lead_category_id" class="form-control form-control-lg ui-select">
-            <option value="1">Fuels</option>
-            <option value="2">Raw Materials</option>
-            <option value="3">Cosmetics / Body Care</option>
-            <option value="4">Groceries / Food</option>
-            <option value="5">Mechanic Devices and Parts</option>
-            <option value="6">Basic Necessities</option>
-            <option value="7">Electronics</option>
-            <option value="8">Clothers / Textiles</option>
-            <option value="9">Agriculture</option>
-            <option value="10">Industrial Goods</option>
-            <option value="11">Construction Materials</option>
-            <option value="12">Office/Packaging Products</option>
-          </select>
+          <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name', @lead.category.id.to_s) %>
           <br>
           <small id="category_helper"></small>
         </div>
@@ -93,7 +80,7 @@
         </div>
 
           <%= hidden_field_tag :lead_status, "product" %>
-          <%= f.submit "Edit Product", :class=>"btn btn-primary btn-block" %>
+          <%= f.submit "Edit Product", :class=>"btn btn-lg btn-primary btn-block" %>
       <% end %>
        <%= link_to lead_path(@lead), :class=>"btn btn-danger my-5", method: :delete, data: { confirm: 'Are you sure?' } do%>
           <i class="fa fa-trash" aria-hidden="true"></i>
@@ -108,6 +95,9 @@
   </div>
 </div>
 
+<script>
+    $("#lead_category_id").addClass('form-control form-control-lg ui-select');  
+</script>
 
 
  
