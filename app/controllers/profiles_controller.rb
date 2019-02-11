@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def show_messages
-    @messages = Message.where(user_id: current_user)
+    @messages = Message.where(sender: current_user)
                        .page(params[:page])
   end
 

@@ -13,11 +13,22 @@
               <h1>Your Sent Messages:</h1>
             </div>
             <%  if @messages.present? %>
-				<% @messages.find_each do |message| %>
-					<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
-					<p>Message: <%= message.content %></p>
-					<small><%= message.created_at.strftime("%Y/%m/%d - %H:%m")%></small>
-					<hr>
+				  <% @messages.find_each do |message| %>
+  					<div class="item-info py-3">
+              <h5 class="item-title">RE: <%= link_to message.lead.title, lead_path(message.lead) %></h5>
+                <div class="item-details mb-2">
+                  <strong>Message:</strong> <%= message.content %>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <div class="added-by"><strong>Sent:</strong> <%=  message.created_at.strftime("%Y/%m/%d - %H:%m")%>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+            <hr>
 				<% end %>
 			<% else %>
 					<h4 class="text-muted text-center">No messages sent yet</h4>
@@ -28,3 +39,6 @@
     </div>
   </div>
 </div>
+
+
+                
