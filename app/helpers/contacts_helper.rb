@@ -3,9 +3,9 @@
 module ContactsHelper
   def user_avatar(contact, img_id = nil)
     if contact.avatar?
-      image_tag 'default_user_avatar.png', class: 'img-fluid', id: img_id
-    else
       image_tag contact.avatar.url, class: 'img-fluid', id: img_id
+    else
+      image_tag 'default_user_avatar.png', class: 'img-fluid', id: img_id
     end
   end
 

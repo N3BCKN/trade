@@ -1,16 +1,82 @@
 <% content_for(:title, "#{@contact.user.user_name} - Profile" )%>
-<div class="text-center">
-	<div class="container">
-		
-		<%= set_user_avatar(@contact) %><br><br>
-		User Name: <%= @contact.user.user_name %><br>
-		Address:   <%= @contact.address %><br>
-		Zip Code:  <%=  @contact.zip_code %><br>
-		Phone Number <%= @contact.phone_number %><br>
-		City: <%= @contact.city %><br>
-		Country: <%= country_name(@contact.country) if !@contact.country.nil? %><br>
-		Home Page: <%= @contact.home_page %><br>
-		<b>About Us: </b><p><%= @contact.company_description %></p>
-
-	</div>
+<div class="containerXXX">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item">Companies</li>
+            <li class="breadcrumb-item active" aria-current="page"><%= @contact.user.user_name %></li>
+            </ol>
+            </nav>
+        </div>
+        </div>
+        </div>
+<div id="content" class="item-single">
+  <div class="containerXXX">
+    <div class="row justify-content-md-center">
+       <div class="col col-md-12 col-lg-12 col-xl-10">
+        <div class="row row justify-content-md-center has-sidebar">
+          <div class="col-md-7 col-lg-8">
+              <div class="page-header mt-0">
+		            <h1>About <%= @contact.user.user_name %> 
+		            <small><i class="fa fa-map-marker"></i> 
+		            <%= @contact.address %>, <%= @contact.city %>,
+		            <%= country_name(@contact.country) %>
+		            <%= flag_icon(@contact.country.downcase) %>
+		        	</small>
+		        	</h1>
+	          </div>
+	          <hr>
+              <div class="item-description">
+              	<%= image_tag(@contact.avatar, :class=>"float-left p-3") if @contact.avatar?%>             
+                 <p><%= @contact.company_description %></p>
+              </div>
+              <h3 class="headline pt-2">Areas of Interest:</h3>
+                <ul class="checked_list feature-list">
+                  <li><strong>This will be updated soon after, with new Contact models</strong></li>
+                </ul>
+               <ul class="item-features">
+                  <li><span>Established</span> 
+                  	<%= @contact.year_of_establishment.present? ? @contact.year_of_establishment : '-' %>
+                  </li>
+                  <li><span>Employers</span> 
+                  	soon 
+                  </li>
+                  <li><span>Annual Salary</span> 
+                   	soon
+                  </li>
+                  <li><span>Home Page</span> 
+                  	<%= link_to @contact.home_page  if @contact.home_page.present? %> 
+                  </li>
+                </ul>
+               <div class="item-navigation">
+                	<h3 class="headline">Location:</h3>
+                  <ul class="nav nav-tabs v2" role="tablist">
+                    <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
+                    <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.0187997410612!2d20.99101061579713!3d52.24304217976256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc7dcf83c10b%3A0x5588f4231932ad85!2sal.+Jana+Paw%C5%82a+II+46%2F48%2C+05-077+Warszawa!5e0!3m2!1spl!2spl!4v1549828964154" width="600" height="450" style="border:0;" allowfullscreen></iframe>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="streetview">
+                      <iframe src="https://www.google.com/maps/embed?pb=!4v1549829216702!6m8!1m7!1sCAoSLEFGMVFpcE5sbl9TWHh5RFdJaUpSNTZZMzM2TmdjLUgtcUxTVTFudTI2bGg5!2m2!1d52.24310752711766!2d20.99290933459998!3f58.33574568706325!4f1.9862102646058872!5f0.7820865974627469" width="600" height="450" style="border:0" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <div id="sidebar" class="sidebar-right">
+              <div class="sidebar_inner">
+               <h3>Not a member?</h3>
+			   <p class="lead">Register for free and contact this Company.</p>
+			   <%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
