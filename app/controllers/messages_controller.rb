@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def create
     @lead = Lead.find(params[:id])
     @message = Message.create(message_params)
-    @message.user    = current_user
+    @message.sender    = current_user
     @message.lead    = @lead
 
     respond_to do |format|
@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
   end
 
   def check_user_restrictions
-    @number_of_msgs = current_user.messages
+    @number_of_msgs = current_user.messages_sent
                                   .where('created_at >= ?', Time.current - 7.days)
                                   .count
 

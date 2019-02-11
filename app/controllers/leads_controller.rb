@@ -68,7 +68,7 @@ class LeadsController < ApplicationController
 
   def show
     if user_signed_in?
-      @message         = current_user.messages.build
+      @message         = current_user.messages_sent.build
       @message.lead    = @lead
       @contact         = current_user.contact
       @favorite_exists = FavoriteLead
