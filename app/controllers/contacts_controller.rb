@@ -7,11 +7,11 @@ class ContactsController < ApplicationController
 
   def show
     if user_signed_in?
-       @contact         = Contact.find(params[:id])
-       @user            = User.find(@contact.user.id)
-       @message         = current_user.messages_sent.build
-       @message.receiver = @user 
-    end 
+      @contact = Contact.find(params[:id])
+      @user            = User.find(@contact.user.id)
+      @message         = current_user.messages_sent.build
+      @message.receiver = @user
+    end
   end
 
   def new

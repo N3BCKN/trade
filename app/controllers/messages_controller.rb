@@ -8,8 +8,8 @@ class MessagesController < ApplicationController
   def create
     @lead = Lead.find(params[:id])
     @message = Message.create(message_params)
-    @message.sender    = current_user
-    @message.lead    = @lead
+    @message.sender = current_user
+    @message.lead = @lead
 
     respond_to do |format|
       if @message.save

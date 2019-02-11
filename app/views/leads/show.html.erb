@@ -33,8 +33,6 @@
           </div>
           <div class="col-md-4">
           	<% if user_signed_in? %>
-            <%= render "shared/lead_Message" %>
-            <% else %>
             <%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-primary float-right", :id => "favorite_button", remote: true %>
             <% end %>
           </div>
