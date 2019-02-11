@@ -2,6 +2,7 @@
 
 class ProfilesController < ApplicationController
   before_action :count_leads
+  before_action :count_messages, only: :show_profile
 
   def show_profile
     @contact = Contact.find_by(id: current_user)
@@ -37,5 +38,9 @@ class ProfilesController < ApplicationController
   def count_leads
     @offers = Lead.profile_leads('offer', current_user).count
     @products = Lead.profile_leads('product', current_user).count
+  end
+
+  def count_messages
+    @messages = Message.where(sender: current_user).count
   end
 end
