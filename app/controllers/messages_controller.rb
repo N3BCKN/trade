@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
         ).deliver_now
 
         format.html do
-          redirect_to lead_path(params[:id]),
+          redirect_to suggested_leads_path(params[:id]),
             notice: 'Your message has been sent'
         end
       else
