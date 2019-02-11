@@ -24,3 +24,7 @@
 .center_lead{
 	width: 100%!important;
 }
+
+.pagination li:last-of-type{
+	display: none;
+}
