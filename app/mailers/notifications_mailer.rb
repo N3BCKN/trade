@@ -5,7 +5,7 @@ class NotificationsMailer < ApplicationMailer
   	@message = message
   	@lead    = lead
   	@url     = url_path
-    mail(to:      lead.user.email,
+    mail(to:      @lead.user.email,
          subject: "RE: #{lead.title}")
   end
 end

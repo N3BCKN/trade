@@ -1,20 +1,18 @@
 <% content_for(:title, "#{@contact.user.user_name} - Profile" )%>
-<div class="containerXXX">
-    <div class="row justify-content-md-center">
-          <div class="col col-lg-12 col-xl-10">
-<nav aria-label="breadcrumb">
+    <div class="row justify-content-md-center center_lead">
+      <div class="col col-lg-12 col-xl-10">
+          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-            <li class="breadcrumb-item">Companies</li>
-            <li class="breadcrumb-item active" aria-current="page"><%= @contact.user.user_name %></li>
+              <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+              <li class="breadcrumb-item">Companies</li>
+              <li class="breadcrumb-item active" aria-current="page"><%= @contact.user.user_name %></li>
             </ol>
-            </nav>
-        </div>
-        </div>
-        </div>
+          </nav>
+      </div>
+    </div>
+
 <div id="content" class="item-single">
-  <div class="containerXXX">
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center center_lead">
        <div class="col col-md-12 col-lg-12 col-xl-10">
         <div class="row row justify-content-md-center has-sidebar">
           <div class="col-md-7 col-lg-8">
@@ -83,5 +81,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
