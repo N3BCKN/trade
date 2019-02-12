@@ -51,7 +51,6 @@ gem 'paperclip-gcs'
 gem 'paranoia', '~> 2.2'
 gem 'popper_js', '~> 1.14'
 gem 'tether-rails', '~> 1.4'
-gem "font-awesome-rails"
 gem 'flag-icons-rails'
 
 gem 'devise', '~> 4.2'
