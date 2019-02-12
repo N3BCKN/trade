@@ -60,7 +60,7 @@
               <div class="col-md-4">
                 <div class="content-box">
                   <div class="image"> <img src="https://image.shutterstock.com/z/stock-photo-young-businessman-construction-site-engineer-close-up-1023394366.jpg" class="rounded-circle img-fluid" width="280" alt=""> </div>
-                  <h4>Lifestyle</h4>
+                  <h4>International Partners</h4>
                   <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, inventore?</div>
                   <div class="button"><a href="#">FIND YOUR INSPIRATION</a></div>
                 </div>
@@ -68,7 +68,7 @@
               <div class="col-md-4">
                 <div class="content-box">
                   <div class="image"> <img src="https://image.shutterstock.com/z/stock-photo-smiling-indian-business-man-with-smartphone-532532470.jpg" class="rounded-circle img-fluid" width="280" alt=""> </div>
-                  <h4>International</h4>
+                  <h4>Business Opportunities</h4>
                   <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, sapiente!</div>
                   <div class="button"><a href="#">CHOOSE A COUNTRY</a></div>
                 </div>
@@ -76,7 +76,7 @@
               <div class="col-md-4">
                 <div class="content-box">
                   <div class="image"> <img src="https://image.shutterstock.com/z/stock-photo-portrait-of-a-happy-casual-businesswoman-in-sweater-sitting-at-her-workplace-in-office-307218608.jpg" class="rounded-circle img-fluid" width="280" alt=""> </div>
-                  <h4>Sell</h4>
+                  <h4>Double your Sales</h4>
                   <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, corrupti?</div>
                   <div class="button"><a href="#">EXPLORE NOW</a></div>
                 </div>
@@ -94,60 +94,189 @@
         <div class="row justify-content-md-center">
           <div class="col col-lg-12 col-xl-10">
             <div class="item-listing grid">
-            <div class="main-title"><span>Featured Properties</span></div>
-          <div class="main-title-description">Thinking abroad? You can now dream and discover international properties</div>
+            <div class="main-title"><span>Find What You Need</span></div>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3 col-sm-6">
                   <div class="item">
-                    <div class="item-image"><a href="property_single.html"><img src="img/demo/property/1.jpg" class="img-fluid" alt="">
-                      <div class="item-meta">
-                        <div class="item-price">$420,000 <small>$777 / sq m</small> </div>
-                      </div>
-                      <div class="item-badges">
-                        <div class="item-badge-left">Sponsored</div>
-                        <div class="item-badge-right">For Sale</div>
-                      </div>
-                      </a> <a href="#" class="save-item"><i class="fa fa-star"></i></a> </div>
-                    <div class="item-info">
-                      <h3 class="item-title">3 bed semi-detached house</h3>
-                      <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                      <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div>
+                    <%= link_to offers_categories_path("Fuels") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                    <div class="carousel-caption">
+                      <h6 class="text-white">Fuels</h6>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Raw Materials") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Raw Materials</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Cosmetics / Body Care") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Cosmetics and Body Care</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Groceries / Food") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Groceries and Food Products</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Mechanic Devices and Parts") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Mechanic Devices and Parts</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Basic Necessities") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Basic Necessities</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Electronics") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Electronics</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Clothers / Textiles") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Clothers and Textiles</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Agriculture") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Agriculture</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Industrial Goods") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Industrial Goods</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Construction Materials") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Construction Materials</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Office/Packaging Products") do %>
+                    <img src="https://via.placeholder.com/250C" alt="" class="img-fluid">
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text-white">Office and Packaging Products</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="feature-box centered grey">
+    <div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+            <div class="item-listing grid">
+            <div class="main-title"><span>How to start using Trade?</span></div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-list-alt fa-3x"></i>
+                      <h4>Browse</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="item">
-                    <div class="item-image"><a href="property_single.html"><img src="img/demo/property/2.jpg" class="img-fluid" alt="">
-                      <div class="item-meta">
-                        <div class="item-price">$420,000 <small>$777 / sq m</small> </div>
-                      </div>
-                      <div class="item-badges">
-                        <div class="item-badge-left">Sponsored</div>
-                        <div class="item-badge-right">For Sale</div>
-                      </div>
-                      </a> <a href="#" class="save-item"><i class="fa fa-star"></i></a> </div>
-                    <div class="item-info">
-                      <h3 class="item-title">3 bed semi-detached house</h3>
-                      <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                      <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-user-plus fa-3x"></i>
+                      <h4>Register</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="item">
-                    <div class="item-image"><a href="property_single.html"><img src="img/demo/property/3.jpg" class="img-fluid" alt="">
-                      <div class="item-meta">
-                        <div class="item-price">$420,000 <small>$777 / sq m</small> </div>
-                      </div>
-                      <div class="item-badges">
-                        <div class="item-badge-left">Sponsored</div>
-                        <div class="item-badge-right">For Sale</div>
-                      </div>
-                      </a> <a href="#" class="save-item"><i class="fa fa-star"></i></a> </div>
-                    <div class="item-info">
-                      <h3 class="item-title">3 bed semi-detached house</h3>
-                      <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                      <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-comments fa-3x"></i>
+                      <h4>Contact</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-file-invoice-dollar fa-3x"></i>
+                      <h4>Trade</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
                     </div>
                   </div>
                 </div>
@@ -158,44 +287,6 @@
       </div>
     </div>
   </div>
-
-<div class="feature-box centered">
-  <div class="container">
-    <div class="row justify-content-md-center">
-        <div class="main-title"><span>How to start using Trade?</span></div>
-        <div class="col col-lg-12 col-xl-10">
-          <div class="row">
-            <div class="col-md-3 text-center">
-              <div style="font-size: 24px;">
-                <i class="fa fa-list-alt fa-5x"></i>
-                <h4>Browse</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
-              </div>
-            </div>
-            <div class="col-md-3 text-center">
-              <div style="font-size: 24px;">
-                <i class="fa fa-user-plus fa-5x"></i>
-                <h4>Register</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
-              </div>
-            </div>
-            <div class="col-md-3 text-center">
-              <div style="font-size: 24px;">
-                <i class="fa fa-comments fa-5x"></i>
-                <h4>Contact</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
-              </div>
-            </div>
-            <div class="col-md-3 text-center">
-              <div style="font-size: 24px;">
-                <i class="fa fa-file-invoice-dollar fa-5x"></i>
-                <h4>Trade</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
   </div>
 </div>
 
