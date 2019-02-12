@@ -59,7 +59,7 @@
             <%= link_to "User Settings", edit_contact_path(current_user.contact), :class => "dropdown-item" %>
             <%= link_to "Change Password", profile_dashboard_path, :class => "dropdown-item" %>
             <%= link_to destroy_user_session_path, :class => "dropdown-item", :method => :delete do %>
-            <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+            <i class="fas fa-sign-out-alt mr-1"></i></i>Logout
             <% end %>
           </div>
           <% else %>

@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   def home
     @categories = Category.all
+    @offers = Lead.where(lead_status: 'offer').order('created_at desc').limit(6)
+    @products = Lead.where(lead_status: 'product').order('created_at desc').limit(6)
   end
 
   def contact
