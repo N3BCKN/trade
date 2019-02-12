@@ -4,7 +4,7 @@
         <span class="list-group-item heading">Manage Leads</span>
             <%= link_to new_product_path, 
                 :class => "list-group-item" do %>
-            <i class="fa fa-fw fa-plus-square-o"></i> Add New Lead
+              <i class="fas fa-plus-square"></i> Add New Lead
             <% end %>
             <%= link_to profile_products_path, 
                 :class => "#{params[:action] == 'show_products' ?  'active' : ''}
@@ -21,7 +21,7 @@
             <%= link_to profile_favorites_path, 
                 :class => "#{params[:action] == 'show_favorites' ?  'active' : ''}
             list-group-item d-flex justify-content-between align-items-center " do %>
-              <span><i class="fa fa-heart-o"></i> Favorite Leads</span>
+              <span><i class="fas fa-heart"></i> Favorite Leads</span>
               <span class="badge badge-primary badge-pill"><%= current_user.favorite_leads.count %></span>
             <% end %>
             <%= link_to profile_messages_path, 
@@ -35,11 +35,11 @@
            <%= link_to profile_dashboard_path, 
               :class => "#{params[:action] == 'show_profile' ?  'active' : ''} 
            list-group-item" do %>
-           <i class="fa fa-fw fa-pencil"></i> My Profile
+           <i class="fas fa-pencil-alt"></i> My Profile
            <% end %>
            <%= link_to edit_contact_path(current_user.contact), 
               :class => "#{params[:action] == 'edit' && params[:controller] == 'contacts' ?  'active' : ''} list-group-item" do %>
-           <i class="fa fa-fw fa-building-o"></i> Company Informations
+           <i class="fas fa-building"></i> Company Informations
            <% end %>
            <%= link_to edit_user_registration_path, 
               :class => " #{params[:controller] == 'devise/registrations' ?  'active' : ''} list-group-item" do %>
