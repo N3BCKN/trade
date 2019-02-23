@@ -1,5 +1,6 @@
 //image preview placeholder
-function readURL(input,width,height) {
+$(document).ready(function(){
+  function readURL(input,width,height) {
 
     if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -15,6 +16,15 @@ function readURL(input,width,height) {
      }
   }
 
+  var menuHeight = $('#menu').outerHeight();
+  // Fixed Sidebar  
+  $('.has-sidebar>*').theiaStickySidebar({
+    additionalMarginTop: menuHeight + 30,
+    additionalMarginBottom:30,
+    minWidth: 767,
+  });
+
+})
 
 $( document ).on('turbolinks:load', function() {
 
@@ -79,17 +89,6 @@ $("#lead_category_id").on('change',function(selectObject){
     }
   });
 
-
-  var menuHeight = $('#menu').outerHeight();
-  // Fixed Sidebar
-
-  $('.has-sidebar>*').theiaStickySidebar({
-    additionalMarginTop: menuHeight + 30,
-    additionalMarginBottom:30,
-    minWidth: 767,
-  });
-
-  
    
    // Initiate select2 plugin
    
