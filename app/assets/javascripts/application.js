@@ -17,4 +17,7 @@
 //= require tether
 //= require popper
 //= require bootstrap
-//= require_tree .
+//= require_tree ./libs
+//= require cable
+//= require mobile-detect.min
+//= require custom

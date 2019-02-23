@@ -38,11 +38,11 @@
            <i class="fas fa-pencil-alt"></i> My Profile
            <% end %>
            <%= link_to edit_contact_path(current_user.contact), 
-              :class => "#{params[:action] == 'edit' && params[:controller] == 'contacts' ?  'active' : ''} list-group-item" do %>
+              :class => "#{params[:action] == 'edit' && controller_name == 'contacts' ?  'active' : ''} list-group-item" do %>
            <i class="fas fa-building"></i> Company Informations
            <% end %>
            <%= link_to edit_user_registration_path, 
-              :class => " #{params[:controller] == 'devise/registrations' ?  'active' : ''} list-group-item" do %>
+              :class => " #{controller_name == 'registrations' ?  'active' : ''} list-group-item" do %>
            <i class="fa fa-fw fa-lock"></i> Change Password
            <% end %>
            <%= link_to profile_membership_path, 
