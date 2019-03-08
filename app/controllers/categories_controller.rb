@@ -19,6 +19,6 @@ class CategoriesController < ApplicationController
 
   def find_categories_by_name
     @categories = Category.all
-    @category = Category.find_by name: params[:category]
+    @category = Category.find_by! name: params[:category]
   end
 end
