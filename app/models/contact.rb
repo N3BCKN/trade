@@ -3,6 +3,8 @@
 class Contact < ApplicationRecord
   belongs_to :user
 
+  serialize :areas_of_interest
+
   validates :address, length: { minimum: 5, maximum: 120 }, allow_blank: true
   validates :city, length: { minimum: 2, maximum: 80 }, allow_blank: true
   validates :zip_code, length: { minimum: 4, maximum: 25 }, allow_blank: true
