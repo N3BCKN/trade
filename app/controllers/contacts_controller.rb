@@ -68,7 +68,10 @@ class ContactsController < ApplicationController
       :company_description,
       :home_page,
       :year_of_establishment,
-      :avatar
+      :avatar,
+      :annual_sales,
+      :areas_of_interest,
+      :number_of_employes
     )
   end
 
