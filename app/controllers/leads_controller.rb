@@ -134,7 +134,7 @@ class LeadsController < ApplicationController
   end
 
   def set_lead
-    @lead       = Lead.find(params[:id])
+    @lead       = Lead.friendly.find(params[:id])
     @categories = Category.all
   end
 
