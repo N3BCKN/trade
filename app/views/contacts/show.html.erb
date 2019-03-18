@@ -32,20 +32,26 @@
               </div>
               <h3 class="headline pt-2">Areas of Interest:</h3>
                 <ul class="checked_list feature-list">
-                  <li><strong>This will be updated soon after, with new Contact models</strong></li>
+                  <% @contact.areas_of_interest.each do |area| %>
+                  <li><strong><%= area %></strong></li>
+                  <% end %>
                 </ul>
                <ul class="item-features">
                   <li><span>Established</span> 
                   	<%= @contact.year_of_establishment.present? ? @contact.year_of_establishment : '-' %>
                   </li>
                   <li><span>Employers</span> 
-                  	soon 
+                    <%= @contact.number_of_employes.present? ? @contact.number_of_employes : '-' %>
                   </li>
-                  <li><span>Annual Salary</span> 
-                   	soon
+                  <li><span>Annual Sales</span> 
+                   	<%= @contact.annual_sales.present? ? @contact.annual_sales : '-' %>
                   </li>
-                  <li><span>Home Page</span> 
-                  	<%= link_to @contact.home_page  if @contact.home_page.present? %> 
+                  <li><span>Home Page</span>
+                    <% if @contact.home_page.present? %>
+                  	 <%= link_to @contact.home_page %> 
+                    <% else %>
+                      -
+                     <% end %>
                   </li>
                 </ul>
                <div class="item-navigation">

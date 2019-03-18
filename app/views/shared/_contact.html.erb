@@ -8,10 +8,10 @@
 </div>
 
 <div class="form-group">
-    <h3 class="subheadline">Areas of Interest <small>(in progress)</small></h3>
+    <h3 class="subheadline">Areas of Interest</h3>
     <% @categories.each do |category| %>
     <div class="form-check form-check-inline">
-         <%= check_box :areas_of_interest,category.name, :class=>"form-check-input" %>
+         <%= f.check_box :areas_of_interest, { multiple: true, :class=>"form-check-input" }, category.name, false %>
         <label class="form-check-label"><%= category.name %></label>
     </div>
     <% end %>
@@ -43,12 +43,12 @@
 </div>
 
 <div class="form-group">
-     <h3 class="subheadline">Number of Employes <small>(in progress)</small></h3>
+     <h3 class="subheadline">Number of Employes</h3>
     <%= f.number_field :number_of_employes, autocomplete: "number_of_employes", :class=>"form-control form-control-lg", :id=>"number_of_employes" %>
 </div>
 
 <div class="form-group">
-     <h3 class="subheadline">Annual Sales in US dolars <small>(in progress)</small></h3>
+     <h3 class="subheadline">Annual Sales in US dolars</h3>
     <%= f.text_field :annual_sales, autocomplete: "annual_sales", :class=>"form-control form-control-lg", :id=>"annual_sales" %>
 </div>
 

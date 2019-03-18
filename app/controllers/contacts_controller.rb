@@ -70,8 +70,8 @@ class ContactsController < ApplicationController
       :year_of_establishment,
       :avatar,
       :annual_sales,
-      :areas_of_interest,
-      :number_of_employes
+      :number_of_employes,
+      :areas_of_interest => []
     )
   end
 
