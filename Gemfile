@@ -52,6 +52,7 @@ gem 'paranoia', '~> 2.2'
 gem 'popper_js', '~> 1.14'
 gem 'tether-rails', '~> 1.4'
 gem 'flag-icons-rails'
+gem 'friendly_id', '~> 5.2.4'
 
 gem 'devise', '~> 4.2'
 
