@@ -26,6 +26,9 @@
 		        	</h1>
 	          </div>
 	          <hr>
+            
+    
+
               <div class="item-description">
               	<%= image_tag(@contact.avatar, :class=>"float-left p-3") if @contact.avatar?%>             
                  <p><%= @contact.company_description %></p>
@@ -58,15 +61,21 @@
                 	<h3 class="headline">Location:</h3>
                   <ul class="nav nav-tabs v2" role="tablist">
                     <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
-                    <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li>
+                    <!-- <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li> -->
                   </ul>
                   <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="map">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.0187997410612!2d20.99101061579713!3d52.24304217976256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc7dcf83c10b%3A0x5588f4231932ad85!2sal.+Jana+Paw%C5%82a+II+46%2F48%2C+05-077+Warszawa!5e0!3m2!1spl!2spl!4v1549828964154" width="600" height="450" style="border:0;" allowfullscreen></iframe>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="streetview">
-                      <iframe src="https://www.google.com/maps/embed?pb=!4v1549829216702!6m8!1m7!1sCAoSLEFGMVFpcE5sbl9TWHh5RFdJaUpSNTZZMzM2TmdjLUgtcUxTVTFudTI2bGg5!2m2!1d52.24310752711766!2d20.99290933459998!3f58.33574568706325!4f1.9862102646058872!5f0.7820865974627469" width="600" height="450" style="border:0" allowfullscreen></iframe>
-                    </div>
+                      <div id="map" style="height: 400px; width: 100%;"></div>
+                      <script>
+                      function initMap() {
+                        var location = {lat: -25.344, lng: 131.036};
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {zoom: 3, center: location});
+                        var marker = new google.maps.Marker({position: location, map: map});
+                      }
+                      </script>
+                      <script async defer
+                      src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
+                      </script>
                   </div>
                 </div>
           </div>
