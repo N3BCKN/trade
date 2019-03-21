@@ -62,6 +62,58 @@
     <%= f.number_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control form-control-lg", :id=>"establishment" %>
 </div>
 
+<div class="form-group pb-5">
+     <h3 class="subheadline">Map Location</h3>
+    <button class="btn btn-primary btn-md btn-block" type="button" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+        Mark Your Location
+    </button>
+    <div class="collapse" id="collapseMap">
+  <div class="card card-body">
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <script>
+    function initMap() {
+        var location = {lat: -25.344, lng: 131.036};
+
+        var map = new google.maps.Map(
+        document.getElementById('map'), 
+        {
+                zoom: 3, 
+                center: location
+        }
+        );
+
+        var marker = new google.maps.Marker({
+            position: location, 
+            map: map
+        });
+
+
+        function placeMarker(location) {
+          if ( marker ) {
+            marker.setPosition(location);
+          } else {
+            marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          }
+        };
+
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          placeMarker(event.latLng);
+        });
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
+    </script>
+  </div>
+</div>
+</div>
+<hr>
+
 <div class="form-group text-center">
     <%= user_avatar(@contact,"img_prev") %>
     <br>
