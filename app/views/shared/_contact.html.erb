@@ -73,12 +73,16 @@
     <div id="map" style="height: 400px; width: 100%;"></div>
     <script>
     function initMap() {
-        var location = {lat: -25.344, lng: 131.036};
+        var location = {
+            lat: <%= @contact.latitude || 40.7143528 %>,
+            lng: <%= @contact.longitude || -74.0059731 %>
+        };
+        
 
         var map = new google.maps.Map(
         document.getElementById('map'), 
         {
-                zoom: 3, 
+                zoom: 2, 
                 center: location
         }
         );
@@ -103,15 +107,19 @@
 
         google.maps.event.addListener(map, 'click', function(event) {
           changMarker(event.latLng);
+          document.getElementById("longitude").value = event.latLng.lng();
+          document.getElementById("latitude").value = event.latLng.lat();
         });
     }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
     </script>
   </div>
 </div>
 </div>
+<%= f.hidden_field :longitude, {:id => "longitude", :value => "" }%>
+<%= f.hidden_field :latitude, {:id =>  "latitude", :value => "" }%>
 <hr>
 
 <div class="form-group text-center">

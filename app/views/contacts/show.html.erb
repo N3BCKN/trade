@@ -57,6 +57,7 @@
                      <% end %>
                   </li>
                 </ul>
+              <% if @contact.latitude && @contact.latitude %>
                <div class="item-navigation">
                 	<h3 class="headline">Location:</h3>
                   <ul class="nav nav-tabs v2" role="tablist">
@@ -67,7 +68,10 @@
                       <div id="map" style="height: 400px; width: 100%;"></div>
                       <script>
                       function initMap() {
-                        var location = {lat: -25.344, lng: 131.036};
+                        var location = {
+                          lat: <%= @contact.latitude %>,
+                          lng: <%= @contact.longitude %>
+                        };
                         var map = new google.maps.Map(
                             document.getElementById('map'), {zoom: 3, center: location});
                         var marker = new google.maps.Marker({position: location, map: map});
@@ -78,6 +82,7 @@
                       </script>
                   </div>
                 </div>
+                <% end %>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
