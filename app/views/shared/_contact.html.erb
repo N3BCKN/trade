@@ -63,10 +63,10 @@
 </div>
 
 <div class="form-group pb-5">
-     <h3 class="subheadline">Map Location</h3>
+     <h3 class="subheadline">Location</h3>
     <button class="btn btn-primary btn-md btn-block" type="button" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
         <i class="fa fa-globe" aria-hidden="true"></i>
-        Mark Your Location
+        Mark Your Location on Map
     </button>
     <div class="collapse" id="collapseMap">
   <div class="card card-body">
@@ -89,7 +89,7 @@
         });
 
 
-        function placeMarker(location) {
+        function changMarker(location) {
           if ( marker ) {
             marker.setPosition(location);
           } else {
@@ -102,7 +102,7 @@
 
 
         google.maps.event.addListener(map, 'click', function(event) {
-          placeMarker(event.latLng);
+          changMarker(event.latLng);
         });
     }
     </script>
@@ -118,7 +118,7 @@
     <%= user_avatar(@contact,"img_prev") %>
     <br>
    <label class="btn btn-primary">
-    Upload Your Avatar <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>
+    Upload Your Logo <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>
    </label>
 </div>
 
