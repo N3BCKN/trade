@@ -1,6 +1,6 @@
 <% leads.each do |lead| %>
 	   <div class="item mb-3">
-        <h3 class="item-title pb-3"><%= link_to lead.title, lead_path(lead._id) %></h3>
+        <h3 class="item-title pb-3"><%= link_to lead.title, lead_path(lead.slug) %></h3>
                 <div class="row">
                   <div class="col-3">
                     <div class="item-image">
