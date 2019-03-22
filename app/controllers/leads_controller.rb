@@ -150,7 +150,6 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page,
         :category_id
       )
     elsif params[:lead_status] == 'product'
@@ -164,7 +163,6 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :home_page,
         :category_id,
         :product_image
       )
