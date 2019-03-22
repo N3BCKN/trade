@@ -71,14 +71,17 @@
     <div class="collapse" id="collapseMap">
   <div class="card card-body">
     <div id="map" style="height: 400px; width: 100%;"></div>
+    <button type="button" id="remove_marker" class="btn btn-sm">
+    Remove your current position
+    </button>
     <script>
     function initMap() {
         var location = {
-            lat: <%= @contact.latitude || 40.7143528 %>,
-            lng: <%= @contact.longitude || -74.0059731 %>
+            lat: <%= @contact.latitude || 0 %>,
+            lng: <%= @contact.longitude || 0 %>
         };
+        var removed = false;
         
-
         var map = new google.maps.Map(
         document.getElementById('map'), 
         {
@@ -86,17 +89,25 @@
                 center: location
         }
         );
-
+        
+        if(location.lat != 0 && location.lng != 0){
         var marker = new google.maps.Marker({
             position: location, 
             map: map
         });
+        }
 
 
         function changMarker(location) {
-          if ( marker ) {
+        if ( marker && !removed ) {
             marker.setPosition(location);
-          } else {
+          } else if(marker && removed){
+             marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+            removed = false;
+          }else {
             marker = new google.maps.Marker({
               position: location,
               map: map
@@ -104,12 +115,19 @@
           }
         };
 
-
         google.maps.event.addListener(map, 'click', function(event) {
           changMarker(event.latLng);
           document.getElementById("longitude").value = event.latLng.lng();
           document.getElementById("latitude").value = event.latLng.lat();
         });
+
+        document.getElementById('remove_marker').addEventListener('click', function(event){
+            document.getElementById("longitude").value = ""
+            document.getElementById("latitude").value = ""
+            removed = true;
+            marker.setMap(null);
+        });
+
     }
     </script>
     <script async defer

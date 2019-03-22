@@ -41,9 +41,6 @@ class ContactsController < ApplicationController
   end
 
   def update
-    puts "******" * 500
-    puts params 
-    puts "******" * 500
     respond_to do |format|
       if @contact.update(contact_params)
         format.html do
