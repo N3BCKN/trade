@@ -12,6 +12,7 @@ module SearchingModel
         indexes :city, type: 'keyword'
         indexes :title, analyzer: 'english', index_options: 'offsets'
         indexes :created_at, type: 'date'
+        indexes :slug, type: 'text'
         indexes :category do
           indexes :name, type: 'keyword'
         end
@@ -26,7 +27,7 @@ module SearchingModel
       as_json(
         options.merge(
           only:    %i[id lead_status city title description_short created_at
-                      country product_image_file_name],
+                      country product_image_file_name slug],
           methods: :img_url_thumb,
           include: {
             category: { only: :name },
