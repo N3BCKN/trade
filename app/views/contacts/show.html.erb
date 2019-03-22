@@ -36,9 +36,9 @@
               <h3 class="headline pt-2">Areas of Interest:</h3>
                 <ul class="checked_list feature-list">
                   <% if @contact.areas_of_interest.present? %>
-                  <% @contact.areas_of_interest.each do |area|%>
-                  <li><strong><%= area %></strong></li>
-                  <% end %>
+                    <% @contact.areas_of_interest.each do |area|%>
+                        <li><strong><%= area %></strong></li>
+                    <% end %>
                   <% end %>
                 </ul>
                <ul class="item-features">

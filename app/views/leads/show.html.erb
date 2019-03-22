@@ -51,7 +51,7 @@
                   <p><%= @lead.description %></p>
                   <% if user_signed_in? %>
                   <div class="item-attachments">
-                    <%= link_to "Check Profile", contact_path(@lead.user.contact), :class=> "btn btn-lg btn-inverse" %>
+                    <%= link_to "Check Profile", contact_path(@lead.user.contact), :class=> "btn btn-md btn-inverse" %>
               	  </div>
                   <% end %>
                 </div>
