@@ -35,8 +35,10 @@
               </div>
               <h3 class="headline pt-2">Areas of Interest:</h3>
                 <ul class="checked_list feature-list">
-                  <% @contact.areas_of_interest.each do |area| %>
+                  <% if @contact.areas_of_interest.present? %>
+                  <% @contact.areas_of_interest.each do |area|%>
                   <li><strong><%= area %></strong></li>
+                  <% end %>
                   <% end %>
                 </ul>
                <ul class="item-features">
@@ -57,9 +59,10 @@
                      <% end %>
                   </li>
                 </ul>
-              <% if @contact.latitude && @contact.latitude %>
+              
                <div class="item-navigation">
                 	<h3 class="headline">Location:</h3>
+                  <% if @contact.latitude && @contact.latitude %>
                   <ul class="nav nav-tabs v2" role="tablist">
                     <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
                     <!-- <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li> -->
@@ -81,8 +84,8 @@
                       src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
                       </script>
                   </div>
+                   <% end %>
                 </div>
-                <% end %>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
