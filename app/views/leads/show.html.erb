@@ -49,9 +49,11 @@
                 <div class="item-description">
                   <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
                   <p><%= @lead.description %></p>
+                  <% if user_signed_in? %>
                   <div class="item-attachments">
-                  <a href="#" class="btn btn-lg btn-inverse">Check Profile</a>
+                    <%= link_to "Check Profile", contact_path(@lead.user.contact), :class=> "btn btn-lg btn-inverse" %>
               	  </div>
+                  <% end %>
                 </div>
                  <ul class="item-features">
                   <li><span>540</span> sq m </li>
