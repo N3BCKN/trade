@@ -150,7 +150,11 @@ class LeadsController < ApplicationController
         :zip_code,
         :country,
         :phone_number,
-        :category_id
+        :category_id,
+        :quantity,
+        :freqency,
+        :prefered_suppliers,
+        :destination
       )
     elsif params[:lead_status] == 'product'
       params.require(:lead).permit(
@@ -164,7 +168,9 @@ class LeadsController < ApplicationController
         :country,
         :phone_number,
         :category_id,
-        :product_image
+        :product_image,
+        :quantity,
+        :freqency
       )
     end
   end
