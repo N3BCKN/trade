@@ -49,6 +49,7 @@
                 <div class="item-description">
                   <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
                   <p><%= @lead.description %></p>
+                  <p><%= "Contact Person: #{@lead.contact_person}" if @lead.contact_person%></p>
                 </div>
                  <ul class="item-features">
                   <li><span>540</span> sq m </li>
