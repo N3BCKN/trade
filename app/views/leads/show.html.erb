@@ -49,11 +49,6 @@
                 <div class="item-description">
                   <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
                   <p><%= @lead.description %></p>
-                  <% if user_signed_in? %>
-                  <div class="item-attachments">
-                    <%= link_to "Check Profile", contact_path(@lead.user.contact), :class=> "btn btn-md btn-inverse" %>
-              	  </div>
-                  <% end %>
                 </div>
                  <ul class="item-features">
                   <li><span>540</span> sq m </li>
@@ -61,39 +56,22 @@
                   <li><span>1</span> Bedrooms </li>
                   <li><span>2</span> Bathrooms </li>
                 </ul>
-                <h3 class="headline">Property Details</h3>
+                <h3 class="headline"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
                 <ul class="checked_list feature-list">
-                  <li><strong>Building Age:</strong> 2 Years</li>
-                  <li><strong>Parking:</strong> Attached Garage</li>
-                  <li><strong>Cooling:</strong> Central Cooling</li>
-                  <li><strong>Heating:</strong> Forced Air, Gas</li>
-                  <li><strong>Sewer:</strong> Public/City</li>
-                  <li><strong>Water:</strong> City</li>
+                 <%= "<li><strong>Approximate Quantity:</strong>  #{@lead.quantity} </li>" if @lead.quantity %>
+                 <%= "<li><strong>Delivery Frequency:</strong>  #{@lead.quantity} </li>" if @lead.freqency %>
+                 <%= "<li><strong>Destination:</strong>  #{@lead.quantity} </li>" if @lead.destination %>
+                 <%= "<li><strong>Prefered Suppliers from:</strong>  #{@lead.quantity} </li>" if @lead.prefered_suppliers %>                 
                 </ul>
-                <h3 class="headline">Property Features</h3>
-                <ul class="checked_list feature-list">
-                  <li>Alarm</li>
-                  <li>Gym</li>
-                  <li>Internet</li>
-                  <li>Swimming Pool</li>
-                  <li>Window Covering</li>
-                </ul>
-                <div class="item-navigation">
-                  <ul class="nav nav-tabs v2" role="tablist">
-                    <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
-                    <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="map">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1215.7401235613713!2d1.4497354260471211!3d52.45232942952154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9f169c5a088db%3A0x75a6abde48cc5adc!2sKents+Ln%2C+Bungay+NR35+1JF%2C+UK!5e0!3m2!1sen!2sin!4v1489862715790" width="600" height="450" style="border:0;" allowfullscreen></iframe>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="streetview">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2s!4v1489861898447!6m8!1m7!1sGz9bS-GXSJE28jHD19m7KQ!2m2!1d52.45191646727986!2d1.451480542718656!3f0!4f0!5f0.8160813932612223" width="600" height="450" style="border:0" allowfullscreen></iframe>
-                    </div>
+                 <% if user_signed_in? %>
+                  <div class="item-attachments">
+                    <h3 class="headline"></h3>
+                    <%= link_to "Check Poster Profile", contact_path(@lead.user.contact), :class=> "btn btn-md btn-inverse" %>
                   </div>
-                </div>
+                 <% end %>
               </div>
             </div>
+            <%= link_to "Report Passible Abuse?", root_path, :class=>"float-right" if user_signed_in? %>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
