@@ -70,6 +70,8 @@ class LeadsController < ApplicationController
     if user_signed_in?
       @message         = current_user.messages_sent.build
       @message.lead    = @lead
+      @abuse           = current_user.abuses.build
+      @abuse.lead      = @lead
       @contact         = current_user.contact
       @favorite_exists = FavoriteLead
                          .where(lead: @lead, user: current_user) != []

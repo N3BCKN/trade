@@ -73,17 +73,37 @@
                  <% end %>
               </div>
             </div>
-            <%= link_to "Report Passible Abuse?", root_path, { :class=>"float-right",  "data-toggle"=>"modal", "data-targe" => "#abuseModal"} if user_signed_in? %>
+            <%= link_to "Report Passible Abuse?", nil , { :class=>"float-right",  "data-toggle"=>"modal", "data-target" => "
+              #abuseModal"} if user_signed_in? %>
+              <!-- The Modal -->
+              <div class="modal" id="abuseModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Modal Heading</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
               <div class="sidebar_inner">
               	<% if user_signed_in? %>
-              	  <% if @lead.lead_status == "product" %>
-		          	<h3>Contact Seller</h3>
-		          <% elsif @lead.lead_status == "offer" %>
-		          	<h3>Contact Buyer</h3>
-		          <% end %> 
+               <h3>Contact <%= @lead.lead_status == "product" ? "Seller" : "Buyer" %></h3>
                <%= render "shared/lead_Message" %>
                <% else %>
                <h3>Not a member?</h3>
