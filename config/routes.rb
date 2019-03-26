@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :leads do
     member do
       resources :messages
+      resources :abuses
       put 'favorites/update'
     end
   end

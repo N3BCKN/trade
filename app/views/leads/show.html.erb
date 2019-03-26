@@ -18,14 +18,15 @@
         <div class="row">
           <div class="col-md-8">
             <h1><%= @lead.title %> 
-            	<small><i class="fa fa-map-marker"></i>
+            	<small>
+                <i class="fa fa-map-marker"></i>
             	<% if @lead.lead_status == "product" %>
             		Seller From <%= country_name(@lead.country) %>
             	<% elsif @lead.lead_status == "offer" %>
-					Buyer From <%= country_name(@lead.country) %>
+					      Buyer From <%= country_name(@lead.country) %>
             	<% end %>
             	<%= flag_icon(@lead.country.downcase) %> 
-                </small>
+              </small>
         	</h1>
         	<br>
         	<%= @lead.created_at.strftime("%B %e, %Y") %>
@@ -72,7 +73,7 @@
                  <% end %>
               </div>
             </div>
-            <%= link_to "Report Passible Abuse?", root_path, :class=>"float-right" if user_signed_in? %>
+            <%= link_to "Report Passible Abuse?", root_path, { :class=>"float-right",  "data-toggle"=>"modal", "data-targe" => "#abuseModal"} if user_signed_in? %>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
