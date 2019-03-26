@@ -75,29 +75,30 @@
             </div>
             <%= link_to "Report Passible Abuse?", nil , { :class=>"float-right",  "data-toggle"=>"modal", "data-target" => "
               #abuseModal"} if user_signed_in? %>
-              <!-- The Modal -->
+              <%= form_for(@abuse) do |f| %>
               <div class="modal" id="abuseModal">
                 <div class="modal-dialog">
                   <div class="modal-content">
-                    <!-- Modal Header -->
                     <div class="modal-header">
-                      <h4 class="modal-title">Modal Heading</h4>
+                      <h4 class="modal-title text-center">Report Abuse</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-
-                    <!-- Modal body -->
                     <div class="modal-body">
-                      Modal body..
+                      From: <input type="text" class="form-control form-control-sm rounded-1" value="<%= current_user.user_name %>" disabled>
+                      <div class="mt-5">
+                      <p>Please describe us why this <%= @lead.lead_status = "product" ? "product" : "offer" %>
+                        violates our <%= link_to "terms of use", terms_path %>.
+                      </p>
+                      <%= f.text_area :content,:class=>"form-control form-control-lg text-editor rounded-1", :id=>"abuse_content", :rows=>"6" %>
+                      </div>
                     </div>
-
-                    <!-- Modal footer -->
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <%= f.submit "Report", :class=>"btn btn-danger btn-block" %>
                     </div>
-
                   </div>
                 </div>
               </div>
+              <% end %>
           </div>
           <div class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">

@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   before_action :check_user_restrictions, only: :create
 
   def create
-    @lead = Lead.find(params[:id])
+    @lead = Lead.friendly.find(params[:id])
     @message = Message.create(message_params)
     @message.sender = current_user
     @message.lead = @lead
