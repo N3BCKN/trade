@@ -4,5 +4,5 @@ class Abuse < ApplicationRecord
   belongs_to :lead
   belongs_to :user
 
-  validates :lead, length: { minimum: 4, maximum: 850 }
+  validates :content, length: { minimum: 4, maximum: 850 }, presence: true
 end

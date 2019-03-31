@@ -14,7 +14,8 @@ class AbusesController < ApplicationController
 				end
 			else
 				format.html do 
-					render :new
+					redirect_to lead_path(params[:id]),
+            		notice: "Abuse Form Error"
 				end
 			end
 		end
