@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get 'marketing_campaign', to: 'pages#marketing_campaign'
   get 'lead_helper',        to: 'pages#post_lead_helper'
   get 'membership',         to: 'pages#membership_status'
-  get '404_not_found',      to: 'pages#not_found'
 
   # Custom Categories Paths
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'
