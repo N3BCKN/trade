@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'inquiries/create'
   # Custom Profiles Paths
   get 'profile/dashboard', to: 'profiles#show_profile'
   get 'profile/offers',    to: 'profiles#show_offers'
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
 
   # Custom Static Pages
   get 'about',              to: 'pages#about'
-  get 'contact_us',         to: 'pages#contact'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'
@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get 'products/categories/:category', to: 'categories#index_products', as: 'products_categories'
 
   get 'leads/:id/sent', to: 'leads#suggested_leads', as: 'suggested_leads'
+
+  get 'contact_us',     to: 'inquiries#new'
+  post 'inquiries',     to: 'inquiries#create'
 
   resources :leads do
     member do

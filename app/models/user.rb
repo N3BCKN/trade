@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many  :messages_received, class_name: 'Message', foreign_key: 'receiver_id'
   has_many  :favorite_leads
   has_many  :abuses, class_name: 'Abuse', foreign_key: 'user_id'
+  has_many  :inquires
 
   enum role: %i[regular premium elite admin]
 
