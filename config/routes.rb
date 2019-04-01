@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   get 'products',    to: 'leads#index_products'
 
   # Custom Static Pages
-  get 'about', to: 'pages#about'
-  get 'contact_us', to: 'pages#contact'
+  get 'about',              to: 'pages#about'
+  get 'contact_us',         to: 'pages#contact'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get 'marketing_campaign', to: 'pages#marketing_campaign'
   get 'lead_helper',        to: 'pages#post_lead_helper'
   get 'membership',         to: 'pages#membership_status'
-  get 'not_found',          to: 'pages#not_found'
+  get '404_not_found',      to: 'pages#not_found'
 
   # Custom Categories Paths
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'
