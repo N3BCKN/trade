@@ -34,4 +34,7 @@ class PagesController < ApplicationController
 
   def membership_status
   end
+
+  def not_found
+  end
 end
