@@ -5,7 +5,8 @@ class AbusesController < ApplicationController
 		@abuse = Abuse.create(abuse_params)
 		@abuse.user = current_user
 		@abuse.lead = @lead
-		
+		@abuse.link = request.original_url.chomp("/abuses")
+	
 		respond_to do |format|
 			if @abuse.save
 				format.html do
@@ -24,6 +25,8 @@ class AbusesController < ApplicationController
 	private
 
 	def abuse_params
-		params.require(:abuse).permit(:content)
+		params.require(:abuse).permit(
+			:content,
+			:link)
 	end
 end
