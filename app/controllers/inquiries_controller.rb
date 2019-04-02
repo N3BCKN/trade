@@ -1,4 +1,5 @@
 class InquiriesController < ApplicationController
+  skip_before_action :authenticate_user!
   
   def new
   	@inquiry = Inquiry.new
@@ -6,6 +7,7 @@ class InquiriesController < ApplicationController
 
   def create
   	@inquiry = Inquiry.new(inquiry_params)
+  	@inquiry.user = current_user if current_user
 
   	respond_to do |format|
   		if @inquiry.save
