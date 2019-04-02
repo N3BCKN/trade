@@ -14,6 +14,9 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
+      	InquiryMailer.send_inquiry(@inquiry)
+      	.deliver_now
+      	
         format.html do
           redirect_to root_path,
             notice: 'Thank you for your message. Our team will contact you as soon as possible'
