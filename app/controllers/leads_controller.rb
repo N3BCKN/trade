@@ -136,7 +136,11 @@ class LeadsController < ApplicationController
   end
 
   def set_lead
-    @lead       = Lead.friendly.find(params[:id]) rescue render_not_found
+    @lead       = begin
+                    Lead.friendly.find(params[:id])
+                  rescue StandardError
+                    render_not_found
+                  end
     @categories = Category.all
   end
 

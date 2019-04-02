@@ -78,7 +78,11 @@ class ContactsController < ApplicationController
   end
 
   def set_contact
-      @contact = Contact.friendly.find(params[:id]) rescue render_not_found
+    @contact = begin
+                   Contact.friendly.find(params[:id])
+               rescue StandardError
+                 render_not_found
+                 end
   end
 
   def check_user_contact

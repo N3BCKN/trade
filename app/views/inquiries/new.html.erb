@@ -17,23 +17,15 @@
 
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                        	<% if current_user %>
-                              <%= f.text_field :name, :value=>current_user.user_name, :class=>"form-control", 
+                              <%= f.text_field :name, :value=>current_user.try!(:user_name), :class=>"form-control", 
                               :id=>"name" %>
-                            <% else %>
-							  <%= f.text_field :name, :class=>"form-control", :id=>"name" %>
-                            <% end %>
                             <label for="name" class="">Your name</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <% if current_user %>
-                              <%= f.text_field :email, :value=>current_user.email, :class=>"form-control", 
+                            <%= f.text_field :email, :value=>current_user.try!(:email), :class=>"form-control", 
                               :id=>"name" %>
-                            <% else %>
-							  <%= f.text_field :email, :class=>"form-control", :id=>"name" %>
-                            <% end %>
                             <label for="email" class="">Your email</label>
                         </div>
                     </div>

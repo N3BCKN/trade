@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @offers = Lead.where(lead_status: 'offer').order('created_at desc').limit(6)
     @products = Lead.where(lead_status: 'product').order('created_at desc').limit(6)
   end
-  
+
   def about
   end
 
