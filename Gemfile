@@ -54,6 +54,7 @@ gem 'tether-rails', '~> 1.4'
 gem 'flag-icons-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem 'whenever', require: false
+gem 'invisible_captcha'
 
 gem 'devise', '~> 4.2'
 
