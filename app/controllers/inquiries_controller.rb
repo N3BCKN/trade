@@ -2,7 +2,7 @@
 
 class InquiriesController < ApplicationController
   skip_before_action :authenticate_user!
-  invisible_captcha only: [:create, :new], honeypot: :subtitle
+  invisible_captcha only: %i[create new], honeypot: :subtitle
 
   def new
     @inquiry = Inquiry.new
@@ -14,9 +14,9 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
-      	InquiryMailer.send_inquiry(@inquiry)
-      	.deliver_now
-      	
+        InquiryMailer.send_inquiry(@inquiry)
+                     .deliver_now
+
         format.html do
           redirect_to root_path,
             notice: 'Thank you for your message. Our team will contact you as soon as possible'
