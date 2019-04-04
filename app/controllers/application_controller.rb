@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include DeviseWhitelist
-
+  
   before_action :authenticate_user!
 
   def render_not_found

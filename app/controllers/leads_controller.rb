@@ -3,9 +3,11 @@
 class LeadsController < ApplicationController
   include SearchFilters
   include UserLimits
+  include GuestUser
 
   before_action :check_user_restrictions, only: :create
   before_action :build_lead, only: %i[new_offer new_product]
+  before_action :guests_limits, only: :show
   before_action :set_lead, only: %i[show edit update destroy]
   before_action :own_contact, only: %i[edit update]
   before_action :fetch_filter_params, only: %i[index_offers index_products]
@@ -194,5 +196,11 @@ class LeadsController < ApplicationController
         end
       end
     end
+  end
+  def guests_limits
+    @user = guest_or_current_user
+    puts "***"*500
+    puts @user.inspect
+    puts "***"*500
   end
 end
