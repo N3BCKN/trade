@@ -198,9 +198,5 @@ class LeadsController < ApplicationController
     end
   end
   def guests_limits
-    @user = guest_or_current_user
-    puts "***"*500
-    puts @user.inspect
-    puts "***"*500
   end
 end
