@@ -197,6 +197,17 @@ class LeadsController < ApplicationController
       end
     end
   end
+
   def guests_limits
+    @user = guest_or_current_user
+    if @user.class.name == "Guest"
+       @daily_views = View.where("guest_id = ? AND created_at >= ?", @user, 1.day.ago).count
+       if @daily_views >= 7
+        redirect_to root_path,
+        notice: "limit reached"
+       else
+        View.create!(guest: @user)
+      end
+    end
   end
 end
