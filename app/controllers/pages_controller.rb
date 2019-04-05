@@ -32,7 +32,6 @@ class PagesController < ApplicationController
   def membership_status
   end
 
-  def not_found
-    render status: 404
+  def visits_limit
   end
 end

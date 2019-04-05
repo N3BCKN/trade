@@ -1,5 +1,7 @@
-class Guest < ApplicationRecord
-	has_many :views, dependent: :destroy
+# frozen_string_literal: true
 
-	validates :email, presence: true
+class Guest < ApplicationRecord
+  has_many :views, dependent: :destroy
+
+  validates :email, presence: true
 end
