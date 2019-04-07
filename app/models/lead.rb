@@ -28,10 +28,10 @@ class Lead < ApplicationRecord
   validates :zip_code, length: { minimum: 4, maximum: 25 }
   validates :country, length: { minimum: 2, maximum: 8 }
   validates :phone_number, length: { minimum: 7, maximum: 30 }
-  validates :destination, length: {minimum: 2, maximum: 85}
-  validates :quantity, length: {minimum: 2, maximum: 70}
-  validates :freqency, length: {minimum: 5, maximum: 45}
-  validates :prefered_suppliers, length: {minimum: 4, maximum: 55}
+  validates :destination, length: { minimum: 2, maximum: 85 }
+  validates :quantity, length: { minimum: 2, maximum: 70 }
+  validates :freqency, length: { minimum: 5, maximum: 45 }
+  validates :prefered_suppliers, length: { minimum: 4, maximum: 55 }
 
   has_attached_file :product_image, styles:      { default: '650x400>', thumb: '150x150>' },
                                     default_url: '/images/:style/default_product_image.png'
