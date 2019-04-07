@@ -18,8 +18,9 @@
           <div class="col-md-7 col-lg-8">
               <div class="page-header mt-0">
 		            <h1>About <%= @contact.user.user_name %>
-		            <small><i class="fa fa-map-marker"></i> 
-		            <%= @contact.address %>, <%= @contact.city %>,
+		            <small><i class="fa fa-map-marker"></i>
+		            <%= "#{@contact.address}," if @contact.address.present? %>
+                <%= "#{@contact.city}," if @contact.city.present? %> 
 		            <%= country_name(@contact.country) %>
 		            <%= flag_icon(@contact.country.downcase) %>
 		        	</small>
