@@ -40,6 +40,17 @@
         </div>
 
         <div class="form-group">
+         <h3 class="subheadline py-3">Approximate Quantity</h3>
+          <%= f.text_field :quantity, :class=>"form-control form-control-lg rounded-1", :id=>"quantity" %>
+        </div>
+
+        <div class="form-group">
+         <h3 class="subheadline py-3">Approximate Frequency</h3>
+          <%= f.select :freqency, ["Single Delivery", "Once a week", "Once a Month", "Once a year", "Several Times Per Year", "Another Way"],
+         {}, { :class=>"form-control form-control-lg ui-select", :id=>"freqency"} %>
+        </div>
+
+        <div class="form-group">
          <h3 class="subheadline py-3">Contact Person:</h3>
           <%= f.text_field :contact_person, autofocus: false, autocomplete: "contact person", :class=>"form-control form-control-lg", :id=>"contact" %>
         </div>
@@ -67,13 +78,7 @@
           <h3 class="subheadline py-3">Phone Number:</h3>
           <%= f.text_field :phone_number, value: @contact.try!(:phone_number), autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
         </div>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">Home Page:</h3>
-          <%= f.text_field :home_page, value: @contact.try!(:home_page), autocomplete: "Home Page",:class=>"form-control form-control-lg",:id=>"home" %>
-        </div>
-
-        
+    
         <div class="form-group pb-5">
                 <h3 class="subheadline py-3">Upload Product Image:</h3>
                 <div class="ui-dropzone">

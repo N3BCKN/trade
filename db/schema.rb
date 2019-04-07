@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_043205) do
+ActiveRecord::Schema.define(version: 2019_04_05_001730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abuses", force: :cascade do |t|
+    t.text "content"
+    t.bigint "lead_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "link"
+    t.index ["lead_id"], name: "index_abuses_on_lead_id"
+    t.index ["user_id"], name: "index_abuses_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -41,6 +52,10 @@ ActiveRecord::Schema.define(version: 2019_03_09_043205) do
     t.integer "number_of_employes"
     t.integer "annual_sales"
     t.text "areas_of_interest"
+    t.string "slug"
+    t.float "longitude"
+    t.float "latitude"
+    t.index ["slug"], name: "index_contacts_on_slug", unique: true
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -51,6 +66,34 @@ ActiveRecord::Schema.define(version: 2019_03_09_043205) do
     t.datetime "updated_at", null: false
     t.index ["lead_id"], name: "index_favorite_leads_on_lead_id"
     t.index ["user_id"], name: "index_favorite_leads_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "subject"
+    t.text "message"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
   create_table "leads", force: :cascade do |t|
@@ -64,7 +107,6 @@ ActiveRecord::Schema.define(version: 2019_03_09_043205) do
     t.string "country"
     t.string "phone_number"
     t.string "email"
-    t.string "home_page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -75,8 +117,14 @@ ActiveRecord::Schema.define(version: 2019_03_09_043205) do
     t.datetime "product_image_updated_at"
     t.text "description_short"
     t.bigint "category_id"
+    t.string "slug"
+    t.string "destination"
+    t.string "quantity"
+    t.string "freqency"
+    t.string "prefered_suppliers"
     t.index ["category_id"], name: "index_leads_on_category_id"
     t.index ["deleted_at"], name: "index_leads_on_deleted_at"
+    t.index ["slug"], name: "index_leads_on_slug", unique: true
     t.index ["user_id"], name: "index_leads_on_user_id"
   end
 
@@ -125,6 +173,15 @@ ActiveRecord::Schema.define(version: 2019_03_09_043205) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "views", force: :cascade do |t|
+    t.bigint "guest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_views_on_guest_id"
+  end
+
+  add_foreign_key "abuses", "leads"
+  add_foreign_key "abuses", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "favorite_leads", "leads"
   add_foreign_key "favorite_leads", "users"

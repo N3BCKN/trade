@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'inquiries/create'
   # Custom Profiles Paths
   get 'profile/dashboard', to: 'profiles#show_profile'
   get 'profile/offers',    to: 'profiles#show_offers'
@@ -19,8 +20,7 @@ Rails.application.routes.draw do
   get 'products',    to: 'leads#index_products'
 
   # Custom Static Pages
-  get 'about', to: 'pages#about'
-  get 'contact_us', to: 'pages#contact'
+  get 'about',              to: 'pages#about'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'marketing_campaign', to: 'pages#marketing_campaign'
   get 'lead_helper',        to: 'pages#post_lead_helper'
   get 'membership',         to: 'pages#membership_status'
+  get 'limit_reached',      to: 'pages#visits_limit'
 
   # Custom Categories Paths
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'
@@ -35,9 +36,13 @@ Rails.application.routes.draw do
 
   get 'leads/:id/sent', to: 'leads#suggested_leads', as: 'suggested_leads'
 
+  get 'contact_us',     to: 'inquiries#new'
+  post 'inquiries',     to: 'inquiries#create'
+
   resources :leads do
     member do
       resources :messages
+      resources :abuses
       put 'favorites/update'
     end
   end

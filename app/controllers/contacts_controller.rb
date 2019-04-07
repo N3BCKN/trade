@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
 
   def show
     if user_signed_in?
-      @contact = Contact.find(params[:id])
+      @contact = Contact.friendly.find(params[:id])
       @user            = @contact.user.reload
       @message         = current_user.messages_sent.build
       @message.receiver = @user
@@ -70,13 +70,19 @@ class ContactsController < ApplicationController
       :year_of_establishment,
       :avatar,
       :annual_sales,
-      :areas_of_interest,
-      :number_of_employes
+      :number_of_employes,
+      :latitude,
+      :longitude,
+      areas_of_interest: []
     )
   end
 
   def set_contact
-    @contact = Contact.find(params[:id])
+    @contact = begin
+                   Contact.friendly.find(params[:id])
+               rescue StandardError
+                 render_not_found
+                 end
   end
 
   def check_user_contact

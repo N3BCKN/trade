@@ -12,6 +12,9 @@ class Lead < ApplicationRecord
   has_many   :messages
   has_many   :favorite_leads
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   scope :profile_leads, lambda { |status, current_user|
     where(lead_status: status, user: current_user)
   }

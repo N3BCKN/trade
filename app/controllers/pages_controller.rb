@@ -8,9 +8,6 @@ class PagesController < ApplicationController
     @products = Lead.where(lead_status: 'product').order('created_at desc').limit(6)
   end
 
-  def contact
-  end
-
   def about
   end
 
@@ -33,5 +30,8 @@ class PagesController < ApplicationController
   end
 
   def membership_status
+  end
+
+  def visits_limit
   end
 end
