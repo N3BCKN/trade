@@ -98,7 +98,7 @@ class LeadsController < ApplicationController
 
   def suggested_leads
     # TODO: this action should be more restricted for users in the future
-    @lead = Lead.find(params[:id])
+    @lead = Lead.friendly.find(params[:id])
     @suggested = Lead.suggested_leads(@lead)
   end
 
