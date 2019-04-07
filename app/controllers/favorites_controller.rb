@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def update
     @favorite = FavoriteLead.where(user: current_user, lead: params[:lead])
     if @favorite == []
-      FavoriteLead.create(user: current_user, lead: Lead.find(params[:lead]))
+      FavoriteLead.create(user: current_user, lead: Lead.friendly.find(params[:lead]))
       @favorite_exists = true
     else
       @favorite.destroy_all
