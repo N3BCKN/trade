@@ -58,12 +58,32 @@
                   <li><span>1</span> Bedrooms </li>
                   <li><span>2</span> Bathrooms </li>
                 </ul> -->
-                <h3 class="headline"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
+                <h3 class="headline pt-5"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
                 <ul class="checked_list feature-list">
-                 <li><strong><%= "Approximate Quantity: #{@lead.quantity}" if @lead.quantity %> </strong></li>
-                 <li><strong><%= "Delivery Frequency:  #{@lead.freqency}" if @lead.freqency %></strong></li>
-                 <li><strong><%= "Destination:  #{@lead.destination} " if @lead.destination %></strong></li>
-                 <li><strong><%= "Prefered Suppliers from:  #{@lead.prefered_suppliers} " if @lead.prefered_suppliers %></strong></li>
+                  <% if @lead.quantity.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Approximate Quantity:
+                    <strong><%= " #{@lead.quantity}" if @lead.quantity.present? %></strong></li>
+                  <% end %>
+                  <% if @lead.freqency.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Delivery Frequency:
+                    <strong><%= " #{@lead.freqency}" %></strong></li>
+                    <% end %>
+                    <% if @lead.destination.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Destination:
+                    <strong><%= " #{@lead.destination}" %></strong></li>
+                    <% end %>
+                    <% if @lead.prefered_suppliers.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Prefered Suppliers from:
+                    <strong><%= " #{@lead.prefered_suppliers}" %></strong></li>
+                    <% end %>
                 </ul>
                  <% if user_signed_in? %>
                   <div class="item-attachments">

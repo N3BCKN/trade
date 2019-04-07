@@ -152,27 +152,27 @@ ul.checked_list, ol.checked_list {
 	li {
 		padding-left:30px;
 		position:relative;
-		&:after {
-			width: 25px;
-			display: inline-block;
-			text-align: left;
-			color: rgba(134, 158, 158,.8);
-			font: normal normal normal 14px/1 FontAwesome;
-			content: "\f00c";
-			position:absolute;
-			left:3px;
-			top:6px;
-		}
-		&:before {
-			content:'';
-			position:absolute;
-			left:0;
-			top:2px;
-			width:20px;
-			height:20px;
-			background:rgba(134, 158, 158,.1);;
-			border-radius:3px;
-		}
+		// &:after {
+		// 	width: 25px;
+		// 	display: inline-block;
+		// 	text-align: left;
+		// 	color: rgba(134, 158, 158,.8);
+		// 	font: normal normal normal 14px/1 FontAwesome;
+		// 	content: "\f00c";
+		// 	position:absolute;
+		// 	left:3px;
+		// 	top:6px;
+		// }
+		// &:before {
+		// 	content:'';
+		// 	position:absolute;
+		// 	left:0;
+		// 	top:2px;
+		// 	width:20px;
+		// 	height:20px;
+		// 	background:rgba(134, 158, 158,.1);;
+		// 	border-radius:3px;
+		// }
 	}
 	&.feature-list {
 		margin-bottom:30px;
