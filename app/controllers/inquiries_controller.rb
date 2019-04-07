@@ -2,7 +2,6 @@
 
 class InquiriesController < ApplicationController
   skip_before_action :authenticate_user!
-  invisible_captcha only: %i[create new], honeypot: :subtitle
 
   def new
     @inquiry = Inquiry.new
