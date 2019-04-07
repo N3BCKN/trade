@@ -2,11 +2,11 @@
 <div class="item-listing list">
 <% leads.each do |lead| %>
      <div class="item mb-3">
-        <h3 class="item-title pb-3"><%= link_to lead.title, lead_path(lead.id) %></h3>
+        <h3 class="item-title pb-3"><%= link_to lead.title, lead_path(lead) %></h3>
                 <div class="row">
                   <div class="col-3">
                     <div class="item-image">
-                        <%= link_to lead_path(lead.id) do %>
+                        <%= link_to lead_path(lead) do %>
                         <img src="//placehold.it/300x220" class="img-fluid" alt="">
                         <% end %>
                      <!--  <div class="item-badges">
