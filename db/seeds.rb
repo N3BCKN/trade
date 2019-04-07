@@ -45,7 +45,7 @@ Contact.create!(
 	phone_number: Faker::PhoneNumber.phone_number,
 	number_of_employes: rand(500),
 	areas_of_interest: areas,
-	annual_sales: "5000000$"
+	annual_sales: "5000000$",
 	user_id: t+1
 )
 puts "User number #{t} created"
