@@ -52,18 +52,18 @@
                   <p><%= @lead.description %></p>
                   <p><%= "Contact Person: #{@lead.contact_person}" if @lead.contact_person%></p>
                 </div>
-                 <ul class="item-features">
+                 <!-- <ul class="item-features">
                   <li><span>540</span> sq m </li>
                   <li><span>3</span> Rooms </li>
                   <li><span>1</span> Bedrooms </li>
                   <li><span>2</span> Bathrooms </li>
-                </ul>
+                </ul> -->
                 <h3 class="headline"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
                 <ul class="checked_list feature-list">
-                 <%= "<li><strong>Approximate Quantity:</strong>  #{@lead.quantity} </li>" if @lead.quantity %>
-                 <%= "<li><strong>Delivery Frequency:</strong>  #{@lead.quantity} </li>" if @lead.freqency %>
-                 <%= "<li><strong>Destination:</strong>  #{@lead.quantity} </li>" if @lead.destination %>
-                 <%= "<li><strong>Prefered Suppliers from:</strong>  #{@lead.quantity} </li>" if @lead.prefered_suppliers %>                 
+                 <li><strong><%= "Approximate Quantity: #{@lead.quantity}" if @lead.quantity %> </strong></li>
+                 <li><strong><%= "Delivery Frequency:  #{@lead.freqency}" if @lead.freqency %></strong></li>
+                 <li><strong><%= "Destination:  #{@lead.destination} " if @lead.destination %></strong></li>
+                 <li><strong><%= "Prefered Suppliers from:  #{@lead.prefered_suppliers} " if @lead.prefered_suppliers %></strong></li>
                 </ul>
                  <% if user_signed_in? %>
                   <div class="item-attachments">

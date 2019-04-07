@@ -42,10 +42,12 @@ Contact.create!(
 	zip_code: Faker::Address.zip_code,
 	country: Faker::Address.country_code,
 	company_description: lorem,
+	home_page: Faker::Internet.url('trade.com'),
+	year_of_establishment: 1990 + rand(29), 
 	phone_number: Faker::PhoneNumber.phone_number,
 	number_of_employes: rand(500),
 	areas_of_interest: areas,
-	annual_sales: "5000000$",
+	annual_sales: 5550000,
 	user_id: t+1
 )
 puts "User number #{t} created"
@@ -68,7 +70,7 @@ Category.create!(name: "Office/Packaging Products")
 
 
 
-9000.times do |p|
+3000.times do |p|
   @dateOfCreation = Time.current - rand(365).days
   @user  = User.find(rand(1..User.count))
 
@@ -82,7 +84,6 @@ Lead.create!(
 	city:               Faker::Address.city,
 	zip_code:           Faker::Address.zip_code,
 	country:            Faker::Address.country_code,
-	home_page:          Faker::Internet.url('trade.com'),
 	phone_number:       Faker::PhoneNumber.phone_number,
 	destination:        Faker::University.name,
 	quantity:           "50 tonnes",
