@@ -50,7 +50,7 @@
               </div>
               <div class="checkbox">
                 <%= f.check_box :terms_of_use, :id=>"terms", :required=>true %>
-                <label for="terms">By registering I accept <%= link_to "Terms of Use", terms_path %> and Privacy.</label>
+                <label for="terms">By registering I accept  <ins><%= link_to "Terms of Use", terms_path %></ins> and Privacy.</label>
               </div>
               <button type="submit" class="btn btn-primary btn-lg">Register</button>
             <% end %>

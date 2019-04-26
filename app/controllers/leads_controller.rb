@@ -52,7 +52,7 @@ class LeadsController < ApplicationController
       else
         format.html do
           render :edit,
-            notice: "Lead couldn't be updated. Please try again" 
+            notice: "Lead couldn't be updated. Please try again"
         end
       end
     end
@@ -153,9 +153,6 @@ class LeadsController < ApplicationController
         :lead_status,
         :description,
         :contact_person,
-        :address,
-        :city,
-        :zip_code,
         :country,
         :phone_number,
         :category_id,
@@ -170,9 +167,6 @@ class LeadsController < ApplicationController
         :description,
         :lead_status,
         :contact_person,
-        :address,
-        :city,
-        :zip_code,
         :country,
         :phone_number,
         :category_id,

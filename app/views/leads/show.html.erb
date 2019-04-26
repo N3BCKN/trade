@@ -108,7 +108,7 @@
                         From: <input type="text" class="form-control form-control-sm rounded-1" value="<%= current_user.user_name %>" disabled>
                         <div class="mt-5">
                         <p>Please describe us why this <%= @lead.lead_status = "product" ? "product" : "offer" %>
-                          violates our <%= link_to "terms of use", terms_path %>.
+                          violates our <ins><%= link_to "terms of use", terms_path %></ins>.
                         </p>
                         <%= f.text_area :content,:class=>"form-control form-control-lg text-editor rounded-1", :id=>"abuse_content", :rows=>"6" %>
                         </div>
