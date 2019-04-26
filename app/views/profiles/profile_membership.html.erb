@@ -10,11 +10,24 @@
           </div>
           <div class="col-md-7 col-lg-8 col-xl-8">
             <div class="page-header bordered">
-              <h1>Membership Status:</h1>
-            </div>     
-				<h5>Your Status: <%= current_user.role %></h5>
-				<br>
-				<button class="btn btn-primary btn-lg">Update your account</button>
+              <h1>Membership</h1>
+            </div>
+            <div class="card">
+              <div class="media mt-0">
+                    <div class="media-left">
+                      <%= image_tag("badge.png", :height=>"100", :width=>"100", :alt=>"badge") %>
+                      </div>
+                    <div class="media-body">
+                      <a class="btn btn-link float-right" href="#">
+                        <button class="btn btn-primary btn-md">Update your account</button>
+                      </a>
+                      <h4 class="media-heading">Plan <strong><%= current_user.role %></strong></h4>
+                      <p class="text-muted"></p>                      
+                      
+                    </div>
+                  </div>
+              </div>
+				
 		    </div>
           </div>
         </div>

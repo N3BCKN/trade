@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html do
           redirect_to root_path,
-            notice: 'Contact has been updated'
+            notice: 'Contact has been created'
         end
       else
         format.html do
@@ -44,13 +44,13 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.update(contact_params)
         format.html do
-          redirect_to root_path,
+          redirect_to edit_contact_path,
             notice: 'Contact has been updated'
         end
       else
         format.html do
           render :edit,
-            notice: 'Error'
+            notice: "Contact couldn't be updated. Please try again."
         end
       end
     end

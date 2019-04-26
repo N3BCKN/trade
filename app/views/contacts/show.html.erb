@@ -38,7 +38,11 @@
                 <ul class="checked_list feature-list">
                   <% if @contact.areas_of_interest.present? %>
                     <% @contact.areas_of_interest.each do |area|%>
-                        <li><strong><%= area %></strong></li>
+                        <li><strong>
+                          <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                          <%= area %>
+                          </strong>
+                        </li>
                     <% end %>
                   <% end %>
                 </ul>

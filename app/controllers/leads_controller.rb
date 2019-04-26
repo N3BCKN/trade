@@ -33,7 +33,7 @@ class LeadsController < ApplicationController
       else
         format.html do
           redirect_to root_path,
-            notice: "Lead couldn't be added"
+            notice: "Lead couldn't be updated. Please try again"
         end
       end
     end
@@ -52,7 +52,7 @@ class LeadsController < ApplicationController
       else
         format.html do
           render :edit,
-            notice: 'Error'
+            notice: "Lead couldn't be updated. Please try again" 
         end
       end
     end
