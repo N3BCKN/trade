@@ -32,7 +32,7 @@
 
               <div class="item-description">
               	<%= image_tag(@contact.avatar, :class=>"float-left p-3") if @contact.avatar?%>             
-                 <p><%= @contact.company_description %></p>
+                 <p><%= simple_format(@contact.company_description) %></p>
               </div>
               <h3 class="headline pt-2">Areas of Interest:</h3>
                 <ul class="checked_list feature-list">
