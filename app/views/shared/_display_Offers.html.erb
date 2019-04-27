@@ -1,42 +1,24 @@
 <% leads.each do |lead| %>
        <div class="item mb-3">
                 <div class="row">
-                  <!-- <div class="col-lg-5">
-                    <div class="item-image">
-                    </div>
-                      <div class="item-badges">
-                      <div class="item-badge-left">Sponsored</div>
-                      <div class="item-badge-right">For Sale</div>
-                      </div>
-                      <div class="item-meta">
-                      <div class="item-price">$420,000
-                      <small>$777 / sq m</small>
-                      </div>
-                      </div>
-                      </a>
-                      <a href="#" class="save-item"><i class="fa fa-star"></i></a> 
-                    </div>
-                  </div> -->
                   <div class="col-lg-12">
-                  <div class="item-info">
-                    <h3 class="item-title"><%= link_to lead.title, lead_path(lead.slug) %></h3>
-                    <div class="row py-2">
-                    <div class="col-md-6">
-                        <div class="added-on">
-                          Buyer From <%= country_name(lead.country) %> 
-                          <%= flag_icon(lead.country.downcase) %> 
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="added-by"><%=  Date.parse(lead.created_at).strftime("%B %e, %Y") %></div>
-                    </div>
-                    </div>
-                    <!-- <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                    <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div> -->
-                    <div class="item-details mb-2">
-                      <%= lead.description_short %>...
-                    </div>
-                 </div>
+                    <div class="item-info">
+                      <h3 class="item-title"><%= link_to lead.title, lead_path(lead.slug) %></h3>
+                      <div class="row py-2">
+                      <div class="col-md-6">
+                          <div class="added-on">
+                            Buyer From <%= country_name(lead.country) %> 
+                            <%= flag_icon(lead.country.downcase) %> 
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="added-by"><%=  Date.parse(lead.created_at).strftime("%B %e, %Y") %></div>
+                      </div>
+                      </div>
+                      <div class="item-details mb-2">
+                        <%= lead.description_short %>...
+                      </div>
+                   </div>
                   </div>
                 </div>
               </div>
