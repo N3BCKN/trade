@@ -57,7 +57,7 @@
             <%= link_to "My Offers", profile_offers_path, :class => "dropdown-item" %>
             <%= link_to "My Messages", profile_messages_path, :class => "dropdown-item" %>
             <%= link_to "User Settings", edit_contact_path(current_user.contact), :class => "dropdown-item" %>
-            <%= link_to "Change Password", profile_dashboard_path, :class => "dropdown-item" %>
+            <%= link_to "Change Password", edit_user_registration_path, :class => "dropdown-item" %>
             <%= link_to destroy_user_session_path, :class => "dropdown-item", :method => :delete do %>
             <i class="fas fa-sign-out-alt mr-1"></i></i>Logout
             <% end %>

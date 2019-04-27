@@ -21,8 +21,8 @@
 		            <small><i class="fa fa-map-marker"></i>
 		            <%= "#{@contact.address}," if @contact.address.present? %>
                 <%= "#{@contact.city}," if @contact.city.present? %> 
-		            <%= country_name(@contact.country) %>
-		            <%= flag_icon(@contact.country.downcase) %>
+		            <%= country_name(@contact.country) if @contact.country.present? %>
+		            <%= flag_icon(@contact.country.downcase) if @contact.country.present?  %>
 		        	</small>
 		        	</h1>
 	          </div>
