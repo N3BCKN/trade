@@ -14,11 +14,13 @@
             <table>
                 <tr>
                     <td align="center" class="masthead">
-                        <h2>You received the message on trade.com</h2>
+                        <h2>You have received a message on Cargocub</h2>
                     </td>
                 </tr>
                 <tr>
                     <td class="content">
+                         <%= image_tag attachments['logo.png'].url, width: "45%", height: "40%", alt: "Cargocub logo" %>
+                        <br><br>
                         <p><strong>Response to: </strong><%= link_to @lead.title, @url %></p>
                         <h2>Reply:</h2>
                         <p><%= @message.content %></p>
@@ -44,11 +46,14 @@
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p>Sent by <a href="#">Trade Company LTD</a>, 1234 Yellow Brick Road, OZ, 99999</p>
-                        <p><a href="mailto:">contact@trade.com</a></p>
+                        <p> <strong>CARGOCUB, Inc. </strong>, <br>1355 Market Street, Suite 900
+                        San Francisco, CA 94103
+                        P: (123) 456-7890 </p>
+                        <p>office@cargocub.com</p>
                     </td>
                 </tr>
             </table>
+
         </td>
     </tr>
 </table>

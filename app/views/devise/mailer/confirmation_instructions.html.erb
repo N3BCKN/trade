@@ -21,8 +21,10 @@
                 </tr>
                 <tr>
                     <td class="content">
+                        <%= email_image_tag(attachments['logo.png'].url, width: "45%", height: "40%", alt: "Cargocub logo") %>
+                        <br><br>
                         <p>Dear customer,</p>
-                        <p>Thank you for your registration on TRADE</p>
+                        <p>Thank you for your registration on CARGOCUB</p>
                         <p>To confirm your registration please click on the link below:</p>
                         <strong>
                         <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
@@ -30,7 +32,7 @@
                         <br><br><br>
                         Best Regards,
                         <br>
-                        Trade team
+                        Cargocub team
                     </td>
                 </tr>
             </table>
@@ -42,10 +44,10 @@
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p> <strong>TRADE, Inc. </strong>, <br>1355 Market Street, Suite 900
+                        <p> <strong>CARGOCUB, Inc. </strong>, <br>1355 Market Street, Suite 900
                         San Francisco, CA 94103
                         P: (123) 456-7890 </p>
-                        <p>trade@company.com</p>
+                        <p>office@cargocub.com</p>
                     </td>
                 </tr>
             </table>
