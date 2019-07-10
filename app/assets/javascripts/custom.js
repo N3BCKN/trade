@@ -44,7 +44,7 @@ $("#lead_category_id").on('change',function(selectObject){
       case "Fuels":
         $("#category_helper").text("Here are examples of products for category " + category);
         break;
-      case "Raw Materials":
+      case "Services":
         $("#category_helper").text("Here are examples of products for category " + category);
         break;
       case "Cosmetics / Body Care":

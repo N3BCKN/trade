@@ -53,7 +53,7 @@ end
 
 
 Category.create!(name: "Fuels")
-Category.create!(name: "Raw Materials")
+Category.create!(name: "Services")
 Category.create!(name: "Cosmetics / Body Care")
 Category.create!(name: "Groceries / Food")
 Category.create!(name: "Mechanic Devices and Parts")

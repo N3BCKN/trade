@@ -28,12 +28,17 @@ class LeadsController < ApplicationController
       if @lead.save
         format.html do
           redirect_to lead_path(@lead),
-            notice: 'Lead Has been added'
+            notice: 'Lead has been added'
         end
       else
         format.html do
-          redirect_to root_path,
-            notice: "Lead couldn't be updated. Please try again"
+          if params[:lead_status] == 'product'
+             redirect_to new_product_path,
+            notice: "Product couldn't be created. Please try again"
+          elsif params[:lead_status] == 'offer'
+            redirect_to new_offer_path,
+            notice: "Offer couldn't be created. Please try again"
+          end
         end
       end
     end
