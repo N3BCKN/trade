@@ -33,7 +33,7 @@ class LeadsController < ApplicationController
       else
         format.html do
           if params[:lead_status] == 'product'
-             redirect_to new_product_path,
+            redirect_to new_product_path,
             notice: "Product couldn't be created. Please try again"
           elsif params[:lead_status] == 'offer'
             redirect_to new_offer_path,
