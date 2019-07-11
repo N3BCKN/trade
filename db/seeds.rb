@@ -64,6 +64,7 @@ Category.create!(name: "Agriculture")
 Category.create!(name: "Industrial Goods")
 Category.create!(name: "Construction Materials")
 Category.create!(name: "Office/Packaging Products")
+Category.create!(name: "Home Products")
 
 
 

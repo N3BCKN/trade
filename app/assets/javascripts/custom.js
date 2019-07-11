@@ -40,46 +40,47 @@ $( document ).on('turbolinks:load', function() {
   // examples of products for selected categories on add lead pages
 $("#lead_category_id").on('change',function(selectObject){
     var category = $("option:selected", this).text();
-    $("#category_helper").text("Things such as: ");
+    var category_helper = $("#category_helper")
+    category_helper.html("<small>Things such as: &nbsp;</small> ");
     switch(category){
       case "Fuels":
-        $("#category_helper").append("Coal, Pellets, Gassoline, Crude Oils, Gas, Petroleum, Diesel Fuel, Biodiesel, Briquette");
+        category_helper.append("Coal, Pellets, Gassoline, Crude Oils, Gas, Petroleum, Diesel Fuel, Biodiesel, Briquette");
         break;
       case "Services":
-        $("#category_helper").append("Programing or Graphic Agencies, Consulting, Telemarketing, Outsourcing, Freelancing");
+        category_helper.append("Programing or Graphic Agencies, Consulting, Telemarketing, Outsourcing, Freelancing");
         break;
       case "Cosmetics / Body Care":
-        $("#category_helper").append("Soaps, Shampoos, Toothpastes, Conditioners, Shower Gels, Powders, Deodorants, Lipsticks, Makeup Kits, Hair Dyes");
+        category_helper.append("Soaps, Shampoos, Toothpastes, Conditioners, Shower Gels, Powders, Deodorants, Lipsticks, Makeup Kits, Hair Dyes");
         break;
       case "Groceries / Food":
-        $("#category_helper").append("Beverages, Pasta, Rice, Fruits, Vegetables, Spices, Meat, Coffe, Sugar, Milk, Fishes, Canned Food, Salt ");
+        category_helper.append("Beverages, Pasta, Rice, Fruits, Vegetables, Spices, Meat, Coffe, Sugar, Milk, Fishes, Canned Food, Salt ");
         break;
       case "Mechanic Devices and Parts":
-        $("#category_helper").append("Factory Machines, Engines, Pump, Tools, Auto Parts, Motors, Tractors, Combines, Construction Machines, Tires");
+        category_helper.append("Factory Machines, Engines, Pump, Tools, Auto Parts, Motors, Tractors, Combines, Construction Machines, Tires");
         break;
       case "Basic Necessities":
-        $("#category_helper").append("Bandages, Diapers, Plasters, Condoms, Hydrogen Peroxide, Vitamins, Infant Formulas");
+        category_helper.append("Bandages, Diapers, Plasters, Condoms, Hydrogen Peroxide, Vitamins, Infant Formulas");
         break;
       case "Electronics":
-        $("#category_helper").append("TVs, Computers, Cameras, Washers, Fridges, Home Theater Sets, Hair Dryers, Video Game Consoles, Tablets, Pendrives, Mobile Phones, Electronic Parts");
+        category_helper.append("TVs, Computers, Cameras, Washers, Fridges, Home Theater Sets, Hair Dryers, Video Game Consoles, Tablets, Pendrives, Mobile Phones, Electronic Parts");
         break;
       case "Clothers / Textiles":
-        $("#category_helper").append("T-shirts, Jeans, Coats, Sunglasses, Caps, Jackets, Shoes, Fabrics, Wool, Silk, Fibers, Dyes, Cashmere, Underwear, Protective Clothing");
+        category_helper.append("T-shirts, Jeans, Coats, Sunglasses, Caps, Jackets, Shoes, Fabrics, Wool, Silk, Fibers, Dyes, Cashmere, Underwear, Protective Clothing");
         break;
       case "Agriculture":
-        $("#category_helper").append("Seeds, Fertilizers, Insecticides, Cattle, Cattle Feed, Suplements for animals, Seedlings");
+        category_helper.append("Seeds, Fertilizers, Insecticides, Cattle, Cattle Feed, Suplements for animals, Seedlings");
         break;
       case "Industrial Goods":
-        $("#category_helper").append("Steel, Metal Ores, Raw Materials, Timber ");
+        category_helper.append("Steel, Metal Ores, Raw Materials, Timber");
         break;
       case "Construction Materials":
-        $("#category_helper").append("Bricks, Cement, Cables, Paints, Pipes, Concrete, Electrical Installations, Reinforcing Bars");
+        category_helper.append("Bricks, Cement, Cables, Paints, Pipes, Concrete, Electrical Installations, Reinforcing Bars");
         break;
       case "Office/Packaging Products":
-        $("#category_helper").append("Paper Sheets, Office Chairs, Desks, Tables, Pens, PencilsCardboards, Notebooks, Crayons, Binders, Boxes, Bags");
+        category_helper.append("Paper Sheets, Office Chairs, Desks, Tables, Pens, PencilsCardboards, Notebooks, Crayons, Binders, Boxes, Bags");
         break;
       case "Home Products":
-        $("#category_helper").append("Furnitures, Books, Tovels, Carpets, Candles, Dishes, Detergents");
+        category_helper.append("Furnitures, Books, Towels, Carpets, Bedding, Pillows, Candles, Dishes, Detergents");
         break;
     }
   });
