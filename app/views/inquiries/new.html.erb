@@ -1,0 +1,78 @@
+<% content_for(:title, "Contact Us")%>
+<div id="content" class="property-single">
+  <div class="container">
+    <div class="container">
+<section class="mb-4">
+
+    <div class="text-center my-4">
+        <h1 class="font-weight-bold display-5">Contact Us</h1>
+    </div>
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly.</p>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            <%= form_for Inquiry.new, :html => { :honeypot => true } do |f| %>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                              <%= f.text_field :name, :value=>current_user.try!(:user_name), :class=>"form-control", 
+                              :id=>"name" %>
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <%= f.text_field :email, :value=>current_user.try!(:email), :class=>"form-control", 
+                              :id=>"name" %>
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                  
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <%= f.text_field :subject, :class=>"form-control", :id=>"subject" %>
+                            <label for="subject" class="">Subject</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <%= f.text_area :message, :class=>"form-control rounded-1", :id=>"message", rows: "5" %>
+                            <label for="message">Your message</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="text-center text-md-left">
+                	<%= f.submit "Send Message", :class=>"btn btn-primary btn-lg" %>
+            	</div>
+            	<div class="status"></div>
+            <% end %>
+        </div>
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-3x"></i>
+                    <p>San Francisco, CA 94126, USA</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-3x"></i>
+                    <p>+ 01 234 567 89</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-3x"></i>
+                    <p>contact@mdbootstrap.com</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+    </div>
+  </div>
+</div>

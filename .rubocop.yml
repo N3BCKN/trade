@@ -1,0 +1,128 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.5.1
+  DisplayCopNames: true
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - vendor/**/*
+    - lib/templates/**/*
+    - config/initializers/**/*
+    - Gemfile
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+  SupportedStyles:
+    - compact
+    - expanded
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+  SupportedStyles:
+    - with_first_parameter
+    - with_fixed_indentation
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/StringMethods:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - Gemfile
+
+Metrics/MethodLength:
+  Max: 11
+
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+  SupportedStylesAlignWith:
+    - keyword
+    - variable
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+# Allow operators indentation:
+# something + something_else
+# nothing   + nothing_at_all
+Layout/SpaceAroundOperators:
+  Enabled: false
+
+# Require indentation of `when` in `case` statement
+# case something
+#   when condition then result
+# end
+Layout/CaseIndentation:
+  IndentOneStep: true
+
+# Allow paramteres column indentation
+Layout/FirstParameterIndentation:
+  Enabled: false
+
+Bundler/DuplicatedGem:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 19
+
+# We use Contracts.rb for pattern matching
+Lint/DuplicateMethods:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    - x
+    - y
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space

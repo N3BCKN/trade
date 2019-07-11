@@ -1,11 +1,70 @@
 <% content_for(:title, @category.name)%>
-<h2 class="text-center">Offers from category: <%= params[:category].capitalize %></h2>
-
-<div class="row">
-	<div class="col-lg-3">
-		
-	</div>
-	<div class="col-lg-9">
-		<%= render "shared/display_Offers", leads: @leads %>	
-	</div>
+  <div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item">Offers From Buyers</li>
+            <li class="breadcrumb-item active" aria-current="page">Category <%= params[:category].capitalize %></li>
+            </ol>
+            </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+  <div class="search-form">
+    <!-- <div class="card">
+      <div class="row">
+        <div class="col-lg-9">
+         
+      </div>
+    </div>
+  </div> -->
+  <div class="page-header text-center">
+       <h1>Latest Offers of <%= params[:category].capitalize %></h1>
+  </div>
+</div>
+  <div id="content">
+<div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <div class="row has-sidebar">
+          <div class="col-md-4 col-lg-3">
+            <div id="sidebar" class="sidebar-left">
+              <div class="sidebar_inner">
+                <h4 class="panel-title">All Categories</h4>
+                <hr>
+                <ul class="list-group no-border list-unstyled">
+                  <% @categories.each do |category| %>
+                  <li class="py-1 <%= category.name == params[:category] ? 'bg-info' : '' %>">
+                    <strong>
+                      <%= link_to category.name, offers_categories_path(category.name), 
+                      :class=> category.name == params[:category] ? 'text-white' : '' %>
+                    </strong>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-9">
+           <ul class="nav nav-tabs tab-lg" role="tablist">
+             <li role="presentation" class="nav-item"> 
+                <a class="nav-link active">Buyers</a>
+             </li>
+             <li role="presentation" class="nav-item">
+                <%= link_to "Suppliers", {:controller => "categories", :action => "index_products", :q => params[:category] }, :class => "nav-link"%>  
+            </li>
+            </ul>
+            <div class="clearfix"></div>
+            <div class="item-listing list">
+              <%= render "shared/display_Offers", leads: @leads %>
+            </div>
+          </div>
+       </div>
+     </div>
+    </div>
+   </div>
+  </div>
 </div>

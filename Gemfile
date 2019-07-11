@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -36,41 +38,45 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-
 gem 'bootstrap', '~> 4.2.1'
-gem 'jquery-rails', '~> 4.3'
-gem 'popper_js', '~> 1.14'
-gem 'tether-rails', '~> 1.4'
-gem "paranoia", "~> 2.2"
-gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
-gem "paperclip", "~> 6.0.0"
 gem 'country_select', '~> 3.1'
+gem 'dotenv-rails', groups: %i[development test]
+gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git', branch: 'master'
 gem 'elasticsearch-model', '~> 6.0.0'
 gem 'elasticsearch-rails', '~> 6.0.0'
 gem 'faker'
-
+gem 'jquery-rails', '~> 4.3'
+gem 'paperclip', '~> 6.0.0'
+gem 'paperclip-gcs'
+gem 'paranoia', '~> 2.2'
+gem 'popper_js', '~> 1.14'
+gem 'tether-rails', '~> 1.4'
+gem 'flag-icons-rails'
+gem 'friendly_id', '~> 5.2.4'
+gem 'honeypot-captcha'
+gem 'whenever', require: false
 
 gem 'devise', '~> 4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   gem 'factory_bot'
   gem 'faker'
   gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop', '~> 0.63.1', require: false
+  gem 'rubocop-rspec'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'letter_opener'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "letter_opener"
-
-  gem 'rufo', require: false
 end
 
 group :test do
@@ -82,8 +88,8 @@ group :test do
 end
 
 group :production do
-  gem "sentry-raven"
+  gem 'sentry-raven'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

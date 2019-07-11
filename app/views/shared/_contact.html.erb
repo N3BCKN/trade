@@ -1,51 +1,150 @@
-<%= form_for contact, html: { multipart: true } do |f| %>
+
+<%= form_for(@contact) do |f| %>
 
 <div class="form-group">
-    <label for="companyDescription">Company Description</label>
-    <%= f.text_area :company_description, :class=>"form-control rounded-1", :id=>"companyDescription", rows: "5" %>
-    <small id="descriptionHelp" class="form-text text-muted">Describe your company's activity for the Customers</small>
+     <h3 class="subheadline">Company Description</h3>
+    <%= f.text_area :company_description, :class=>"form-control form-control-lg rounded-1", :id=>"companyDescription", rows: "5" %>
+    <small id="descriptionHelp" class="form-text text-muted">Describe your company's activity for the customers</small>
 </div>
 
 <div class="form-group">
-    <label for="address">Address</label>
-    <%= f.text_field :address, autocomplete: "address", :class=>"form-control", :id=>"address" %>
+    <h3 class="subheadline">Areas of Interest</h3>
+    <% @categories.each do |category| %>
+    <div class="form-check form-check-inline">
+         <%= f.check_box :areas_of_interest, { multiple: true, :class=>"form-check-input" }, category.name, false %>
+        <label class="form-check-label"><%= category.name %></label>
+    </div>
+    <% end %>
 </div>
 
 <div class="form-group">
-    <label for="city">City</label>
-     <%= f.text_field :city, autocomplete: "city", :class=>"form-control", :id=>"city" %>
+     <h3 class="subheadline">Country</h3>
+    <%= country_select("contact", "country", { }, { class: 'form-control form-control-lg ui-select' }) %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">City</h3>
+     <%= f.text_field :city, autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Address</h3>
+    <%= f.text_field :address, autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Zip Code</h3>
+    <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control form-control-lg", :id=>"zip_code" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Phone Number</h3>
+    <%= f.text_field :phone_number, autocomplete: "phone number", :class=>"form-control form-control-lg", :id=>"phone_number" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Number of Employes</h3>
+    <%= f.number_field :number_of_employes, autocomplete: "number_of_employes", :class=>"form-control form-control-lg", :id=>"number_of_employes" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Annual Sales in US dolars</h3>
+    <%= f.text_field :annual_sales, autocomplete: "annual_sales", :class=>"form-control form-control-lg", :id=>"annual_sales" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Home Page</h3>
+    <%= f.text_field :home_page, autocomplete: "Home Page", :class=>"form-control form-control-lg", :id=>"home_page" %>
+</div>
+
+<div class="form-group">
+     <h3 class="subheadline">Year of Establishment</h3>
+    <%= f.number_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control form-control-lg", :id=>"establishment" %>
+</div>
+
+<div class="form-group pb-5">
+     <h3 class="subheadline">Location</h3>
+    <button class="btn btn-primary btn-md btn-block" type="button" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+        Mark Your Location on Map
+    </button>
+    <div class="collapse" id="collapseMap">
+  <div class="card card-body">
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <button type="button" id="remove_marker" class="btn btn-sm">
+    Remove your current position
+    </button>
+    <script>
+    function initMap() {
+        var location = {
+            lat: <%= @contact.latitude || 0 %>,
+            lng: <%= @contact.longitude || 0 %>
+        };
+        var removed = false;
+        
+        var map = new google.maps.Map(
+        document.getElementById('map'), 
+        {
+                zoom: 2, 
+                center: location
+        }
+        );
+        
+        if(location.lat != 0 && location.lng != 0){
+        var marker = new google.maps.Marker({
+            position: location, 
+            map: map
+        });
+        }
+
+
+        function changMarker(location) {
+        if ( marker && !removed ) {
+            marker.setPosition(location);
+          } else if(marker && removed){
+             marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+            removed = false;
+          }else {
+            marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          }
+        };
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          changMarker(event.latLng);
+          document.getElementById("longitude").value = event.latLng.lng();
+          document.getElementById("latitude").value = event.latLng.lat();
+        });
+
+        document.getElementById('remove_marker').addEventListener('click', function(event){
+            document.getElementById("longitude").value = ""
+            document.getElementById("latitude").value = ""
+            removed = true;
+            marker.setMap(null);
+        });
+
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
+    </script>
   </div>
-
-<div class="form-group">
-    <label for="zip_code">Zip Code</label>
-    <%= f.text_field :zip_code, autocomplete: "zip_code", :class=>"form-control", :id=>"zip_code" %>
 </div>
-
-<div class="form-group">
-    <label for="country">Country</label>
-    <%= country_select("contact", "country", { }, { class: 'form-control' }) %>
-  </div>
-
-<div class="form-group">
-    <label for="phone_number">Phone Number</label>
-    <%= f.text_field :phone_number, autocomplete: "phone number", :class=>"form-control", :id=>"phone_number" %>
 </div>
-
-<div class="form-group">
-    <label for="home_page">Home Page</label>
-    <%= f.text_field :home_page, autocomplete: "Home Page", :class=>"form-control", :id=>"home_page" %>
-</div>
-
-<div class="form-group">
-    <label for="establishment">Year of Establishment</label>
-    <%= f.text_field :year_of_establishment, autocomplete: "Year of Establishment", :class=>"form-control", :id=>"establishment" %>
-</div>
+<%= f.hidden_field :longitude, {:id => "longitude", :value => "" }%>
+<%= f.hidden_field :latitude, {:id =>  "latitude", :value => "" }%>
+<hr>
 
 <div class="form-group text-center">
-    <%= set_user_avatar(@contact,"img_prev") %>
+    <%= user_avatar(@contact,"img_prev") %>
     <br>
    <label class="btn btn-primary">
-    Upload Your Avatar <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>
+    Upload Your Logo <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>
    </label>
 </div>
 

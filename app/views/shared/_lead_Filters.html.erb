@@ -1,56 +1,112 @@
-<% @checkedBox = false %>
-	<h4>Date:</h4>
-	<%= radio_button_tag("date", "30", checked = (params.try(:[],:date) == "30"))%>
-	Last 30 days <br>
-	<%= radio_button_tag("date", "90", checked = (params.try(:[],:date) == "90"))%>
-	Last 90 days <br>
-	<%= radio_button_tag("date", "365", checked = (params.try(:[],:date) == "365"))%>
-	Last Year<br>	
-	<hr>
-	<h4>Category:</h4>
-	<% if categories.present?  %>
-		<% categories.each do |category| %>
-		<% @checkedBox = (params.try(:[], :category).try(:[], category[:key]) == "1" ) ? true : false %>
-			<%= check_box :category, category[:key],{checked: @checkedBox} %> 
-			<%= category[:key] %> 
-			<br>
-		<% end %>
-	<% end %>	
-		
-	<hr>
-	<h4>Location:</h4>
-	<% if countries.present? %>
-		<%= check_box :continent,:africa,
-		{checked: (params.try(:[],:continent).try(:[],"africa") == "1" ) ? true : false} %> 
-		Africa 
-		<br>
-		<%= check_box :continent,:asia,
-		{checked: (params.try(:[],:continent).try(:[],"asia") == "1" ) ? true : false}%> 
-		Asia 
-		<br>
-		<%= check_box :continent,:australia,
-		{checked: (params.try(:[],:continent).try(:[],"australia") == "1" ) ? true : false}%> 
-		Austria and Oceania 
-		<br>
-		<%= check_box :continent,:europe,
-		{checked: (params.try(:[], :continent).try(:[],"europe") == "1" ) ? true : false}%> 
-		Europe 
-		<br>
-		<%= check_box :continent,:north_america,
-		{checked: (params.try(:[], :continent).try(:[],"north_america") == "1" ) ? true : false}%> 
-		North America 
-		<br>
-		<%= check_box :continent,:south_america,
-		{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %> 
-		South America 
-		<br><br>
-	<h5>Top countries:</h5>
-		<% countries.each do |country| %>
-			<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
-			<%= check_box :country, country[:key], {checked: @checkedBox} %> 
-			<%= country_name(country[:key]) %> <br>
-		<% end %>
-		<%= hidden_field_tag :q, query %>
-	<% end %>
-<br>
- <%= submit_tag 'Filter', class: "btn btn-info btn-lg"  %>
+ <% @checkedBox = false %>
+ <button id="toggle-filters" class="btn btn-primary btn-circle mobile-filter"><i class="fa fa-filter"></i></button>
+            <div id="sidebar" class="sidebar-left">
+            <button class="close-panel btn btn-white"><i class="fa fa-long-arrow-left"></i></button>
+              <div class="sidebar_inner">
+              <div id="filters">
+
+              	 <div class="card">
+                  <div class="card-header">
+                    <h4 class="panel-title"> <a data-toggle="collapse" href="#p_date" role="button" aria-expanded="false" aria-controls="collapseExample"> Date <i class="fa fa-caret-down float-right"></i> </a> </h4>
+                  </div>
+                  <div id="p_date" class="panel-collapse collapse show" role="tabpanel">
+                    <div class="card-body">
+                    	
+                    <div class="mb-2">
+                    	<%= radio_button_tag("date", "30", checked = (params.try(:[],:date) == "30"))%>
+					Last 30 days 
+                    </div>
+                    <div class="mb-2">
+                    	<%= radio_button_tag("date", "90", checked = (params.try(:[],:date) == "90"))%>
+					Last 90 days
+                    </div>
+                    <div class="mb-2">
+                    	<%= radio_button_tag("date", "365", checked = (params.try(:[],:date) == "365"))%>
+					Last Year
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="panel-title"> <a data-toggle="collapse" href="#p_categories" role="button" aria-expanded="false" aria-controls="collapseExample"> Categories <i class="fa fa-caret-down float-right"></i> </a> </h4>
+                  </div>
+                  <div id="p_categories" class="panel-collapse collapse" role="tabpanel">
+                    <div class="card-body">
+                    <% if categories.present?  %>
+						<% categories.each do |category| %>
+						<div class="mb-2">
+						<% @checkedBox = (params.try(:[], :category).try(:[], category[:key]) == "1" ) ? true : false %>
+						<%= check_box :category, category[:key],{checked: @checkedBox} %>
+						<%= category[:key] %>
+						</div>
+						<% end %>
+					<% end %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="panel-title"> <a data-toggle="collapse" href="#p_location" role="button" aria-expanded="false" aria-controls="collapseExample"> Location <i class="fa fa-caret-down float-right"></i> </a> </h4>
+                  </div>
+                  <div id="p_location" class="panel-collapse collapse" role="tabpanel">
+                    <div class="card-body">
+                     <% if countries.present? %>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:africa,
+						{checked: (params.try(:[],:continent).try(:[],"africa") == "1" ) ? true : false} %>
+						Africa
+                     </div>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:asia,
+						{checked: (params.try(:[],:continent).try(:[],"asia") == "1" ) ? true : false}%>
+						Asia
+                     </div>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:australia,
+						{checked: (params.try(:[],:continent).try(:[],"australia") == "1" ) ? true : false}%>
+						Austria and Oceania
+                     </div>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:europe,
+						{checked: (params.try(:[], :continent).try(:[],"europe") == "1" ) ? true : false}%>
+						Europe
+                     </div>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:north_america,
+						{checked: (params.try(:[], :continent).try(:[],"north_america") == "1" ) ? true : false}%>
+						North America
+                     </div>
+                     <div class="mb-2">
+                     	<%= check_box :continent,:south_america,
+						{checked: (params.try(:[], :continent).try(:[],"south_america") == "1" ) ? true : false} %>
+						South America
+                     </div>
+                     <% end %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="panel-title"> <a data-toggle="collapse" href="#p_countries" role="button" aria-expanded="false" aria-controls="collapseExample"> Top 10 countries <i class="fa fa-caret-down float-right"></i> </a> </h4>
+                  </div>
+                  <div id="p_countries" class="panel-collapse collapse" role="tabpanel">
+                    <div class="card-body">
+                      <% countries.each do |country| %>
+                      <div class="mb-2">
+						<% @checkedBox = (params.try(:[], :country).try(:[], country[:key]) == "1" ) ? true : false %>
+						<%= check_box :country, country[:key], {checked: @checkedBox} %>
+						<%= country_name(country[:key]) %>
+					  </div>
+					<% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <%= hidden_field_tag :q, query %>
+              <%= submit_tag 'Filter', class: "btn btn-lg btn-primary btn-block"  %>
+              </div>
+     </div>

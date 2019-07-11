@@ -1,42 +1,88 @@
 <% content_for(:title, "#{current_user.user_name} -  favorite leads" )%>
-<section id="user_porfile" class="container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%= render "shared/user_Profile_Menu" %>
-			</div>
-			<div class="col-md-9">
-				<h2>Your Favorites:</h2>
-			    <hr>
-			    <% if @fav_leads.present? %>
-					<% @fav_leads.each do |fav| %>
-						 <div class="card">
-					        <div class="row no-gutters">
-					        	<% if fav.lead_status == "product" %>
-					            <div class="col-auto">
-					                <img src="//placehold.it/200" class="img-fluid img-thumbnail" alt="">
-					            </div>
-					            <% end %>
-					            <div class="col">
-					                <div class="card-block px-3 py-2">
-					                    <h4 class="card-title"><%= link_to fav.title, lead_path(fav.id) %></h4>
-					                    <p class="card-text py-4"><%= fav.description_short %>...</p>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="card-footer w-100">
-					           <span class="text-muted"> Seller from: </span> <%= country_name(fav.country) %>  
-					           <span class="float-right">Added <%=  time_ago_in_words(fav.created_at) %> ago </span>
-					        </div>
-					    </div>
-					    <br><br>
-					<% end %>
-					<%= paginate @fav_leads %>
-					
-				<% else %>
-					<h4 class="text-muted text-center">No favorite leads yet</h4>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <div class="row has-sidebar">
+           <div class="col-md-5 col-lg-4 col-xl-4 col-sidebar">
+                <%= render "shared/user_Profile_Menu" %>
+          </div>
+          <div class="col-md-7 col-lg-8 col-xl-8">
+            <div class="page-header bordered">
+              <h1>My Favorite Leads</h1>
+            </div>
+           <% if @fav_leads.present? %>
+				<% @fav_leads.each do |fav| %>
+					<% if fav.lead_status == "offer" %>
+						 <div class="item mb-3">
+			                <div class="row">
+			                  <div class="col-lg-12">
+			                    <div class="item-info">
+			                      <h3 class="item-title"><%= link_to fav.title, lead_path(fav.slug) %></h3>
+			                      <div class="row py-2">
+			                      <div class="col-md-6">
+			                          <div class="added-on">
+			                            Buyer From <%= country_name(fav.country) %> 
+			                            <%= flag_icon(fav.country.downcase) %> 
+			                          </div>
+			                      </div>
+			                      <div class="col-md-6">
+			                          <div class="added-by"><%=  fav.created_at.strftime("%B %e, %Y") %></div>
+			                      </div>
+			                      </div>
+			                      <div class="item-details mb-2">
+			                        <%= fav.description_short %>...
+			                      </div>
+			                   </div>
+			                  </div>
+			                </div>
+			          </div>
+                   <% elsif fav.lead_status == "product" %>
+						 <div class="item mb-3">
+			        		<h3 class="item-title pb-3"><%= link_to fav.title, lead_path(fav.slug) %></h3>
+			                <div class="row">
+			                  <div class="col-3">
+			                    <div class="item-image">
+			                        <%= link_to lead_path(fav.slug) do %>
+			                        <img src="//placehold.it/300x220" class="img-fluid" alt="">
+			                        <% end %>
+			                      <!-- <a href="#" class="save-item"><i class="fa fa-star"></i></a>  -->
+			                    </div>
+			                  </div>
+			                  <div class="col-9">
+			                  <div class="item-info">
+			                    <div class="row mb-3">
+			                      <div class="col-md-6">
+			                          <div class="added-on">
+			                            Seller From <strong><%= country_name(fav.country) %> </strong>
+			                            <%= flag_icon(fav.country.downcase) %> 
+			                          </div>
+			                      </div>
+			                      <div class="col-md-6">
+			                          <div class="added-by"><%=  fav.created_at.strftime("%B %e, %Y") %></div>
+			                      </div>
+			                    </div>
+			                    <div class="item-details mb-2">
+			                      <%= fav.description_short %>...
+			                    </div>
+			                 </div>
+			                    
+			                  </div>
+			                </div>
+			              </div>
+                   <% end %>
+                   <hr>
 				<% end %>
-			</div>
-		</div>
-	</div>
-</section>
+					<%= paginate @fav_leads %>	
+			<% else %>
+					<h4 class="text-muted text-center">No favorite leads yet</h4>
+			<% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

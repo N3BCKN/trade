@@ -1,16 +1,36 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+<% content_for(:title, "Resend Confirmation")%>
+<div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-md-8  col-lg-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item"><a href="#">Account</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Resend Instructions</li>
+            </ol>
+            </nav>
+        <div class="page-header">
+        <h1>Resend confirmation instructions</h1>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-md-8  col-lg-6">
+      <p>If you did not receive a confirmation for your account. Please write down your email address and we will resend it to your mailbox. </p>
+            <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  			<%= devise_error_messages! %>
+            <div class="form-group">
+            <label for="emailResend">Email address</label>
+    		<%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :id => "emailResend", :class => "form-control form-control-lg"%>
+            </div>
+               <%= f.submit "Resend Confirmation Instructions", :class => "btn btn-primary btn-lg" %>
+            <% end %>
+        
+        <div> </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

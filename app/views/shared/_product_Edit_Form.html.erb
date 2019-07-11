@@ -1,58 +1,106 @@
-<%= form_for(@lead) do |f| %>
+<% content_for(:title, "Edit Offer")%>
+<div id="content" class="property-single">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-12 col-xl-8">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item"><%= link_to "My Products",  profile_dashboard_path%></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
+          </ol>
+        </nav>
+         <div class="py-4">
+          <div class="row">
+            <div class="col-sm">
+        <div class="page-header bordered">
+            <h1 class="text-center">Edit Product<small></small></h1>
+        </div>
+         <%= form_for(@lead) do |f| %>
+        <div class="form-group">
+          <h3 class="subheadline py-3">Title:</h3>
+           <%= f.text_field :title, autofocus: true, autocomplete: "Title", :class=>"form-control form-control-lg", :id=>"title" %>
+        </div>
+         <div class="form-group">
+          <h3 class="subheadline py-3">Select Category:</h3>
+          <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name') %>
+          <br>
+          <small id="category_helper"></small>
+        </div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, autofocus: true, autocomplete: "Title" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, autofocus: false, autocomplete: "description" %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_person %><br />
-    <%= f.text_field :contact_person, autofocus: false, autocomplete: "contact person" %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, autocomplete: "city" %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code, autocomplete: "Zip Code" %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= country_select("lead", "country") %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autocomplete: "Phone Number" %>
-  </div>
-  <div class="field">
-    <%= f.label :home_page %><br />
-    <%= f.text_field :home_page, autocomplete: "Home Page" %>
-  </div>
-   <div class="field">
-    <%= f.label :categories %>
-    <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name') %>
-  </div>
-  
-  <%= set_product_image_show(@lead,"img_prev") %>
+        <div class="form-group">
+         <h3 class="subheadline py-3">Product Description:</h3>
+          <%= f.text_area :description, :class=>"form-control form-control-lg text-editor rounded-1", :id=>"description", rows: "7" %>
+        </div>
 
-  <div class="field">
-    <label class="btn btn-primary">
-    Edit Product Image <%= f.file_field :product_image, style: "display: none;", :onChange=>"readURL(this,600,450)" %>
-   </label>
-  </div>
+        <div class="form-group">
+         <h3 class="subheadline py-3">Approximate Quantity</h3>
+          <%= f.text_field :quantity, :class=>"form-control form-control-lg rounded-1", :id=>"quantity" %>
+        </div>
 
-  <%= hidden_field_tag :lead_status, "product" %>
+        <div class="form-group">
+         <h3 class="subheadline py-3">Approximate Frequency</h3>
+          <%= f.select :freqency, ["Single Delivery", "Once a week", "Once a Month", "Once a year", "Several Times Per Year", "Another Way"],
+         {}, { :class=>"form-control form-control-lg ui-select", :id=>"freqency"} %>
+        </div>
+
+        <div class="form-group">
+         <h3 class="subheadline py-3">Contact Person:</h3>
+          <%= f.text_field :contact_person, autofocus: false, autocomplete: "contact person", :class=>"form-control form-control-lg", :id=>"contact" %>
+        </div>
+
+        <div class="form-group">
+          <h3 class="subheadline py-3">Address:</h3>
+           <%= f.text_field :address,  autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
+
+        <div class="form-group">
+          <h3 class="subheadline py-3">City:</h3>
+            <%= f.text_field :city, value: @contact.try!(:city), autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
+        </div>
+
+        <div class="form-group">
+          <h3 class="subheadline py-3">Zip Code:</h3>
+            <%= f.text_field :zip_code, value: @contact.try!(:zip_code), autocomplete: "Zip code", :class=>"form-control form-control-lg", :id=>"zipCode" %>
+        </div>
+
+        <div class="form-group">
+          <h3 class="subheadline py-3">Country:</h3>
+          <%= country_select("lead", "country", { selected: @contact.try!(:country) }, { class: 'form-control form-control-lg ui-select' }) %>
+        </div>
+
+        <div class="form-group">
+          <h3 class="subheadline py-3">Phone Number:</h3>
+          <%= f.text_field :phone_number, value: @contact.try!(:phone_number), autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
+        </div>
+    
+        <div class="form-group pb-5">
+                <h3 class="subheadline py-3">Upload Product Image:</h3>
+                <div class="ui-dropzone">
+                  <img class="img-fluid" id="img_prev">
+                  <i class="fa fa-5x fa-upload"></i>
+                  <div>Drag and drop product image or click to upload</div>
+                  <%= f.file_field :product_image, :class=>"form-control form-control-lg", :onChange=>"readURL(this,'100%','100%')", :id=>"gallery" %>
+                </div>
+        </div>
+          <%= hidden_field_tag :lead_status, "product" %>
+           <%= f.submit "Edit Product", :class=>"btn btn-primary btn-block" %>
+      <% end %>
+       <%= link_to lead_path(@lead), :class=>"btn btn-danger my-5", method: :delete, data: { confirm: 'Are you sure?' } do%>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          Delete This Product
+          <% end %>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("#lead_category_id").addClass('form-control form-control-lg ui-select');  
+</script>
+
+
  
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
-
-<% end %>

@@ -1,34 +1,374 @@
 <% content_for(:title, 'Home Page')%>
-<section id="home_page">
-	<div class="container text-center py-5">
-		<h1 class="py-5">Trade - Home Page</h1>
-		<div class="row">
-			<div class="col-md-4 offset-md-2">
-				<%= form_tag(products_path, method: :get) do %>
-				  Search: <%= text_field_tag :q, "", class: 'form-control' %>
-				  <%= submit_tag 'Find Products',:class=>"btn btn-info" %>
-				<% end %>
-				<hr>
-				<h3>Find Product By Category:</h3>
-				<ul class="list-group">
-					<% @categories.each do |category| %>
-						<li class="list-group-item"><%= link_to category.name, products_categories_path(category.name) %></li>
-					<% end %>
-				</ul>
+<div class="home-search">
+<div class="main search-form">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="heading">
+          <h2 class="text_landing">Find your new trade partners</h2>
+          <h3 style="visibility: hidden;">.</h3>
+        </div>
+       	<%= form_tag(products_path, method: :get) do |f| %>
+          <div class="card">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                 <%= text_field_tag :q, "", id: 'main_search', class: 'form-control form-control-lg', :placeholder => "I want to find..."%>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                      <select class="form-control form-control-lg ui-select" id="main_select">
+                        <option value="offers">Find Buyers</option>
+                        <option value="products">Find Suppliers</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="form-group">
+                     <%= submit_tag("Search", :class => "btn btn-lg btn-primary btn-block") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!--   <div class="search-in">
+			<div class="radio-box">
+			<input type="radio" name="searchin" value="rent" id="rent22">
+			<label class="radio-inline" for="rent22">For Rent</label>
 			</div>
-			<div class="col-md-4">
-				<%= form_tag(offers_path, method: :get) do %>
-				  Search: <%= text_field_tag :q, "", class: 'form-control' %>
-				  <%= submit_tag 'Find Offers', :class=>"btn btn-info" %>
-				<% end %>
-				<hr>
-				<h3>Find Offer By Category:</h3>
-				<ul class="list-group">
-					<% @categories.each do |category| %>
-						<li class="list-group-item"><%= link_to category.name, offers_categories_path(category.name) %></li>
-					<% end %>
-				</ul>
+			<div class="radio-box">
+			<input type="radio" name="searchin" value="sell" id="sell22" checked>
+			<label class="radio-inline" for="sell22" >For Sell</label>
 			</div>
-		</div>
-	</div>
-</section>
+    	</div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="content" class="pt0 pb0">
+<div class="feature-box centered grey">
+    <div>
+      <div class="container">
+        <div class="row justify-content-md-center mt-5">
+          <div class="col col-lg-12 col-xl-10">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="content-box">
+                  <div class="image"> 
+                    <%= image_tag("landing/face1.jpg", :class=>"rounded-circle img-fluid") %>
+                    </div>
+                  <h4>International Partners</h4>
+                  <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, inventore?</div>
+                  <div class="button"><a href="#">FIND YOUR INSPIRATION</a></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="content-box">
+                  <div class="image">
+                    <%= image_tag("landing/face2.jpg", :class=>"rounded-circle img-fluid") %>
+                  </div>
+                  <h4>Business Opportunities</h4>
+                  <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, sapiente!</div>
+                  <div class="button"><a href="#">CHOOSE A COUNTRY</a></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="content-box">
+                  <div class="image">
+                    <%= image_tag("landing/face3.jpg", :class=>"rounded-circle img-fluid") %>
+                  </div>
+                  <h4>Double your Sales</h4>
+                  <div class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, corrupti?</div>
+                  <div class="button"><a href="#">EXPLORE NOW</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="feature-box centered">
+    <div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+            <div class="item-listing grid">
+            <div class="main-title"><span>Find What You Need</span></div>
+              <div class="row">
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Fuels") do %>
+                    <%= image_tag("categories/fuel.jpg", :class=>"img-fluid category_img") %>
+                    <div class="carousel-caption">
+                      <h6 class="text_category">Fuels</h6>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Raw Materials") do %>
+                    <%= image_tag("categories/services1.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Services</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Cosmetics / Body Care") do %>
+                    <%= image_tag("categories/cosmetics.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Cosmetics and Body Care</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Groceries / Food") do %>
+                    <%= image_tag("categories/groceries.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Groceries and Food Products</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Mechanic Devices and Parts") do %>
+                    <%= image_tag("categories/mechanic.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Mechanic Devices and Parts</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Basic Necessities") do %>
+                    <%= image_tag("categories/basic.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Basic Necessities</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Electronics") do %>
+                    <%= image_tag("categories/electronics.jpg", :class=>"img-fluid category_img") %>   
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Electronics</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Clothers / Textiles") do %>
+                    <%= image_tag("categories/textiles.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Clothers and Textiles</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Agriculture") do %>
+                      <%= image_tag("categories/agriculture.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Agriculture</h6>
+                    </div>
+                     <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Industrial Goods") do %>
+                    <%= image_tag("categories/industrial.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Industrial Goods</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Construction Materials") do %>
+                      <%= image_tag("categories/construction.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Construction Materials</h6>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Office/Packaging Products") do %>
+                    <%= image_tag("categories/paper.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Office and Packaging Products</h6>
+                    </div>
+                    <% end %>
+                </div>
+                 <div class="col-md-3 col-6">
+                  <div class="item">
+                    <%= link_to offers_categories_path("Home Products") do %>
+                    <%= image_tag("categories/home.jpg", :class=>"img-fluid category_img") %>
+                  </div>
+                  <div class="carousel-caption">
+                      <h6 class="text_category">Home Products</h6>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="feature-box centered grey">
+  <div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-12 col-xl-10">
+          <div class="item-listing grid">
+            <div class="main-title"><span>Latest Listings</span></div>
+            <div class="row">
+              <div class="col-6">
+                    
+                <% @offers.each do |offer| %>
+                <div class="item" style="margin: 1%!important;">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="item-info">
+                        <h5 class="item-title"><%= link_to offer.title, lead_path(offer) %></h5>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="added-on">
+                              Buyer From <%= country_name(offer.country) %> 
+                              <%= flag_icon(offer.country.downcase) %> 
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item-details">
+                          <%= offer.description_short.first(90) %>...
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+
+              </div>
+              <div class="col-6">
+                <% @products.each do |product| %>
+                <div class="item" style="margin: 1%!important;">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="item-info">
+                        <h5 class="item-title"><%= link_to product.title, lead_path(product) %></h5>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="added-on">
+                              Seller From <%= country_name(product.country) %> 
+                              <%= flag_icon(product.country.downcase) %> 
+                            </div>
+                          </div>
+                        </div>
+                        <div class="item-details">
+                          <%= product.description_short.first(90) %>...
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="feature-box centered grey">
+    <div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+            <div class="item-listing grid">
+            <div class="main-title"><span>How to start using Cargocub?</span></div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-list-alt fa-3x"></i>
+                      <h4>Browse</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-user-plus fa-3x"></i>
+                      <h4>Register</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-comments fa-3x"></i>
+                      <h4>Contact</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="item text-center">
+                    <%= link_to root_path do %>
+                    <div style="font-size: 24px;">
+                      <i class="fa fa-file-invoice-dollar fa-3x"></i>
+                      <h4>Trade</h4>
+                    <% end %>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, at!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>

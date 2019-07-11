@@ -1,24 +1,44 @@
 <% content_for(:title, "#{current_user.user_name} - notifications sended" )%>
-<section id="user_porfile" class="container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%= render "shared/user_Profile_Menu" %>
-			</div>
-			<div class="col-md-9">
-				<h2>Your Sent Messages:</h2>
-				<hr>
-				<%  if @messages.present? %>
-					<% @messages.each do |message| %>
-					<h3>RE: <%= link_to message.lead.title, lead_path(message.lead) %></h3>
-					<p>Message: <%= message.content %></p>
-					<small><%= message.created_at.strftime("%Y/%m/%d - %H:%m")%></small>
-					<hr>
-					<% end %>
-				<% else %>
-					<h4 class="text-muted text-center">No messages sent yet</h4>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <div class="row has-sidebar">
+           <div class="col-md-5 col-lg-4 col-xl-4 col-sidebar">
+                <%= render "shared/user_Profile_Menu" %>
+          </div>
+          <div class="col-md-7 col-lg-8 col-xl-8">
+            <div class="page-header bordered">
+              <h1>Your Sent Messages:</h1>
+            </div>
+            <%  if @messages.present? %>
+				  <% @messages.find_each do |message| %>
+  					<div class="item-info py-3">
+              <h5 class="item-title">RE: <%= link_to message.lead.title, lead_path(message.lead) %></h5>
+                <div class="item-details mb-2">
+                  <strong>Message:</strong> <%= message.content %>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <div class="added-by"><strong>Sent:</strong> <%=  message.created_at.strftime("%Y/%m/%d - %H:%m")%>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+            <hr>
 				<% end %>
-			</div>
-		</div>
-	</div>
-</section>
+			<% else %>
+					<h4 class="text-muted text-center">No messages sent yet</h4>
+			<% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                
