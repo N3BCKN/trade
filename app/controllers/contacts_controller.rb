@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
+  include CountLeads
+
   # skip_before_action :authenticate_user!, only: :show
   before_action :set_contact, only: %i[show edit update]
   before_action :check_user_contact, only: [:edit]
+  before_action :leads_number, only: [:edit]
 
   def show
     if user_signed_in?

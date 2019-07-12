@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'limit_reached',      to: 'pages#visits_limit'
   get 'carriers',           to: 'pages#carriers'
   get 'for_press',          to: 'pages#for_press'
-  get 'partnership',        to: 'pages#partnership' 
+  get 'partnership',        to: 'pages#partnership'
 
   # Custom Categories Paths
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'

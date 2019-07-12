@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-  before_action :count_leads
+  include CountLeads
+
+  before_action :leads_number
   before_action :count_messages, only: :show_profile
 
   def show_profile
@@ -34,11 +36,6 @@ class ProfilesController < ApplicationController
   end
 
   private
-
-  def count_leads
-    @offers = Lead.profile_leads('offer', current_user).count
-    @products = Lead.profile_leads('product', current_user).count
-  end
 
   def count_messages
     @messages = Message.where(sender: current_user).count

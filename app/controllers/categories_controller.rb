@@ -19,10 +19,10 @@ class CategoriesController < ApplicationController
 
   def find_categories_by_name
     @categories = Category.all
-    @category = begin 
-                Category.find_by! name: params[:category]
+    @category = begin
+                  Category.find_by! name: params[:category]
                 rescue StandardError
-                    render_not_found
+                  render_not_found
                 end
   end
 end
