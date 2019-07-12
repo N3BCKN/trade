@@ -6,7 +6,12 @@ class ContactsController < ApplicationController
   before_action :check_user_contact, only: [:edit]
 
   def show
-    @contact = Contact.find(params[:id])
+    if user_signed_in?
+      @contact = Contact.friendly.find(params[:id])
+      @user            = @contact.user.reload
+      @message         = current_user.messages_sent.build
+      @message.receiver = @user
+    end
   end
 
   def new
@@ -20,7 +25,7 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html do
           redirect_to root_path,
-            notice: 'Contact has been updated'
+            notice: 'Contact has been created'
         end
       else
         format.html do
@@ -32,19 +37,20 @@ class ContactsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
     respond_to do |format|
       if @contact.update(contact_params)
         format.html do
-          redirect_to root_path,
+          redirect_to edit_contact_path,
             notice: 'Contact has been updated'
         end
       else
         format.html do
           render :edit,
-            notice: 'Error'
+            notice: "Contact couldn't be updated. Please try again."
         end
       end
     end
@@ -62,12 +68,21 @@ class ContactsController < ApplicationController
       :company_description,
       :home_page,
       :year_of_establishment,
-      :avatar
+      :avatar,
+      :annual_sales,
+      :number_of_employes,
+      :latitude,
+      :longitude,
+      areas_of_interest: []
     )
   end
 
   def set_contact
-    @contact = Contact.find(params[:id])
+    @contact = begin
+                   Contact.friendly.find(params[:id])
+               rescue StandardError
+                 render_not_found
+                 end
   end
 
   def check_user_contact

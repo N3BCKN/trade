@@ -1,19 +1,27 @@
-<% content_for(:title, "#{current_user.user_name} - Profile Dashboard" )%>
-<section id="user_porfile" class="container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%= render "shared/user_Profile_Menu" %>
-			</div>
-			<div class="col-md-9">
-				<h2>Hello, <%= current_user.user_name %></h2>
-				<hr>
-				<p>On Trade since: <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
-				<p>Offers Added: <%= @offers %></p>
-				<p>Products Added: <%= @products %></p>
-				<p>Messages Sent: <%= current_user.messages.count %></p>
-				<p>Faworite Leads: <%= current_user.favorite_leads.count %></p>
-			</div>
-		</div>
-	</div>
-</section>
+<% content_for(:title, "#{current_user.user_name} - Dashboard" )%>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <div class="row has-sidebar">
+           <div class="col-md-5 col-lg-4 col-xl-4 col-sidebar">
+                <%= render "shared/user_Profile_Menu" %>
+          </div>
+          <div class="col-md-7 col-lg-8 col-xl-8">
+            <div class="page-header bordered">
+              <h1><%= current_user.user_name %> - my profile</h1>
+            </div>
+           <p>On trade since: <strong class="ml-1">
+            <%= current_user.created_at.strftime("%B %e, %Y") %></strong></p>
+           <p>My email: <strong class="ml-1"><%= current_user.email %></strong></p>
+           <p>Products Advertised: <strong class="ml-1"><%= @products %></strong> </p>
+           <p>Buying Offers Advertised: <strong class="ml-1"><%= @offers %></strong> </p>
+           <p>Messages Sent: <strong class="ml-1"><%= @messages %></strong> </p>
+           <p>My User Status: <strong class="ml-1"> <%= current_user.role %></strong> <small class="ml-3"><%= link_to "Update Account?", profile_membership_path if  current_user.role == "regular" %></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,35 @@
 <% leads.each do |lead| %>
-	 <div class="card">
-        <div class="row no-gutters">
-            <div class="col-auto">
-                <img src="//placehold.it/200" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="col">
-                <div class="card-block px-3 py-2">
-                    <h4 class="card-title"><%= link_to lead.title, lead_path(lead._id) %></h4>
-                    <p class="card-text"><%= lead.description_short %>...</p>
+	   <div class="item mb-3">
+        <h3 class="item-title pb-3"><%= link_to lead.title, lead_path(lead.slug) %></h3>
+                <div class="row">
+                  <div class="col-3">
+                    <div class="item-image">
+                        <%= link_to lead_path(lead._id) do %>
+                        <img src="//placehold.it/300x220" class="img-fluid" alt="">
+                        <% end %>
+                      <!-- <a href="#" class="save-item"><i class="fa fa-star"></i></a>  -->
+                    </div>
+                  </div>
+                  <div class="col-9">
+                  <div class="item-info">
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                          <div class="added-on">
+                            Seller From <strong><%= country_name(lead.country) %> </strong>
+                            <%= flag_icon(lead.country.downcase) %> 
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="added-by"><%=  Date.parse(lead.created_at).strftime("%B %e, %Y") %></div>
+                      </div>
+                    </div>
+                    <div class="item-details mb-2">
+                      <%= lead.description_short %>...
+                    </div>
+                 </div>         
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div class="card-footer w-100">
-           <span class="text-muted"> Seller from: </span> <%= country_name(lead.country) %> 
-           <span class="float-right">Added <%=  time_ago_in_words(lead.created_at) %> ago </span>
-        </div>
-    </div>
+              </div>
 	<% end %>
-	<%= paginate leads %>
+<%= paginate leads %>
 

@@ -15,7 +15,7 @@ module ApplicationHelper
  end
 
   def full_title(dynamic_title)
-    main_title = 'Trade'
+    main_title = 'Cargocub'
     dynamic_title.empty? ? main_title : "#{main_title} | #{dynamic_title}"
  end
 end

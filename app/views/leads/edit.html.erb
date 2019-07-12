@@ -1,10 +1,6 @@
-<% content_for(:title, "Edit your lead")%>
-<h2>Edit Lead</h2>
 <% if @lead.lead_status == "offer"%>
   <%= render "shared/offer_Edit_Form", :lead => @lead %>
 <% elsif  @lead.lead_status  == "product" %>
   <%= render "shared/product_Edit_Form", :lead => @lead %>
   <br>
 <% end %>
-<br>
-<%= link_to "Delete", lead_path(@lead), method: :delete, data: { confirm: 'Are you sure?' } %> 

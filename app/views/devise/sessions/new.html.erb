@@ -1,35 +1,58 @@
-<section id="login_panel">
+<% content_for(:title, "Login")%>
 <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto py-3">
-
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h2 class="card-title text-center py-2">Log in</h2>
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => 'form-signin' }) do |f| %>
-              <div class="form-label-group">
-                <label for="loginEmail">Email:</label>
-                 <%= f.email_field :email, autofocus: true, autocomplete: "email", :id=>"loginEmail",:class=>"form-control", :placeholder=>"Email address", :required=>true %>
-              </div>
-              <br>
-              <div class="form-label-group">
-                <label for="loginPassword">Password:</label>
-                <%= f.password_field :password, autocomplete: "current-password", :class=>"form-control", :id=>"loginPassword", :placeholder=>"Password", :required=>true %>
-              </div>
-
-              <div class="custom-control custom-checkbox mb-3">
-                 <%= f.check_box :remember_me, :class=>"custom-control-input", :id=>"passwordCheckbox" %>
-                <label class="custom-control-label" for="passwordCheckbox">Remember Me</label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-              <hr class="my-4">
-
-            <%= render "devise/shared/links" %>
-            <% end %>
-          </div>
+    <div class="row justify-content-md-center">
+          <div class="col col-md-12 col-lg-10 col-xl-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+            <li class="breadcrumb-item"><a href="#">Account</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+            </nav>
+        <div class="page-header">
+        <h1>Log In to Trade</h1>
         </div>
       </div>
     </div>
   </div>
-</section>
-
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center align-items-center">
+      <div class="col col-md-6  col-lg-5 col-xl-4">
+        <ul class="nav nav-tabs tab-lg" role="tablist">
+           <li role="presentation" class="nav-item"> 
+            <%= link_to "Sign In", new_user_session_path, :class => "nav-link active"%></li>
+          <li role="presentation" class="nav-item">
+           <%= link_to "Register", new_user_registration_path, :class => "nav-link"%></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="login">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => 'form-signin' }) do |f| %>
+              <div class="form-group">
+                <label for="loginEmail">Email address</label>
+                 <%= f.email_field :email, autofocus: true, autocomplete: "email", :id=>"loginEmail", :class =>  "form-control form-control-lg", :placeholder=>"Email", :required=>true %>
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+               <%= f.password_field :password, autocomplete: "current-password", :class=>"form-control form-control-lg", :id=>"loginPassword", :placeholder=>"Password", :required=>true %>
+              </div>
+              <p class="text-lg-right"><%= link_to "Forgot Password?", new_user_password_path %></p>
+               <p class="text-lg-right"><%= link_to "Resend confirmation instructions", new_user_confirmation_path %></p>
+              
+              <div class="checkbox">
+                <%= f.check_box :remember_me, :class=>"custom-control-input", :id=>"remember_me" %>
+                <label for="remember_me">Remember Me</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
+            <% end %>
+          </div>
+        </div>
+        <div> </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-5 col-xl-4">
+        <div class="socal-login-buttons"> <a href="#" class="btn btn-social btn-block btn-facebook"><i class="icon fab fa-facebook"></i> Continue with Facebook</a> <a href="#" class="btn btn-social btn-block btn-twitter"><i class="icon fab fa-twitter"></i> Continue with Twitter</a> <a href="#" class="btn btn-social btn-block btn-google"><i class="icon fab fa-google"></i> Continue with Google</a> </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,22 +1,22 @@
-				<%= form_for(@message) do |f| %>
-					<div class="form-group">
-					   <label for="messageTextArea">Your Message:</label>
-					   <%= f.text_area :content, :class=>"form-control rounded-1", :id=>"messageTextArea", rows: "5" %>
-					</div>
-					<div class="form-group">
-					    <label for="messageName">Your Name</label>
-					    <%= f.text_field :contact_person, :class => "form-control", :id=>"messageName", :value=>current_user.user_name %>
-					</div>
-					<div class="form-group">
-					    <label for="messageCountry">Your Country</label>
-					    <%= country_select("contact", "country", { }, { class: 'form-control' }) %>
-				    </div>
-					<div class="form-group">
-					    <label for="messageEmail">Your Email</label>
-					    <%= f.email_field :email, :value=> current_user.email, :class=>"form-control", :id=>"messageEmail" %>
-					</div>
+<%= form_for(@message) do |f| %>
+	<div class="form-group">
+		<label for="messageTextArea">Your Message:</label>
+		<%= f.text_area :content, :class=>"form-control rounded-1", :id=>"messageTextArea", rows: "5" %>
+	</div>
+	<div class="form-group">
+		<label for="messageName">Your Name</label>
+		<%= f.text_field :contact_person, :class => "form-control input-lg", :id=>"messageName", :value=>current_user.user_name %>
+	</div>
+	<div class="form-group">
+		<label for="messageCountry">Your Country</label>
+		<%= country_select("contact", "country", { }, { class: 'form-control' }) %>
+	</div>
+	<div class="form-group">
+		<label for="messageEmail">Your Email</label>
+		<%= f.email_field :email, :value=> current_user.email, :class=>"form-control", :id=>"messageEmail" %>
+	</div>
 					
-					<%= hidden_field_tag :absolute_url, request.original_url %>
-					<br><br>
-					<%= f.submit 'Send a Message', class: "btn btn-info btn-lg btn-block"%>
-				<% end %>
+	<%= hidden_field_tag :absolute_url, request.original_url %>
+	<br><br>
+	<%= f.submit 'Send a Message', class: "btn btn-primary btn-lg btn-block"%>
+<% end %>

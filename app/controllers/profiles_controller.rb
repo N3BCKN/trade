@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
+  before_action :count_leads
+  before_action :count_messages, only: :show_profile
+
   def show_profile
     @contact = Contact.find_by(id: current_user)
-    @offers   = Lead.profile_leads('offer', current_user).count
-    @products = Lead.profile_leads('product', current_user).count
   end
 
   def show_products
@@ -18,7 +19,7 @@ class ProfilesController < ApplicationController
   end
 
   def show_messages
-    @messages = Message.where(user_id: current_user)
+    @messages = Message.where(sender: current_user)
                        .page(params[:page])
   end
 
@@ -30,5 +31,16 @@ class ProfilesController < ApplicationController
   end
 
   def profile_membership
+  end
+
+  private
+
+  def count_leads
+    @offers = Lead.profile_leads('offer', current_user).count
+    @products = Lead.profile_leads('product', current_user).count
+  end
+
+  def count_messages
+    @messages = Message.where(sender: current_user).count
   end
 end

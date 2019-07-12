@@ -1,20 +1,26 @@
 <% content_for(:title, "#{current_user.user_name} -  offers" )%>
-<section id="user_porfile" class="container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<%= render "shared/user_Profile_Menu" %>
-			</div>
-			<div class="col-md-9">
-				<h2>Your Offers:</h2>
-				<hr>
-				<%  if @leads.present? %>
-					<%= render 'shared/profile_Offers', leads: @leads %>
-				<% else %>
-					<h4 class="text-muted text-center">No posted offers yet</h4>
-				<% end %>	
-			</div>
-		</div>
-	</div>
-</section>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="container">
+    <div class="row justify-content-md-center">
+          <div class="col col-lg-12 col-xl-10">
+        <div class="row has-sidebar">
+          <div class="col-md-5 col-lg-4 col-xl-4 col-sidebar">
+                <%= render "shared/user_Profile_Menu" %>
+          </div>
+          <div class="col-md-7 col-lg-8 col-xl-8">
+            <div class="page-header bordered">
+              <h1>My Offers</h1>
+            </div>
+            <% if @leads.count > 0 %>
+            	<%= render 'shared/profile_Offers', leads: @leads %>
+            <% else %>
+            	<h4 class="text-muted text-center">No offers added yet</h4>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

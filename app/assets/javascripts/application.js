@@ -17,4 +17,14 @@
 //= require tether
 //= require popper
 //= require bootstrap
-//= require_tree .
+//= require libs/theia-sticky-sidebar.min
+//= require libs/aos
+//= require libs/jquery.selectric
+//= require libs/jquery.selectric.addNew
+//= require libs/jquery.selectric.placeholder
+//= require libs/ResizeSensor.min
+//= require libs/swiper.min
+//= require libs/select2.full.min
+//= require cable
+//= require mobile-detect.min
+//= require custom

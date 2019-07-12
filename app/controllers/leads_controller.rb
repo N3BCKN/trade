@@ -3,9 +3,11 @@
 class LeadsController < ApplicationController
   include SearchFilters
   include UserLimits
+  include GuestUser
 
   before_action :check_user_restrictions, only: :create
   before_action :build_lead, only: %i[new_offer new_product]
+  before_action :guests_limits, only: :show
   before_action :set_lead, only: %i[show edit update destroy]
   before_action :own_contact, only: %i[edit update]
   before_action :fetch_filter_params, only: %i[index_offers index_products]
@@ -26,12 +28,17 @@ class LeadsController < ApplicationController
       if @lead.save
         format.html do
           redirect_to lead_path(@lead),
-            notice: 'Lead Has been added'
+            notice: 'Lead has been added'
         end
       else
         format.html do
-          redirect_to root_path,
-            notice: "Lead couldn't be added"
+          if params[:lead_status] == 'product'
+            redirect_to new_product_path,
+            notice: "Product couldn't be created. Please try again"
+          elsif params[:lead_status] == 'offer'
+            redirect_to new_offer_path,
+            notice: "Offer couldn't be created. Please try again"
+          end
         end
       end
     end
@@ -50,7 +57,7 @@ class LeadsController < ApplicationController
       else
         format.html do
           render :edit,
-            notice: 'Error'
+            notice: "Lead couldn't be updated. Please try again"
         end
       end
     end
@@ -68,8 +75,10 @@ class LeadsController < ApplicationController
 
   def show
     if user_signed_in?
-      @message         = current_user.messages.build
+      @message         = current_user.messages_sent.build
       @message.lead    = @lead
+      @abuse           = current_user.abuses.build
+      @abuse.lead      = @lead
       @contact         = current_user.contact
       @favorite_exists = FavoriteLead
                          .where(lead: @lead, user: current_user) != []
@@ -94,7 +103,7 @@ class LeadsController < ApplicationController
 
   def suggested_leads
     # TODO: this action should be more restricted for users in the future
-    @lead = Lead.find(params[:id])
+    @lead = Lead.friendly.find(params[:id])
     @suggested = Lead.suggested_leads(@lead)
   end
 
@@ -134,7 +143,11 @@ class LeadsController < ApplicationController
   end
 
   def set_lead
-    @lead       = Lead.find(params[:id])
+    @lead       = begin
+                    Lead.friendly.find(params[:id])
+                  rescue StandardError
+                    render_not_found
+                  end
     @categories = Category.all
   end
 
@@ -145,13 +158,13 @@ class LeadsController < ApplicationController
         :lead_status,
         :description,
         :contact_person,
-        :address,
-        :city,
-        :zip_code,
         :country,
         :phone_number,
-        :home_page,
-        :category_id
+        :category_id,
+        :quantity,
+        :freqency,
+        :prefered_suppliers,
+        :destination
       )
     elsif params[:lead_status] == 'product'
       params.require(:lead).permit(
@@ -159,14 +172,12 @@ class LeadsController < ApplicationController
         :description,
         :lead_status,
         :contact_person,
-        :address,
-        :city,
-        :zip_code,
         :country,
         :phone_number,
-        :home_page,
         :category_id,
-        :product_image
+        :product_image,
+        :quantity,
+        :freqency
       )
     end
   end
@@ -183,6 +194,18 @@ class LeadsController < ApplicationController
             notice: 'Your account has reached leads limit. Please try again later.'
         end
       end
+    end
+  end
+
+  def guests_limits
+    @user = guest_or_current_user
+    if @user.class.name == 'Guest'
+      @daily_views = View.where('guest_id = ? AND created_at >= ?', @user, 1.day.ago).count
+      if @daily_views >= 7
+        redirect_to limit_reached_path
+      else
+        View.create!(guest: @user)
+     end
     end
   end
 end

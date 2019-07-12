@@ -1,16 +1,112 @@
 <% content_for(:title, "#{@contact.user.user_name} - Profile" )%>
-<div class="text-center">
-	<div class="container">
-		
-		<%= set_user_avatar(@contact) %><br><br>
-		User Name: <%= @contact.user.user_name %><br>
-		Address:   <%= @contact.address %><br>
-		Zip Code:  <%=  @contact.zip_code %><br>
-		Phone Number <%= @contact.phone_number %><br>
-		City: <%= @contact.city %><br>
-		Country: <%= country_name(@contact.country) if !@contact.country.nil? %><br>
-		Home Page: <%= @contact.home_page %><br>
-		<b>About Us: </b><p><%= @contact.company_description %></p>
+    <div class="row justify-content-md-center center_lead">
+      <div class="col col-lg-12 col-xl-10">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+              <li class="breadcrumb-item">Companies</li>
+              <li class="breadcrumb-item active" aria-current="page"><%= @contact.user.user_name %></li>
+            </ol>
+          </nav>
+      </div>
+    </div>
 
-	</div>
+<div id="content" class="item-single">
+    <div class="row justify-content-md-center center_lead">
+       <div class="col col-md-12 col-lg-12 col-xl-10">
+        <div class="row row justify-content-md-center has-sidebar">
+          <div class="col-md-7 col-lg-8">
+              <div class="page-header mt-0">
+		            <h1>About <%= @contact.user.user_name %>
+		            <small><i class="fa fa-map-marker"></i>
+		            <%= "#{@contact.address}," if @contact.address.present? %>
+                <%= "#{@contact.city}," if @contact.city.present? %> 
+		            <%= country_name(@contact.country) if @contact.country.present? %>
+		            <%= flag_icon(@contact.country.downcase) if @contact.country.present?  %>
+		        	</small>
+		        	</h1>
+	          </div>
+	          <hr>
+            
+    
+
+              <div class="item-description">
+              	<%= image_tag(@contact.avatar, :class=>"float-left p-3") if @contact.avatar?%>             
+                 <p><%= simple_format(@contact.company_description) %></p>
+              </div>
+              <h3 class="headline pt-2">Areas of Interest:</h3>
+                <ul class="checked_list feature-list">
+                  <% if @contact.areas_of_interest.present? %>
+                    <% @contact.areas_of_interest.each do |area|%>
+                        <li><strong>
+                          <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                          <%= area %>
+                          </strong>
+                        </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+               <ul class="item-features">
+                  <li><span>Established</span> 
+                  	<%= @contact.year_of_establishment.present? ? @contact.year_of_establishment : '-' %>
+                  </li>
+                  <li><span>Employers</span> 
+                    <%= @contact.number_of_employes.present? ? @contact.number_of_employes : '-' %>
+                  </li>
+                  <li><span>Annual Sales</span> 
+                   	<%= @contact.annual_sales.present? ? @contact.annual_sales : '-' %>
+                  </li>
+                  <li><span>Home Page</span>
+                    <% if @contact.home_page.present? %>
+                  	 <%= link_to @contact.home_page %> 
+                    <% else %>
+                      -
+                     <% end %>
+                  </li>
+                </ul>
+              
+               <div class="item-navigation">
+                	<h3 class="headline">Location:</h3>
+                  <% if @contact.latitude && @contact.latitude %>
+                  <ul class="nav nav-tabs v2" role="tablist">
+                    <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab" class="active"><i class="fa fa-map"></i> <span class="hidden-xs">Map &amp; nearby</span></a></li>
+                    <!-- <li role="presentation"><a href="#streetview" aria-controls="streetview" role="tab" data-toggle="tab"><i class="fa fa-road"></i> <span class="hidden-xs">Street View</span></a></li> -->
+                  </ul>
+                  <div class="tab-content">
+                      <div id="map" style="height: 400px; width: 100%;"></div>
+                      <script>
+                      function initMap() {
+                        var location = {
+                          lat: <%= @contact.latitude %>,
+                          lng: <%= @contact.longitude %>
+                        };
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {zoom: 3, center: location});
+                        var marker = new google.maps.Marker({position: location, map: map});
+                      }
+                      </script>
+                      <script async defer
+                      src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAKTsTB9SF2n0Ll7ibfL534hRP3UHl1-M0&callback=initMap">
+                      </script>
+                  </div>
+                   <% end %>
+                </div>
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <div id="sidebar" class="sidebar-right">
+              <div class="sidebar_inner">
+                <% if user_signed_in? %>
+                <h3>Contact Company</h3>
+                  <%= render "shared/lead_Message" %>
+                <% else %>
+                  <h3>Not a member?</h3>
+                  <p class="lead">Register for free and contact this Company.</p>
+                  <%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

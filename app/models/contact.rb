@@ -3,6 +3,11 @@
 class Contact < ApplicationRecord
   belongs_to :user
 
+  serialize :areas_of_interest
+
+  extend FriendlyId
+  friendly_id :user_name, use: :slugged
+
   validates :address, length: { minimum: 5, maximum: 120 }, allow_blank: true
   validates :city, length: { minimum: 2, maximum: 80 }, allow_blank: true
   validates :zip_code, length: { minimum: 4, maximum: 25 }, allow_blank: true
@@ -12,7 +17,9 @@ class Contact < ApplicationRecord
   validates :company_description, length: { minimum: 5, maximum: 1600 }, allow_blank: true
   validates :year_of_establishment, length: { minimum: 3, maximum: 4 }, allow_blank: true
 
-  has_attached_file :avatar, styles:      { default: '300x300>' },
+  has_attached_file :avatar, styles:      { default: '300x300>', tiny: '30x30>' },
                              default_url: '/images/:style/default_user_avatar.png'
   validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\z}
+
+  delegate :user_name, to: :user
 end

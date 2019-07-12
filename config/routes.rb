@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'inquiries/create'
   # Custom Profiles Paths
   get 'profile/dashboard', to: 'profiles#show_profile'
   get 'profile/offers',    to: 'profiles#show_offers'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   get 'profile/membership', to: 'profiles#profile_membership'
 
   # Custom Devise Paths
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout' }
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout', edit: 'profile/editpassword' }
 
   # Custom Leads Paths
   get 'new_offer',   to: 'leads#new_offer'
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
 
   # Custom Static Pages
   get 'about',              to: 'pages#about'
-  get 'contact',            to: 'pages#contact'
   get 'terms',              to: 'pages#terms'
   get 'privacy',            to: 'pages#privacy_policy'
   get 'faq',                to: 'pages#faq'
@@ -28,16 +28,24 @@ Rails.application.routes.draw do
   get 'marketing_campaign', to: 'pages#marketing_campaign'
   get 'lead_helper',        to: 'pages#post_lead_helper'
   get 'membership',         to: 'pages#membership_status'
+  get 'limit_reached',      to: 'pages#visits_limit'
+  get 'carriers',           to: 'pages#carriers'
+  get 'for_press',          to: 'pages#for_press'
+  get 'partnership',        to: 'pages#partnership' 
 
   # Custom Categories Paths
   get 'offers/categories/:category',   to: 'categories#index_offers', as: 'offers_categories'
   get 'products/categories/:category', to: 'categories#index_products', as: 'products_categories'
 
-  get 'leads/:id/sent', to: 'leads#suggested_leads'
+  get 'leads/:id/sent', to: 'leads#suggested_leads', as: 'suggested_leads'
+
+  get 'contact_us',     to: 'inquiries#new'
+  post 'inquiries',     to: 'inquiries#create'
 
   resources :leads do
     member do
       resources :messages
+      resources :abuses
       put 'favorites/update'
     end
   end

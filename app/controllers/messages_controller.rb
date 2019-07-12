@@ -6,10 +6,10 @@ class MessagesController < ApplicationController
   before_action :check_user_restrictions, only: :create
 
   def create
-    @lead = Lead.find(params[:id])
+    @lead = Lead.friendly.find(params[:id])
     @message = Message.create(message_params)
-    @message.user    = current_user
-    @message.lead    = @lead
+    @message.sender = current_user
+    @message.lead = @lead
 
     respond_to do |format|
       if @message.save
@@ -20,8 +20,7 @@ class MessagesController < ApplicationController
         ).deliver_now
 
         format.html do
-          redirect_to lead_path(params[:id]),
-            notice: 'Your message has been sent'
+          redirect_to suggested_leads_path(params[:id])
         end
       else
         format.html do
@@ -45,7 +44,7 @@ class MessagesController < ApplicationController
   end
 
   def check_user_restrictions
-    @number_of_msgs = current_user.messages
+    @number_of_msgs = current_user.messages_sent
                                   .where('created_at >= ?', Time.current - 7.days)
                                   .count
 

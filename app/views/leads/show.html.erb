@@ -1,41 +1,142 @@
 <% content_for(:title, @lead.title)%>
-<section id="lead_show" class="py-5">
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8">
-			<div class="container">
-				<div id="lead_title" class="text-center py-3">
-					<h4><%= @lead.title %></h4>
-				</div>
-				<div id="lead_details">
-					<h7 class="float-left"><%= country_name(@lead.country) %></h7>
-					<h7 class="float-right"><%= @lead.created_at.strftime("%Y-%m-%d") %></h7>
-					<br><br>
-					<% if @lead.lead_status == "product" %>
-						<%= set_product_image_show(@lead) %>
-					<% end %>
-					<p class="lead py-5"><%= @lead.description %></p>
-					<% if user_signed_in? %>
-					<%= link_to check_favorite, favorites_update_lead_path(lead: @lead), :method => :put, :class => "btn btn-md btn-info float-left", :id => "favorite_button", remote: true %>
-					<button class="btn btn-md btn-danger float-right">Report Abuse</button>
-					<% end %>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4">
-			<div class="container" id="lead-message">
-				<% if user_signed_in? %>
-					<h4 class="text-center pb-5">Response To This Lead</h4>
-					<%= render "shared/lead_Message" %>
-				<% else %>
-				<div id="lead_login" class="text-center">
-					<h3>Not a member?</h3>
-					<p class="lead">Register for free and Response to this lead</p>
-					<%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-info" %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="row justify-content-md-center center_lead">
+          <div class="col col-md-12 col-lg-12 col-xl-10">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path%></li>
+          <% if @lead.lead_status == "product" %>
+          	<li class="breadcrumb-item"><a>Products for Sell</a></li>
+          	<li class="breadcrumb-item">
+            <%= link_to @lead.category.name, products_categories_path(@lead.category.name) %></li>
+          <% elsif @lead.lead_status == "offer" %>
+          	<li class="breadcrumb-item"><a>Offers from Buyers</a></li>
+          		<li class="breadcrumb-item">
+            <%= link_to @lead.category.name, offers_categories_path(@lead.category.name) %></li>
+          <% end %> 	
+          <li class="breadcrumb-item active" aria-current="page"><%= @lead.title %></li>
+        </ol>
+      <div class="page-header bordered mb0">
+        <div class="row">
+          <div class="col-md-8">
+            <h1><%= @lead.title %>
+            	<small>
+                <i class="fa fa-map-marker"></i>
+            	<% if @lead.lead_status == "product" %>
+            		Seller From <%= country_name(@lead.country) %>
+            	<% elsif @lead.lead_status == "offer" %>
+					      Buyer From <%= country_name(@lead.country) %>
+            	<% end %>
+            	<%= flag_icon(@lead.country.downcase) %> 
+              </small>
+        	</h1>
+        	<br>
+        	<%= @lead.created_at.strftime("%B %e, %Y") %>
+          </div>
+          <div class="col-md-4">
+          	<% if user_signed_in? %>
+            <%= link_to check_favorite, favorites_update_lead_path(lead: @lead.id), :method => :put, :class => "btn btn-md btn-primary float-right", :id => "favorite_button", remote: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="content" class="item-single">
+    <div class="row justify-content-md-center center_lead">
+          <div class="col col-md-12 col-lg-12 col-xl-10">
+        <div class="row row justify-content-md-center has-sidebar">
+          <div class="col-md-7 col-lg-8">
+            <div> 
+              <div>
+                <div class="item-description">
+                  <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
+                  <p><%= simple_format(@lead.description) %></p>
+                  <p><%= "Contact Person: #{@lead.contact_person}" if @lead.contact_person.present? %></p>
+                </div>
+                 <!-- <ul class="item-features">
+                  <li><span>540</span> sq m </li>
+                  <li><span>3</span> Rooms </li>
+                  <li><span>1</span> Bedrooms </li>
+                  <li><span>2</span> Bathrooms </li>
+                </ul> -->
+                <h3 class="headline pt-5"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
+                <ul class="checked_list feature-list">
+                  <% if @lead.quantity.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Approximate Quantity:
+                    <strong><%= " #{@lead.quantity}" if @lead.quantity.present? %></strong></li>
+                  <% end %>
+                  <% if @lead.freqency.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Delivery Frequency:
+                    <strong><%= " #{@lead.freqency}" %></strong></li>
+                    <% end %>
+                    <% if @lead.destination.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Destination:
+                    <strong><%= " #{@lead.destination}" %></strong></li>
+                    <% end %>
+                    <% if @lead.prefered_suppliers.present? %>
+                   <li>
+                    <i class="fas fa-check" style="color: rgba(134, 158, 158,.8);"></i>&nbsp;&nbsp;
+                    Prefered Suppliers from:
+                    <strong><%= " #{@lead.prefered_suppliers}" %></strong></li>
+                    <% end %>
+                </ul>
+                 <% if user_signed_in? %>
+                  <div class="item-attachments">
+                    <h3 class="headline"></h3>
+                    <%= link_to "Check Poster Profile", contact_path(@lead.user.contact), :class=> "btn btn-md btn-inverse" %>
+                  </div>
+                 <% end %>
+              </div>
+            </div>
+            <% if user_signed_in? %>
+            <%= link_to "Report Passible Abuse?", nil , { :class=>"float-right",  "data-toggle"=>"modal", "data-target" => "
+              #abuseModal"} %>
+                <%= form_for(@abuse) do |f| %>
+                <div class="modal" id="abuseModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title text-center">Report Abuse</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        From: <input type="text" class="form-control form-control-sm rounded-1" value="<%= current_user.user_name %>" disabled>
+                        <div class="mt-5">
+                        <p>Please describe us why this <%= @lead.lead_status = "product" ? "product" : "offer" %>
+                          violates our <ins><%= link_to "terms of use", terms_path %></ins>.
+                        </p>
+                        <%= f.text_area :content,:class=>"form-control form-control-lg text-editor rounded-1", :id=>"abuse_content", :rows=>"6" %>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <%= f.submit "Report", :class=>"btn btn-danger btn-block" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <div id="sidebar" class="sidebar-right">
+              <div class="sidebar_inner">
+              	<% if user_signed_in? %>
+               <h3>Contact <%= @lead.lead_status == "product" ? "Seller" : "Buyer" %></h3>
+               <%= render "shared/lead_Message" %>
+               <% else %>
+               <h3>Not a member?</h3>
+			   <p class="lead">Register for free and contact seller.</p>
+			   <%= link_to "Join For Free",  new_user_registration_path, :class=>"btn btn-lg btn-primary" %>
+			   <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-</section>
