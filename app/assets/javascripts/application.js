@@ -18,10 +18,10 @@
 //= require popper
 //= require bootstrap
 //= require libs/theia-sticky-sidebar.min
-//= require libs/aos
-//= require libs/jquery.selectric
-//= require libs/jquery.selectric.addNew
-//= require libs/jquery.selectric.placeholder
+//= require libs/aos.min
+//= require libs/jquery.selectric.min
+//= require libs/jquery.selectric.addNew.min
+//= require libs/jquery.selectric.placeholder.min
 //= require libs/ResizeSensor.min
 //= require libs/swiper.min
 //= require libs/select2.full.min
