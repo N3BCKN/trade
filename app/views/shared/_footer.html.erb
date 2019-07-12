@@ -19,9 +19,9 @@
 			<ul class="list-unstyled">
 				<li class="list-title"><a>About</a></li>
 				<li><%= link_to "Company", about_path %></li>
-				<li><%= link_to "Carriers", about_path %></li>
-				<li><%= link_to "For Press", about_path %></li>
-				<li><a href="#">Partnership</a></li>
+				<li><%= link_to "Carriers", carriers_path %></li>
+				<li><%= link_to "For Press", for_press_path %></li>
+				<li><%= link_to "Partnership", partnership_path %></li>
 				<li><%= link_to "Contact", contact_us_path %></li>
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 				<li class="list-title"><a>Links</a></li>
 				<li><a href="#">For Buyers</a></li>
 				<li><a href="#">For Suppliers</a></li>
-				<li><a href="#">Promote Your Ads</a></li>
+				<li><%= link_to "Promote Your Ads", marketing_campaign_path %></li>
 				<%= link_to "Membership", membership_path %>
 				<li><a href="#">Payments</a></li>
 				<li><a href="#">Blog</a></li>

@@ -34,4 +34,13 @@ class PagesController < ApplicationController
 
   def visits_limit
   end
+
+  def carriers
+  end
+
+  def for_press
+  end
+
+  def partnership
+  end
 end
