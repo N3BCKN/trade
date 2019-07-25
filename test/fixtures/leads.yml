@@ -4,22 +4,20 @@ one:
   title: MyString
   description: MyText
   contact_person: MyString
-  address: MyText
-  city: MyString
-  zip_code: MyString
   country: MyString
   phone_number: MyString
-  email: MyString
-  home_page: MyString
+  destination: MyString
+  quantity: MyString
+  freqency: MyString
+  prefered_suppliers: MyString
 
 two:
   title: MyString
   description: MyText
   contact_person: MyString
-  address: MyText
-  city: MyString
-  zip_code: MyString
   country: MyString
   phone_number: MyString
-  email: MyString
-  home_page: MyString
+  destination: MyString
+  quantity: MyString
+  freqency: MyString
+  prefered_suppliers: MyString
