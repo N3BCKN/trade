@@ -3,5 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Assosiations" do
+  	it 'should has many leads' do
+  		assc = described_class.reflect_on_association(:leads)
+      	expect(assc.macro).to eq(:has_many)
+  	end 
+  end 
 end
