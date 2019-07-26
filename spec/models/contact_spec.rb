@@ -143,7 +143,7 @@ RSpec.describe Contact, type: :model do
 
     describe 'longitude' do
       it 'must smaller then 180' do
-        subject.longitude =  180.00001
+        subject.longitude = 180.00001
         expect(subject).not_to be_valid
       end
       it 'must be bigger then -180' do

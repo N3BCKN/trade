@@ -67,6 +67,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop', '~> 0.63.1', require: false
   gem 'rubocop-rspec'
+  gem 'rails-controller-testing'
 end
 
 group :development do
