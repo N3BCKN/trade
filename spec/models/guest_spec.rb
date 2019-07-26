@@ -25,7 +25,7 @@ RSpec.describe Guest, type: :model do
   	end 
   end
   describe 'Assosiations' do
-  	it 'must belongs to the user' do
+  	it 'must has many views' do
       assc = described_class.reflect_on_association(:views)
       expect(assc.macro).to eq(:has_many)
     end

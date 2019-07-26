@@ -23,7 +23,7 @@ class Lead < ApplicationRecord
   validates :description, presence: true, length: { minimum: 8, maximum: 1800 }
   validates :lead_status, presence: true, length: { minimum: 5, maximum: 7 }
   validates :contact_person, length: { minimum: 2, maximum: 120 }, allow_blank: true
-  validates :country, length: { minimum: 2, maximum: 8 }
+  validates :country, presence: true, length: { minimum: 2, maximum: 8 }
   validates :phone_number, length: { minimum: 6, maximum: 30 }, allow_blank: true
   validates :destination, length: { minimum: 2, maximum: 85 }, allow_blank: true
   validates :quantity, length: { minimum: 2, maximum: 70 }, allow_blank: true
