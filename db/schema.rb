@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_12_173455) do
+=======
+ActiveRecord::Schema.define(version: 2018_12_13_132108) do
+>>>>>>> 813365e5b30d9378f591c3cf55563d88e414dc87
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +163,10 @@ ActiveRecord::Schema.define(version: 2019_07_12_173455) do
     t.datetime "updated_at", null: false
     t.string "user_name"
     t.datetime "deleted_at"
+<<<<<<< HEAD
     t.string "confirm_token"
+=======
+>>>>>>> 813365e5b30d9378f591c3cf55563d88e414dc87
     t.integer "role"
     t.boolean "terms_of_use", default: false
     t.integer "failed_attempts", default: 0, null: false
