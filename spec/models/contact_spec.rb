@@ -91,6 +91,8 @@ RSpec.describe Contact, type: :model do
         expect(subject).not_to be_valid
         subject.email = 'notemail.com'
         expect(subject).not_to be_valid
+        subject.email = 'testtest@test.com'
+        expect(subject).to be_valid
       end
     end
 

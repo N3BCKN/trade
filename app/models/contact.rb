@@ -17,7 +17,6 @@ class Contact < ApplicationRecord
   validates :company_description, length: { minimum: 5, maximum: 1600 }, allow_blank: true
   validates :year_of_establishment, inclusion: 1300..2024, allow_blank: true
   validates :number_of_employes, inclusion: 1..999_999, allow_blank: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :latitude, inclusion: -90..90, allow_blank: true
   validates :longitude, inclusion: -180..180, allow_blank: true
 

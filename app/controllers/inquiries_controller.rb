@@ -21,8 +21,8 @@ class InquiriesController < ApplicationController
         end
       else
         format.html do
-          redirect_to root_path,
-            notice: 'Error. Your message could not be sent. Please try again'
+          redirect_to contact_us_path,
+            notice: 'Error. Your message could not be sent. Please try again: ' + @inquiry.errors.full_messages.to_sentence
         end
       end
     end

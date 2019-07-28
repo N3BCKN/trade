@@ -55,6 +55,7 @@ gem 'flag-icons-rails'
 gem 'friendly_id', '~> 5.2.4'
 gem 'honeypot-captcha'
 gem 'whenever', require: false
+gem 'validates_email_format_of'
 
 gem 'devise', '~> 4.2'
 

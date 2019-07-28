@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
       else
         format.html do
           redirect_to lead_path(params[:id]),
-            notice: "Message couldn't be delivered"
+            notice: "Message couldn't be delivered " + @message.errors.full_messages.to_sentence
         end
       end
     end
