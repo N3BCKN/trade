@@ -56,6 +56,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'honeypot-captcha'
 gem 'whenever', require: false
 gem 'validates_email_format_of'
+gem 'sitemap_generator'
 
 gem 'devise', '~> 4.2'
 
