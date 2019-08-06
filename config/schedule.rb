@@ -19,4 +19,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+every 2.days do
+  rake "-s sitemap:refresh"
+end
+
 # Learn more: http://github.com/javan/whenever
