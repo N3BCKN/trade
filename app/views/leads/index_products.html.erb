@@ -45,12 +45,12 @@
     <div class="row justify-content-md-center">
           <div class="col col-lg-12 col-xl-10">
         <div class="row has-sidebar">
-          <div class="col-md-4 col-lg-3">
-    		<%= form_tag(products_path, method: :get) do %>
-				<%= render "shared/lead_Filters", countries: @countries,
-				categories: @categories, query: params[:q] %>
-			<% end %>
-          </div>
+          <aside class="col-md-4 col-lg-3">
+        		<%= form_tag(products_path, method: :get) do %>
+    				<%= render "shared/lead_Filters", countries: @countries,
+    				categories: @categories, query: params[:q] %>
+    			<% end %>
+          </aside>
           <div class="col-md-8 col-lg-9">
            <ul class="nav nav-tabs tab-lg" role="tablist">
              <li role="presentation" class="nav-item"> 

@@ -46,18 +46,12 @@
         <div class="row row justify-content-md-center has-sidebar">
           <div class="col-md-7 col-lg-8">
             <div> 
-              <div>
+              <article>
                 <div class="item-description">
                   <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
                   <p><%= simple_format(@lead.description) %></p>
                   <p><%= "Contact Person: #{@lead.contact_person}" if @lead.contact_person.present? %></p>
                 </div>
-                 <!-- <ul class="item-features">
-                  <li><span>540</span> sq m </li>
-                  <li><span>3</span> Rooms </li>
-                  <li><span>1</span> Bedrooms </li>
-                  <li><span>2</span> Bathrooms </li>
-                </ul> -->
                 <h3 class="headline pt-5"><%= @lead.lead_status == "product" ? "Product" : "Offer" %> Details</h3>
                 <ul class="checked_list feature-list">
                   <% if @lead.quantity.present? %>
@@ -91,7 +85,7 @@
                     <%= link_to "Check Poster Profile", contact_path(@lead.user.contact), :class=> "btn btn-md btn-inverse" %>
                   </div>
                  <% end %>
-              </div>
+              </article>
             </div>
             <% if user_signed_in? %>
             <%= link_to "Report Passible Abuse?", nil , { :class=>"float-right",  "data-toggle"=>"modal", "data-target" => "
@@ -122,7 +116,7 @@
                 <% end %>
               <% end %>
           </div>
-          <div class="col-md-5 col-lg-4">
+          <aside class="col-md-5 col-lg-4">
             <div id="sidebar" class="sidebar-right">
               <div class="sidebar_inner">
               	<% if user_signed_in? %>
@@ -135,7 +129,7 @@
 			   <% end %>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>
