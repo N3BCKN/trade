@@ -20,7 +20,7 @@
 # end
 
 every 2.days do
-  rake "-s sitemap:refresh"
+  rake '-s sitemap:refresh'
 end
 
 # Learn more: http://github.com/javan/whenever

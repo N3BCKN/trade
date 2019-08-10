@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.cargocub.com"
+SitemapGenerator::Sitemap.default_host = 'http://www.cargocub.com'
 
 SitemapGenerator::Sitemap.create do
-  add root_path, :changefreq => 'daily'
+  add root_path, changefreq: 'daily'
 
   Category.find_each do |category|
-    add offers_categories_path(category), :changefreq => 'weekly', :lastmod => category.updated_at
-    add products_categories_path(category), :changefreq => 'weekly', :lastmod => category.updated_at
+    add offers_categories_path(category), changefreq: 'weekly', lastmod: category.updated_at
+    add products_categories_path(category), changefreq: 'weekly', lastmod: category.updated_at
 
     category.leads.each do |lead|
-      add lead_path(lead), :changefreq => 'yearly', :lastmod => lead.updated_at
+      add lead_path(lead), changefreq: 'yearly', lastmod: lead.updated_at
     end
   end
   # Put links creation logic here.
