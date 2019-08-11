@@ -44,7 +44,6 @@ gem 'dotenv-rails', groups: %i[development test]
 gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git', branch: 'master'
 gem 'elasticsearch-model', '~> 6.0.0'
 gem 'elasticsearch-rails', '~> 6.0.0'
-gem 'faker'
 gem 'jquery-rails', '~> 4.3'
 gem 'paperclip', '~> 6.0.0'
 gem 'paperclip-gcs'
