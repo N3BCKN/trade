@@ -57,6 +57,7 @@ gem 'whenever', require: false
 gem 'validates_email_format_of'
 gem 'sitemap_generator'
 gem 'rack'
+gem "appengine"
 
 gem 'devise', '~> 4.2'
 
