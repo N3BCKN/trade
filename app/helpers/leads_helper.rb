@@ -9,21 +9,20 @@ module LeadsHelper
     end
   end
 
-  # for Elasticseach
-  def set_product_image_index(lead)
+  def set_product_image_index(lead, width = 170, height = 170, bootstrapClass = '')
     if lead.product_image_file_name.nil?
-      image_tag 'thumb_product_image.png', class: 'float-left p-3'
+      image_tag 'thumb_product_image.png', width: width, height: height, class: bootstrapClass
     else
-      image_tag lead.img_url_thumb
+      image_tag lead.product_image.url(:default), width: width, height: height, class: bootstrapClass
     end
   end
 
-  # for ActiveRecords
-  def set_product_image_index_profile(lead)
-    if lead.product_image_file_name.nil?
-      image_tag 'thumb_product_image.png'
+  # for ElasticSearch
+  def set_product_image_elasticsearch(lead)
+    if lead.img_url_thumb == 'default_image'
+      image_tag 'thumb_product_image.png', width: 150, height: 110, class: 'img-responsive'
     else
-      image_tag lead.product_image.url(:thumb)
+      image_tag lead.img_url_thumb, width: 150, height: 110, class: 'img-responsive'
     end
   end
 end

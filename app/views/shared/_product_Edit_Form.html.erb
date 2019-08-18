@@ -50,27 +50,13 @@
         </div>
 
         <div class="form-group">
-          <h3 class="subheadline py-3">Address:</h3>
-           <%= f.text_field :address,  autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">City:</h3>
-            <%= f.text_field :city, value: @contact.try!(:city), autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
-        </div>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">Zip Code:</h3>
-            <%= f.text_field :zip_code, value: @contact.try!(:zip_code), autocomplete: "Zip code", :class=>"form-control form-control-lg", :id=>"zipCode" %>
-        </div>
-
-        <div class="form-group">
           <h3 class="subheadline py-3">Country:</h3>
-          <%= country_select("lead", "country", { selected: @contact.try!(:country) }, { class: 'form-control form-control-lg ui-select' }) %>
+          <%= country_select("lead", "country", { selected: @lead.try!(:country) }, { class: 'form-control form-control-lg ui-select' }) %>
         </div>
 
         <div class="form-group">
           <h3 class="subheadline py-3">Phone Number:</h3>
-          <%= f.text_field :phone_number, value: @contact.try!(:phone_number), autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
+          <%= f.text_field :phone_number, autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
         </div>
     
         <div class="form-group pb-5">
@@ -80,7 +66,7 @@
                   <i class="fa fa-5x fa-upload"></i>
                   <div>Drag and drop product image or click to upload</div>
                   <%= f.file_field :product_image, :class=>"form-control form-control-lg", :onChange=>"readURL(this,'100%','100%')", :id=>"gallery" %>
-                </div>
+          </div>
         </div>
           <%= hidden_field_tag :lead_status, "product" %>
            <%= f.submit "Edit Product", :class=>"btn btn-primary btn-block" %>

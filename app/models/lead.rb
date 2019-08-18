@@ -27,11 +27,11 @@ class Lead < ApplicationRecord
   validates :phone_number, length: { minimum: 6, maximum: 30 }, allow_blank: true
   validates :destination, length: { minimum: 2, maximum: 85 }, allow_blank: true
   validates :quantity, length: { minimum: 2, maximum: 70 }, allow_blank: true
-  validates :freqency, length: { minimum: 9, maximum: 24 }
+  validates :freqency, length: { minimum: 9, maximum: 24 }, allow_blank: true
   validates :prefered_suppliers, length: { minimum: 2, maximum: 55 }, allow_blank: true
 
-  has_attached_file :product_image, styles:      { default: '650x400>', thumb: '150x150>' },
-                                    default_url: '/images/:style/default_product_image.png'
+  has_attached_file :product_image, styles:      { default: '450x350>', thumb: '150x150>' },
+                                    default_url: 'default_image'
   validates_attachment_content_type :product_image, content_type: %r{\Aimage/.*\z}
 
   before_save :set_short_descritption

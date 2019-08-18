@@ -50,7 +50,7 @@
       <li class="nav-item dropdown user-account">
           <% if user_signed_in? %>
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="user-image" style="background-image:url(<%= asset_path('avatar_default_tiny.png') %>);"></span> Hi, 
+          <span class="user-image" style="background-image:url(<%= avatar_tiny(current_user) %>);"></span> Hi, 
           <%= current_user.user_name %>
           </a>
           <div class="dropdown-menu">

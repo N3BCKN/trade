@@ -48,7 +48,7 @@
             <div> 
               <article>
                 <div class="item-description">
-                  <%= set_product_image_index(@lead) if @lead.lead_status == "product" %>
+                  <%= set_product_image_index(@lead,190,190, 'float-left pr-3') if @lead.lead_status == "product" %>
                   <p><%= simple_format(@lead.description) %></p>
                   <p><%= "Contact Person: #{@lead.contact_person}" if @lead.contact_person.present? %></p>
                 </div>

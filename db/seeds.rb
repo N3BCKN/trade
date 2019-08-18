@@ -43,7 +43,7 @@ Contact.create!(
 	home_page: Faker::Internet.url('trade.com'),
 	year_of_establishment: 1990 + rand(29), 
 	phone_number: Faker::PhoneNumber.phone_number,
-	number_of_employes: rand(500),
+	number_of_employes: rand(500)+1,
 	areas_of_interest: areas,
 	annual_sales: 5550000,
 	user_id: t+1

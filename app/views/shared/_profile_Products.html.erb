@@ -7,18 +7,8 @@
                   <div class="col-3">
                     <div class="item-image">
                         <%= link_to lead_path(lead) do %>
-                        <img src="//placehold.it/300x220" class="img-fluid" alt="">
+                        <%= set_product_image_index(lead, 130, 100) %>
                         <% end %>
-                     <!--  <div class="item-badges">
-                      <div class="item-badge-left">Sponsored</div>
-                      <div class="item-badge-right">For Sale</div>
-                      </div>
-                      <div class="item-meta">
-                      <div class="item-price">$420,000
-                      <small>$777 / sq m</small>
-                      </div>
-                      </div> -->
-                      <a href="#" class="save-item"><i class="fa fa-star"></i></a> 
                     </div>
                   </div>
                   <div class="col-9">
@@ -33,8 +23,6 @@
                           <div class="added-by"><%=  lead.created_at.strftime("%B %e, %Y") %></div>
                       </div>
                     </div>
-                    <!-- <div class="item-location"><i class="fa fa-map-marker"></i> Kirkstone Road, Middlesbrough TS3</div>
-                    <div class="item-details-i"> <span class="bedrooms" data-toggle="tooltip" title="3 Bedrooms">3 <i class="fa fa-bed"></i></span> <span class="bathrooms" data-toggle="tooltip" title="2 Bathrooms">2 <i class="fa fa-bath"></i></span> </div> -->
                     <div class="item-details mb-2">
                       <%= lead.description_short %>...
                     </div>

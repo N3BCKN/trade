@@ -5,7 +5,7 @@
                   <div class="col-3">
                     <div class="item-image">
                         <%= link_to lead_path(lead._id) do %>
-                        <img src="//placehold.it/300x220" class="img-fluid" alt="">
+                        <%= set_product_image_elasticsearch(lead) %>
                         <% end %>
                       <!-- <a href="#" class="save-item"><i class="fa fa-star"></i></a>  -->
                     </div>

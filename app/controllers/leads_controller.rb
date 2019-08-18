@@ -27,17 +27,23 @@ class LeadsController < ApplicationController
     respond_to do |format|
       if @lead.save
         format.html do
-          redirect_to lead_path(@lead),
-            notice: 'Lead has been added'
+          if params[:lead_status] == 'product'
+            redirect_to lead_path(@lead),
+              notice: 'Your new product has been added'
+          elsif params[:lead_status] == 'offer'
+            redirect_to lead_path(@lead),
+              notice: 'Your buying offer has been added'
+          end
         end
       else
         format.html do
+          @categories = Category.all
           if params[:lead_status] == 'product'
-            redirect_to new_product_path,
-              notice: "Product couldn't be created. Please try again"
+            flash[:notice] = "Product couldn't be created. Please try again. " + @lead.errors.full_messages.to_sentence
+            render :new_product
           elsif params[:lead_status] == 'offer'
-            redirect_to new_offer_path,
-              notice: "Offer couldn't be created. Please try again"
+            flash[:notice] = "Offer couldn't be created. Please try again " + @lead.errors.full_messages.to_sentence
+            render :new_offer
           end
         end
       end
@@ -56,8 +62,8 @@ class LeadsController < ApplicationController
         end
       else
         format.html do
-          render :edit,
-            notice: "Lead couldn't be updated. Please try again"
+          flash[:notice] = "Lead couldn't be updated. Please try again " + @lead.errors.full_messages.to_sentence
+          render :edit
         end
       end
     end
@@ -68,7 +74,7 @@ class LeadsController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to root_path,
-          notice: 'Destroyed'
+          notice: 'Your lead has been deleted'
       end
     end
   end

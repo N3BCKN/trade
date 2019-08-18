@@ -16,6 +16,7 @@
         <div class="page-header bordered">
             <h1 class="text-center">Edit Offer<small></small></h1>
         </div>
+        <%= form_for(@lead) do |f| %>
         <div class="form-group">
           <h3 class="subheadline py-3">Title</h3>
            <%= f.text_field :title, autofocus: true, autocomplete: "Title", :class=>"form-control form-control-lg", :id=>"description" %>
@@ -35,11 +36,11 @@
         </div>
 
         <div class="form-group">
-         <h3 class="subheadline py-3">Approximate Required Quantity</h3>
+         <h3 class="subheadline py-3">Approximate Quantity</h3>
           <%= f.text_field :quantity, :class=>"form-control form-control-lg rounded-1", :id=>"quantity" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group">  
          <h3 class="subheadline py-3">Required Frequency</h3>
           <%= f.select :freqency, ["Single Delivery", "Once a week", "Once a Month", "Once a year", "Several Times Per Year", "Another Way"],
          {}, { :class=>"form-control form-control-lg ui-select", :id=>"freqency"} %>
@@ -53,30 +54,16 @@
         <div class="form-group">
           <h3 class="subheadline py-3">Contact Person</h3>
           <%= f.text_field :contact_person, autofocus: false, autocomplete: "contact person", :class=>"form-control form-control-lg", :id=>"contact" %>
-        </div>
+        </div>  
 
         <div class="form-group">
-          <h3 class="subheadline py-3">Address</h3>
-           <%= f.text_field :address, value: @contact.try!(:address), autocomplete: "address", :class=>"form-control form-control-lg", :id=>"address" %>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">City</h3>
-            <%= f.text_field :city, value: @contact.try!(:city), autocomplete: "city", :class=>"form-control form-control-lg", :id=>"city" %>
-        </div>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">Zip Code</h3>
-            <%= f.text_field :zip_code, value: @contact.try!(:zip_code), autocomplete: "Zip code", :class=>"form-control form-control-lg", :id=>"zipCode" %>
-        </div>
-
-        <div class="form-group">
-          <h3 class="subheadline py-3">Country</h3>
-          <%= country_select("lead", "country", { selected: @contact.try!(:country) }, { class: 'form-control form-control-lg' }) %>
+          <h3 class="subheadline py-3">Country:</h3>
+          <%= country_select("lead", "country", { selected: @lead.try!(:country) }, { class: 'form-control form-control-lg ui-select' }) %>
         </div>
 
         <div class="form-group">
           <h3 class="subheadline py-3">Phone Number</h3>
-          <%= f.text_field :phone_number, value: @contact.try!(:phone_number), autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
+          <%= f.text_field :phone_number, autocomplete: "Phone Number", :class=>"form-control form-control-lg", :id=>"phone" %>
         </div>
 
          <div class="form-group">

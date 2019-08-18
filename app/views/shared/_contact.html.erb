@@ -141,7 +141,7 @@
 <hr>
 
 <div class="form-group text-center">
-    <%= user_avatar(@contact,"img_prev") %>
+    <%= avatar_edit(@contact,"img_prev") %>
     <br>
    <label class="btn btn-primary">
     Upload Your Logo <%= f.file_field :avatar, style: "display: none;", :onChange=>"readURL(this,300,300)", :id=>"preview_loader" %>

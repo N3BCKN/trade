@@ -31,9 +31,10 @@
     
 
               <div class="item-description">
-              	<%= image_tag(@contact.avatar, :class=>"float-left p-3") if @contact.avatar?%>             
+              	<%= user_avatar(@contact) %>         
                  <p><%= simple_format(@contact.company_description) %></p>
               </div>
+              <br><br>
               <h3 class="headline pt-2">Areas of Interest:</h3>
                 <ul class="checked_list feature-list">
                   <% if @contact.areas_of_interest.present? %>
